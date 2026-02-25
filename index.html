@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>권도연 | Product Manager Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* ===== CSS RESET & VARIABLES ===== */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg-dark:#0f1923;--bg-mid:#1a2836;--bg-light:#243447;
+--teal:#2ec4b6;--gold:#ffd700;--red:#ff6b6b;--green:#51cf66;
+--text:#e8e8e8;--text-dim:#8899aa;--text-bright:#ffffff;
+--font:'Noto Sans KR',system-ui,-apple-system,sans-serif;
+--transition:0.4s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font);background:var(--bg-dark);color:var(--text);overflow-x:hidden;min-height:100vh;-webkit-text-size-adjust:100%}
+a{color:var(--teal);text-decoration:none;-webkit-tap-highlight-color:transparent}
+button{font-family:var(--font);cursor:pointer;border:none;background:none;color:var(--text);-webkit-tap-highlight-color:transparent}
+*{-webkit-tap-highlight-color:transparent}
+
+/* ===== LOADING SCREEN ===== */
+#loading-screen{position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;background:var(--bg-dark);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .5s}
+#loading-screen.hidden{opacity:0;pointer-events:none}
+.loading-title{font-size:1.5rem;font-weight:700;color:var(--teal);margin-bottom:.5rem;letter-spacing:2px}
+.loading-sub{font-size:.85rem;color:var(--text-dim);margin-bottom:2rem}
+.loading-bar-wrap{width:280px;height:6px;background:var(--bg-mid);border-radius:3px;overflow:hidden;border:1px solid rgba(46,196,182,.2)}
+.loading-bar{height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--gold));border-radius:3px;transition:width .1s}
+.loading-hint{margin-top:1.5rem;font-size:.75rem;color:var(--text-dim);opacity:.7}
+
+/* ===== PARTICLES ===== */
+#particles{position:fixed;top:0;left:0;right:0;bottom:0;z-index:0;pointer-events:none;overflow:hidden}
+.particle{position:absolute;border-radius:50%;background:var(--teal);opacity:.15;animation:float linear infinite}
+@keyframes float{0%{transform:translateY(100vh) scale(0)}50%{opacity:.3}100%{transform:translateY(-10vh) scale(1);opacity:0}}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,25,35,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(46,196,182,.15)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;padding:.6rem 1.5rem;gap:1rem}
+.nav-logo{font-weight:900;font-size:1.1rem;color:var(--teal);white-space:nowrap;flex-shrink:0}
+.nav-logo span{color:var(--gold);font-size:.7rem;margin-left:.3rem;vertical-align:super}
+.nav-tabs{display:flex;gap:.25rem;margin-left:auto;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.nav-tabs::-webkit-scrollbar{display:none}
+.nav-tab{padding:.5rem .9rem;font-size:.78rem;font-weight:500;color:var(--text-dim);border-radius:6px;transition:all .25s;white-space:nowrap;position:relative;touch-action:manipulation}
+.nav-tab:hover{color:var(--text);background:rgba(46,196,182,.08)}
+.nav-tab.active{color:var(--teal);background:rgba(46,196,182,.12)}
+.nav-tab.active::after{content:'';position:absolute;bottom:-1px;left:20%;right:20%;height:2px;background:var(--teal);border-radius:1px}
+.nav-tab .tab-icon{font-size:.9rem;margin-right:.3rem}
+.nav-tab .tab-sub{display:block;font-size:.55rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-top:1px}
+.hamburger{display:none;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:44px;height:44px;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;position:relative;z-index:102}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:1px;transition:all .3s;pointer-events:none}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-menu{display:none;position:fixed;top:56px;left:0;right:0;bottom:0;background:rgba(15,25,35,.97);backdrop-filter:blur(12px);padding:1rem;border-bottom:1px solid rgba(46,196,182,.15);z-index:101;overflow-y:auto}
+.mobile-menu.open{display:flex;flex-direction:column;gap:.5rem}
+.mobile-menu .nav-tab{padding:1rem 1.2rem;font-size:1rem;min-height:48px;display:flex;align-items:center;gap:.5rem;touch-action:manipulation;border-radius:10px}
+
+/* ===== MAIN CONTENT ===== */
+main{padding-top:70px;position:relative;z-index:1}
+.section{display:none;animation:fadeIn var(--transition) forwards;max-width:1100px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.section.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.section-header{text-align:center;margin-bottom:2.5rem}
+.section-header h2{font-size:1.8rem;font-weight:900;color:var(--text-bright);margin-bottom:.3rem}
+.section-header .section-tag{font-size:.7rem;color:var(--teal);text-transform:uppercase;letter-spacing:3px;font-weight:500}
+
+/* ===== TAB 1: PROFILE ===== */
+.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
+.profile-card{background:var(--bg-mid);border-radius:16px;padding:2rem;border:1px solid rgba(46,196,182,.1);position:relative;overflow:hidden}
+.profile-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--gold))}
+.profile-photo-wrap{display:flex;justify-content:center;margin-bottom:1.5rem}
+.profile-photo{width:140px;height:140px;clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);object-fit:cover;border:3px solid var(--teal);filter:drop-shadow(0 0 12px rgba(46,196,182,.3))}
+.profile-photo-ring{position:relative;display:inline-block}
+.profile-photo-ring::after{content:'';position:absolute;inset:-6px;clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);border:2px solid rgba(46,196,182,.3);animation:pulse-glow 2s ease-in-out infinite}
+@keyframes pulse-glow{0%,100%{filter:drop-shadow(0 0 4px rgba(46,196,182,.2))}50%{filter:drop-shadow(0 0 12px rgba(46,196,182,.5))}}
+.profile-name{font-size:1.8rem;font-weight:900;text-align:center;color:var(--text-bright)}
+.profile-class{text-align:center;color:var(--teal);font-size:.9rem;font-weight:500;margin:.2rem 0}
+.profile-level{text-align:center;margin:.8rem 0}
+.profile-level .lv{background:linear-gradient(135deg,var(--gold),#ffaa00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:900;font-size:1.3rem}
+.xp-bar-wrap{background:var(--bg-dark);border-radius:8px;height:10px;margin:.5rem 0;overflow:hidden;border:1px solid rgba(46,196,182,.15)}
+.xp-bar{height:100%;background:linear-gradient(90deg,var(--teal),#20e3a0);border-radius:8px;transition:width 1.5s ease-out}
+.xp-label{display:flex;justify-content:space-between;font-size:.7rem;color:var(--text-dim)}
+.typing-wrap{text-align:center;min-height:2.5rem;margin:1rem 0;font-size:.95rem;color:var(--gold);font-weight:500}
+.typing-cursor{animation:blink .7s step-end infinite;color:var(--teal)}
+@keyframes blink{50%{opacity:0}}
+.profile-org{text-align:center;padding:.8rem;background:rgba(46,196,182,.06);border-radius:10px;margin-top:1rem;border:1px solid rgba(46,196,182,.1)}
+.profile-org .org-label{font-size:.65rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:2px}
+.profile-org .org-name{font-size:1rem;font-weight:700;color:var(--text-bright);margin-top:.2rem}
+.profile-org .org-sub{font-size:.8rem;color:var(--teal)}
+
+/* Stats */
+.stats-card{background:var(--bg-mid);border-radius:16px;padding:2rem;border:1px solid rgba(46,196,182,.1)}
+.stat-item{margin-bottom:1.5rem}
+.stat-item:last-child{margin-bottom:0}
+.stat-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem}
+.stat-name{font-size:.85rem;font-weight:500;color:var(--text)}
+.stat-value{font-size:.8rem;font-weight:700;color:var(--teal)}
+.stat-bar-wrap{background:var(--bg-dark);border-radius:6px;height:8px;overflow:hidden;border:1px solid rgba(46,196,182,.1)}
+.stat-bar{height:100%;border-radius:6px;transition:width 1.5s ease-out;position:relative}
+.stat-bar::after{content:'';position:absolute;top:0;right:0;bottom:0;width:30%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15));border-radius:6px}
+
+/* Career Timeline sub-header inside profile */
+.career-timeline-header{text-align:center;margin:3rem 0 1.5rem}
+.career-timeline-header h3{font-size:1.4rem;font-weight:900;color:var(--text-bright);margin-top:.3rem}
+
+/* ===== TIMELINE ===== */
+.timeline{position:relative;padding:1rem 0}
+.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(180deg,transparent,var(--teal),transparent);transform:translateX(-50%);filter:drop-shadow(0 0 4px rgba(46,196,182,.3))}
+.timeline-item{position:relative;width:50%;padding:1rem 2.5rem 2rem;opacity:0;transform:translateY(20px);transition:all .6s}
+.timeline-item.visible{opacity:1;transform:translateY(0)}
+.timeline-item.left{left:0;text-align:right}
+.timeline-item.right{left:50%;text-align:left}
+.timeline-node{position:absolute;top:1.2rem;width:16px;height:16px;background:var(--teal);border-radius:50%;border:3px solid var(--bg-dark);z-index:2;box-shadow:0 0 10px rgba(46,196,182,.4)}
+.timeline-item.left .timeline-node{right:-8px}
+.timeline-item.right .timeline-node{left:-8px}
+.timeline-node.current{animation:node-pulse 2s ease-in-out infinite;background:var(--gold)}
+@keyframes node-pulse{0%,100%{box-shadow:0 0 10px rgba(255,215,0,.4)}50%{box-shadow:0 0 20px rgba(255,215,0,.8)}}
+.timeline-card{background:var(--bg-mid);border-radius:12px;padding:1.2rem 1.5rem;border:1px solid rgba(46,196,182,.1);display:inline-block;text-align:left;max-width:400px;transition:all .3s}
+.timeline-card:hover{border-color:rgba(46,196,182,.3);transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.timeline-card.current{border-color:rgba(255,215,0,.3)}
+.timeline-company{font-size:1.1rem;font-weight:700;color:var(--text-bright)}
+.timeline-role{font-size:.85rem;color:var(--teal);font-weight:500;margin:.2rem 0}
+.timeline-period{font-size:.75rem;color:var(--text-dim)}
+.timeline-status{display:inline-block;padding:.15rem .6rem;border-radius:4px;font-size:.65rem;font-weight:700;margin-top:.5rem;letter-spacing:1px}
+.timeline-status.completed{background:rgba(81,207,102,.12);color:var(--green);border:1px solid rgba(81,207,102,.2)}
+.timeline-status.progress{background:rgba(255,215,0,.12);color:var(--gold);border:1px solid rgba(255,215,0,.2);animation:status-pulse 2s ease-in-out infinite}
+@keyframes status-pulse{0%,100%{opacity:.8}50%{opacity:1}}
+.journey-xp{margin-top:2rem;max-width:600px;margin-left:auto;margin-right:auto}
+
+/* ===== TAB 3: QUESTS ===== */
+.quest-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
+.quest-card{background:var(--bg-mid);border-radius:12px;padding:1.5rem;border:1px solid rgba(46,196,182,.1);cursor:pointer;transition:all .3s;position:relative;overflow:hidden;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+@media(hover:hover){.quest-card:hover{border-color:rgba(46,196,182,.3);transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,.3)}}
+.quest-card:active{border-color:rgba(46,196,182,.3);background:rgba(46,196,182,.05)}
+.quest-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),transparent)}
+.quest-num{font-size:.7rem;color:var(--gold);font-weight:700;letter-spacing:2px;margin-bottom:.5rem}
+.quest-title{font-size:1rem;font-weight:700;color:var(--text-bright);margin-bottom:.4rem;line-height:1.4}
+.quest-company{font-size:.78rem;color:var(--teal);margin-bottom:.3rem}
+.quest-period{font-size:.7rem;color:var(--text-dim);margin-bottom:.8rem}
+.quest-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.quest-tag{padding:.2rem .6rem;border-radius:4px;font-size:.68rem;font-weight:600;background:rgba(46,196,182,.1);color:var(--teal);border:1px solid rgba(46,196,182,.15)}
+.quest-tag.gold{background:rgba(255,215,0,.1);color:var(--gold);border-color:rgba(255,215,0,.15)}
+
+/* Quest Modal */
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:200;background:rgba(0,0,0,.7);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:1rem;opacity:0;transition:opacity .3s;-webkit-overflow-scrolling:touch}
+.modal-overlay.open{display:flex;opacity:1}
+.modal{background:var(--bg-mid);border-radius:16px;max-width:700px;width:100%;max-height:85vh;overflow-y:auto;border:1px solid rgba(46,196,182,.2);position:relative;-webkit-overflow-scrolling:touch}
+.modal::-webkit-scrollbar{width:4px}
+.modal::-webkit-scrollbar-thumb{background:var(--teal);border-radius:2px}
+.modal-header{padding:1.5rem 2rem 1rem;border-bottom:1px solid rgba(46,196,182,.1);position:sticky;top:0;background:var(--bg-mid);z-index:1}
+.modal-close{position:absolute;top:.5rem;right:.5rem;font-size:1.5rem;color:var(--text-dim);width:44px;height:44px;display:flex;align-items:center;justify-content:center;transition:color .2s;line-height:1;touch-action:manipulation;z-index:5;border-radius:8px}
+.modal-close:hover,.modal-close:active{color:var(--red);background:rgba(255,107,107,.1)}
+.modal-body{padding:1.5rem 2rem 2rem}
+.modal-quest-num{font-size:.7rem;color:var(--gold);font-weight:700;letter-spacing:2px}
+.modal-quest-title{font-size:1.4rem;font-weight:900;color:var(--text-bright);margin:.3rem 0}
+.modal-quest-meta{font-size:.8rem;color:var(--text-dim)}
+.modal-quest-meta span{color:var(--teal)}
+.modal-summary{font-size:.85rem;color:var(--text-dim);line-height:1.7;padding:1rem 1.2rem;margin-bottom:.5rem;background:rgba(46,196,182,.05);border-radius:8px;border-left:3px solid var(--teal);font-style:italic}
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
+.ba-card{padding:1.2rem;border-radius:10px;border:1px solid}
+.ba-card.before{background:rgba(255,107,107,.05);border-color:rgba(255,107,107,.2)}
+.ba-card.after{background:rgba(81,207,102,.05);border-color:rgba(81,207,102,.2)}
+.ba-label{font-size:.65rem;font-weight:700;letter-spacing:2px;margin-bottom:.6rem}
+.ba-card.before .ba-label{color:var(--red)}
+.ba-card.after .ba-label{color:var(--green)}
+.ba-card ul{list-style:none;font-size:.82rem;line-height:1.8;color:var(--text)}
+.ba-card ul li::before{content:'• ';color:var(--text-dim)}
+.metric-row{display:flex;flex-wrap:wrap;gap:1rem;margin:1.5rem 0}
+.metric-item{flex:1;min-width:120px;text-align:center;padding:1rem;background:rgba(46,196,182,.06);border-radius:10px;border:1px solid rgba(46,196,182,.1)}
+.metric-value{font-size:1.8rem;font-weight:900;color:var(--teal)}
+.metric-value.gold{color:var(--gold)}
+.metric-label{font-size:.7rem;color:var(--text-dim);margin-top:.2rem}
+.modal-insight{margin-top:1.5rem;padding:1.2rem;background:rgba(255,215,0,.05);border-radius:10px;border:1px solid rgba(255,215,0,.15)}
+.modal-insight-title{font-size:.75rem;font-weight:700;color:var(--gold);letter-spacing:1px;margin-bottom:.5rem}
+.modal-insight p{font-size:.85rem;color:var(--text);line-height:1.7}
+.modal-gallery{margin:1.5rem 0}
+.modal-gallery-title{font-size:.75rem;font-weight:700;color:var(--teal);letter-spacing:1px;margin-bottom:.8rem}
+.modal-gallery-grid{display:flex;gap:.8rem;overflow-x:auto;padding-bottom:.5rem;-webkit-overflow-scrolling:touch}
+.modal-gallery-grid::-webkit-scrollbar{height:4px}
+.modal-gallery-grid::-webkit-scrollbar-thumb{background:var(--teal);border-radius:2px}
+.modal-gallery-item{flex:0 0 auto;width:280px;border-radius:8px;overflow:hidden;border:1px solid rgba(46,196,182,.15);cursor:pointer;transition:all .3s}
+.modal-gallery-item:hover{border-color:rgba(46,196,182,.4);transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.modal-gallery-item img{width:100%;height:auto;display:block}
+.img-viewer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:10000;display:none;align-items:center;justify-content:center;cursor:zoom-out}
+.img-viewer-overlay.open{display:flex}
+.img-viewer-overlay img{max-width:92vw;max-height:92vh;border-radius:8px;object-fit:contain}
+
+/* ===== TAB 4: SKILLS ===== */
+.skills-layout{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.skill-categories{display:flex;flex-direction:column;gap:1rem}
+.skill-cat{background:var(--bg-mid);border-radius:12px;padding:1.2rem 1.5rem;border:1px solid rgba(46,196,182,.1);transition:all .3s}
+.skill-cat:hover{border-color:rgba(46,196,182,.25)}
+.skill-cat-header{display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;cursor:pointer}
+.skill-cat-icon{font-size:1.2rem}
+.skill-cat-name{font-size:.9rem;font-weight:700;color:var(--text-bright)}
+.skill-nodes{display:flex;flex-wrap:wrap;gap:.5rem}
+.skill-node{display:flex;align-items:center;gap:.4rem;padding:.35rem .7rem;background:var(--bg-dark);border-radius:6px;border:1px solid rgba(46,196,182,.1);font-size:.78rem;transition:all .3s;position:relative}
+.skill-node:hover{border-color:var(--teal);background:rgba(46,196,182,.08)}
+.skill-node .skill-dots{display:flex;gap:2px}
+.skill-node .skill-dot{width:5px;height:5px;border-radius:50%;background:var(--bg-light)}
+.skill-node .skill-dot.filled{background:var(--teal)}
+.skill-node .skill-dot.filled.gold{background:var(--gold)}
+.skill-tooltip{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--bg-dark);border:1px solid var(--teal);padding:.4rem .7rem;border-radius:6px;font-size:.7rem;color:var(--text);white-space:nowrap;z-index:10;pointer-events:none}
+.skill-node:hover .skill-tooltip{display:block}
+
+/* Radar Chart */
+.radar-wrap{display:flex;align-items:center;justify-content:center}
+.radar-svg{width:100%;max-width:380px}
+
+/* ===== TAB 5: ACHIEVEMENTS ===== */
+.achieve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.achieve-card{background:var(--bg-mid);border-radius:12px;padding:1.5rem 1rem;border:1px solid rgba(255,215,0,.1);text-align:center;transition:all .3s;perspective:600px}
+@media(hover:hover){.achieve-card:hover{border-color:rgba(255,215,0,.3);transform:translateY(-4px);box-shadow:0 8px 30px rgba(255,215,0,.08)}}
+.achieve-icon{font-size:2.5rem;margin-bottom:.6rem;filter:drop-shadow(0 0 8px rgba(255,215,0,.3))}
+.achieve-name{font-size:.85rem;font-weight:700;color:var(--gold);margin-bottom:.3rem}
+.achieve-desc{font-size:.72rem;color:var(--text-dim);line-height:1.5}
+.shimmer{position:relative;overflow:hidden}
+.shimmer::after{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(45deg,transparent 40%,rgba(255,215,0,.06) 50%,transparent 60%);animation:shimmer 3s ease-in-out infinite}
+@keyframes shimmer{0%{transform:translateX(-100%) rotate(45deg)}100%{transform:translateX(100%) rotate(45deg)}}
+
+/* ===== TAB 6: CONTACT ===== */
+.contact-wrap{display:flex;flex-direction:column;align-items:center;text-align:center}
+.portal{width:200px;height:200px;border-radius:50%;position:relative;margin-bottom:2rem}
+.portal::before{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid var(--teal);animation:portal-spin 4s linear infinite;filter:drop-shadow(0 0 15px rgba(46,196,182,.4))}
+.portal::after{content:'';position:absolute;inset:15px;border-radius:50%;border:2px dashed rgba(46,196,182,.3);animation:portal-spin 6s linear infinite reverse}
+@keyframes portal-spin{100%{transform:rotate(360deg)}}
+.portal-inner{position:absolute;inset:30px;border-radius:50%;background:radial-gradient(circle,rgba(46,196,182,.15),transparent);display:flex;align-items:center;justify-content:center}
+.portal-icon{font-size:3rem;animation:float-icon 3s ease-in-out infinite}
+@keyframes float-icon{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.contact-msg{font-size:1.1rem;color:var(--text);margin-bottom:2rem;line-height:1.7;max-width:500px}
+.contact-msg em{color:var(--teal);font-style:normal;font-weight:700}
+.contact-list{display:flex;flex-direction:column;gap:.8rem;width:100%;max-width:400px}
+.contact-item{display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem;background:var(--bg-mid);border-radius:12px;border:1px solid rgba(46,196,182,.1);transition:all .3s;cursor:pointer;touch-action:manipulation;min-height:60px}
+@media(hover:hover){.contact-item:hover{border-color:var(--teal);transform:translateX(4px)}}
+.contact-item:active{border-color:var(--teal);background:rgba(46,196,182,.05)}
+.contact-icon{font-size:1.3rem;flex-shrink:0;width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:rgba(46,196,182,.1);border-radius:10px}
+.contact-info{text-align:left;flex:1;min-width:0}
+.contact-label{font-size:.65rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px}
+.contact-value{font-size:.9rem;color:var(--text-bright);font-weight:500;word-break:break-all}
+.contact-copy{padding:.4rem .8rem;font-size:.7rem;color:var(--teal);border:1px solid rgba(46,196,182,.2);border-radius:6px;transition:all .2s;flex-shrink:0}
+.contact-copy:hover{background:rgba(46,196,182,.1)}
+.contact-copy.copied{color:var(--green);border-color:var(--green)}
+.contact-footer{margin-top:2.5rem;font-size:.85rem;color:var(--text-dim);font-style:italic}
+
+/* ===== TOAST ===== */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--bg-mid);border:1px solid var(--teal);padding:.7rem 1.5rem;border-radius:8px;font-size:.85rem;color:var(--teal);z-index:300;transition:transform .3s;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  .profile-grid,.skills-layout{grid-template-columns:1fr}
+  .ba-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .nav-tabs{display:none!important}
+  .hamburger{display:flex!important}
+  .quest-grid{grid-template-columns:1fr}
+  .achieve-grid{grid-template-columns:repeat(2,1fr)}
+  .timeline::before{left:20px}
+  .timeline-item{width:100%!important;left:0!important;text-align:left!important;padding-left:50px;padding-right:0}
+  .timeline-item.left .timeline-node,.timeline-item.right .timeline-node{left:12px!important;right:auto!important}
+  .section{padding:1.5rem 1rem 3rem}
+  .modal-body,.modal-header{padding-left:1.2rem;padding-right:1.2rem}
+  .metric-row{flex-direction:column}
+  .modal{max-height:90vh;border-radius:12px;margin:0.5rem}
+  .modal-close{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+  .skill-tooltip{display:none!important}
+  .profile-photo{width:120px;height:120px}
+  .radar-svg{max-width:300px}
+  .contact-copy{min-width:50px;min-height:44px;display:flex;align-items:center;justify-content:center}
+}
+@media(max-width:480px){
+  .achieve-grid{grid-template-columns:1fr 1fr}
+  .profile-name{font-size:1.4rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0s!important;transition-duration:0s!important}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div id="loading-screen">
+  <div class="loading-title">LOADING PORTFOLIO...</div>
+  <div class="loading-sub">권도연 — Product Manager Interactive Resume</div>
+  <div class="loading-bar-wrap"><div class="loading-bar" id="loading-bar"></div></div>
+  <div class="loading-hint">탭하거나 아무 키를 눌러 건너뛰기</div>
+</div>
+
+<!-- PARTICLES -->
+<div id="particles"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">DY.KWON<span>Lv.7</span></div>
+    <button class="hamburger" id="hamburger" type="button" aria-label="메뉴 열기">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-tabs" id="nav-tabs">
+      <button class="nav-tab active" data-tab="profile"><span class="tab-icon">⚔️</span>프로필<span class="tab-sub">CHARACTER</span></button>
+      <button class="nav-tab" data-tab="quests"><span class="tab-icon">📜</span>전투 기록<span class="tab-sub">BATTLE LOG</span></button>
+      <button class="nav-tab" data-tab="skills"><span class="tab-icon">🌟</span>스킬<span class="tab-sub">SKILLS</span></button>
+      <button class="nav-tab" data-tab="achievements"><span class="tab-icon">🏆</span>업적<span class="tab-sub">ACHIEVE</span></button>
+      <button class="nav-tab" data-tab="contact"><span class="tab-icon">💾</span>연락처<span class="tab-sub">SAVE PT</span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <button class="nav-tab active" data-tab="profile"><span class="tab-icon">⚔️</span> 프로필 <span class="tab-sub">CHARACTER</span></button>
+  <button class="nav-tab" data-tab="quests"><span class="tab-icon">📜</span> 전투 기록 <span class="tab-sub">BATTLE LOG</span></button>
+  <button class="nav-tab" data-tab="skills"><span class="tab-icon">🌟</span> 스킬 <span class="tab-sub">SKILLS</span></button>
+  <button class="nav-tab" data-tab="achievements"><span class="tab-icon">🏆</span> 업적 <span class="tab-sub">ACHIEVE</span></button>
+  <button class="nav-tab" data-tab="contact"><span class="tab-icon">💾</span> 연락처 <span class="tab-sub">SAVE PT</span></button>
+</div>
+
+<!-- MAIN -->
+<main>
+
+<!-- TAB 1: PROFILE -->
+<section class="section active" id="sec-profile">
+  <div class="section-header">
+    <div class="section-tag">Character Status</div>
+    <h2>프로필</h2>
+  </div>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <div class="profile-photo-wrap">
+        <div class="profile-photo-ring">
+          <img class="profile-photo" src="data:image/jpeg;base64,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" alt="권도연 프로필">
+        </div>
+      </div>
+      <div class="profile-name">권도연</div>
+      <div class="profile-class">Class: Product Manager</div>
+      <div class="profile-level"><span class="lv">Lv. 7</span></div>
+      <div class="typing-wrap" id="typing-target"></div>
+      <div class="profile-org">
+        <div class="org-label">Current Party</div>
+        <div class="org-name">크래프톤 / KRAFTON</div>
+        <div class="org-sub">인조이 스튜디오 — Art PM</div>
+      </div>
+    </div>
+    <div class="stats-card">
+      <div class="section-header" style="margin-bottom:1.5rem;text-align:left">
+        <div class="section-tag">Core Stats</div>
+        <h2 style="font-size:1.2rem">핵심 스탯</h2>
+      </div>
+      <div class="stat-item">
+        <div class="stat-header"><span class="stat-name">🎯 Product Vision & Strategy</span><span class="stat-value">92</span></div>
+        <div class="stat-bar-wrap"><div class="stat-bar" style="width:0;background:linear-gradient(90deg,var(--teal),#20e3a0)" data-target="92"></div></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-header"><span class="stat-name">📊 Data-Driven Decision</span><span class="stat-value">90</span></div>
+        <div class="stat-bar-wrap"><div class="stat-bar" style="width:0;background:linear-gradient(90deg,#6c5ce7,#a29bfe)" data-target="90"></div></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-header"><span class="stat-name">🌐 Global Collaboration</span><span class="stat-value">90</span></div>
+        <div class="stat-bar-wrap"><div class="stat-bar" style="width:0;background:linear-gradient(90deg,#fdcb6e,var(--gold))" data-target="90"></div></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-header"><span class="stat-name">🤝 Stakeholder Management</span><span class="stat-value">88</span></div>
+        <div class="stat-bar-wrap"><div class="stat-bar" style="width:0;background:linear-gradient(90deg,var(--red),#ee5a24)" data-target="88"></div></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-header"><span class="stat-name">✅ Quality & Delivery</span><span class="stat-value">87</span></div>
+        <div class="stat-bar-wrap"><div class="stat-bar" style="width:0;background:linear-gradient(90deg,#00b894,#55efc4)" data-target="87"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="career-timeline-header">
+    <div class="section-tag">Career Timeline</div>
+    <h3>여정</h3>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item left">
+      <div class="timeline-node"></div>
+      <div class="timeline-card">
+        <div class="timeline-company">AN게임즈</div>
+        <div class="timeline-role">사업PM</div>
+        <div class="timeline-period">2019.04 — 2020.07</div>
+        <div class="timeline-status completed">✔ COMPLETED</div>
+      </div>
+    </div>
+    <div class="timeline-item right">
+      <div class="timeline-node"></div>
+      <div class="timeline-card">
+        <div class="timeline-company">위메이드 커넥트</div>
+        <div class="timeline-role">사업PM</div>
+        <div class="timeline-period">2020.08 — 2022.03</div>
+        <div class="timeline-status completed">✔ COMPLETED</div>
+      </div>
+    </div>
+    <div class="timeline-item left">
+      <div class="timeline-node"></div>
+      <div class="timeline-card">
+        <div class="timeline-company">엔픽셀</div>
+        <div class="timeline-role">UI실 PM, 개발PM</div>
+        <div class="timeline-period">2022.03 — 2024.01</div>
+        <div class="timeline-status completed">✔ COMPLETED</div>
+      </div>
+    </div>
+    <div class="timeline-item right">
+      <div class="timeline-node current"></div>
+      <div class="timeline-card current">
+        <div class="timeline-company">크래프톤 / 인조이 스튜디오</div>
+        <div class="timeline-role">Art PM</div>
+        <div class="timeline-period">2024.02 — 현재</div>
+        <div class="timeline-status progress">▶ IN PROGRESS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TAB 3: QUESTS -->
+<section class="section" id="sec-quests">
+  <div class="section-header">
+    <div class="section-tag">Case Studies</div>
+    <h2>전투 기록</h2>
+  </div>
+  <div class="quest-grid">
+    <div class="quest-card" onclick="openQuest(0)">
+      <div class="quest-num">BATTLE 01</div>
+      <div class="quest-title">데이터 기반 프로덕트 전략</div>
+      <div class="quest-company">위메이드 커넥트 | 민트 스튜디오</div>
+      <div class="quest-period">2020.08 — 2022.03</div>
+      <div class="quest-tags"><span class="quest-tag gold">YoY +17%</span><span class="quest-tag gold">IP 콜라보 +135%</span></div>
+    </div>
+    <div class="quest-card" onclick="openQuest(1)">
+      <div class="quest-num">BATTLE 02</div>
+      <div class="quest-title">운영 툴링 & 프로세스 자동화</div>
+      <div class="quest-company">엔픽셀 | UI실 (공용조직)</div>
+      <div class="quest-period">2022.03 — 2024.01</div>
+      <div class="quest-tags"><span class="quest-tag gold">20% 효율화</span><span class="quest-tag">알림 누락 0건</span></div>
+    </div>
+    <div class="quest-card" onclick="openQuest(2)">
+      <div class="quest-num">BATTLE 03</div>
+      <div class="quest-title">전략적 파트너십을 통한 비용 효율적 리소스 확보</div>
+      <div class="quest-company">크래프톤 / 인조이 스튜디오</div>
+      <div class="quest-period">2024.02 — 현재</div>
+      <div class="quest-tags"><span class="quest-tag gold">89% 비용절감</span><span class="quest-tag gold">15종 에셋</span></div>
+    </div>
+    <div class="quest-card" onclick="openQuest(3)">
+      <div class="quest-num">BATTLE 04</div>
+      <div class="quest-title">글로벌 이해관계자 관리 & 컴플라이언스</div>
+      <div class="quest-company">크래프톤 + 위메이드 커넥트</div>
+      <div class="quest-period">2020 — 현재</div>
+      <div class="quest-tags"><span class="quest-tag gold">3사 대기업</span><span class="quest-tag">8+ 해외 벤더</span><span class="quest-tag">E2E</span></div>
+    </div>
+    <div class="quest-card" onclick="openQuest(4)">
+      <div class="quest-num">BATTLE 05</div>
+      <div class="quest-title">QA 프로세스 도입</div>
+      <div class="quest-company">AN게임즈 | 아스트로네스트, 아스트로무스메</div>
+      <div class="quest-period">2019.04 — 2020.07</div>
+      <div class="quest-tags"><span class="quest-tag gold">TC 표준 채택</span><span class="quest-tag gold">버그 대폭 감소</span></div>
+    </div>
+    <div class="quest-card" onclick="openQuest(5)">
+      <div class="quest-num">BATTLE 06</div>
+      <div class="quest-title">AI 기반 워크플로우 혁신</div>
+      <div class="quest-company">현재 진행형</div>
+      <div class="quest-period">2024 — 현재</div>
+      <div class="quest-tags"><span class="quest-tag gold">6+ AI 도구</span><span class="quest-tag">워크플로우 자동화</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TAB 4: SKILLS -->
+<section class="section" id="sec-skills">
+  <div class="section-header">
+    <div class="section-tag">Skill Tree</div>
+    <h2>스킬</h2>
+  </div>
+  <div class="skills-layout">
+    <div class="skill-categories">
+      <div class="skill-cat">
+        <div class="skill-cat-header"><span class="skill-cat-icon">🔧</span><span class="skill-cat-name">협업 & 문서화 도구 — Collaboration & Documentation</span></div>
+        <div class="skill-nodes">
+          <div class="skill-node">Jira<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled gold"></span></div><div class="skill-tooltip">Lv.5 — Expert</div></div>
+          <div class="skill-node">Confluence<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+          <div class="skill-node">Notion<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled gold"></span></div><div class="skill-tooltip">Lv.5 — Expert</div></div>
+          <div class="skill-node">Slack<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+          <div class="skill-node">Google Workspace<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-header"><span class="skill-cat-icon">📋</span><span class="skill-cat-name">제품 기획 & 전략 — Product Planning & Strategy</span></div>
+        <div class="skill-nodes">
+          <div class="skill-node">로드맵 & KPI 설계<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled gold"></span></div><div class="skill-tooltip">Lv.5 — Expert</div></div>
+          <div class="skill-node">상점 UI/UX 설계<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+          <div class="skill-node">사업 시뮬레이션 & A/B Test<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-header"><span class="skill-cat-icon">📊</span><span class="skill-cat-name">데이터 분석 — Data & Analytics</span></div>
+        <div class="skill-nodes">
+          <div class="skill-node">데이터 기반 의사결정<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+          <div class="skill-node">사용자 피드백 분석<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+          <div class="skill-node">성과 지표 측정<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-header"><span class="skill-cat-icon">🤖</span><span class="skill-cat-name">AI 도구 — AI Tools</span></div>
+        <div class="skill-nodes">
+          <div class="skill-node">Claude Code<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+          <div class="skill-node">ChatGPT<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+          <div class="skill-node">Midjourney<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+          <div class="skill-node">Cursor<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-header"><span class="skill-cat-icon">🎮</span><span class="skill-cat-name">게임 산업 이해 — Game Industry</span></div>
+        <div class="skill-nodes">
+          <div class="skill-node">퍼블리싱 & 마케팅 이해<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
+          <div class="skill-node">커머스 & 수익화 이해<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
+          <div class="skill-node">Unreal Engine<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-header"><span class="skill-cat-icon">🌐</span><span class="skill-cat-name">언어 — Languages</span></div>
+        <div class="skill-nodes">
+          <div class="skill-node">한국어<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled gold"></span></div><div class="skill-tooltip">Lv.5 — Native</div></div>
+          <div class="skill-node">English<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Business</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="radar-wrap">
+      <svg class="radar-svg" viewBox="0 0 400 400">
+        <defs>
+          <linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2ec4b6" stop-opacity=".3"/><stop offset="100%" stop-color="#ffd700" stop-opacity=".1"/></linearGradient>
+        </defs>
+        <!-- Grid -->
+        <g transform="translate(200,200)">
+          <polygon points="0,-150 142,-46 88,121 -88,121 -142,-46" fill="none" stroke="rgba(46,196,182,.1)" stroke-width="1"/>
+          <polygon points="0,-112 107,-35 66,91 -66,91 -107,-35" fill="none" stroke="rgba(46,196,182,.08)" stroke-width="1"/>
+          <polygon points="0,-75 71,-23 44,60 -44,60 -71,-23" fill="none" stroke="rgba(46,196,182,.06)" stroke-width="1"/>
+          <polygon points="0,-37 36,-12 22,30 -22,30 -36,-12" fill="none" stroke="rgba(46,196,182,.04)" stroke-width="1"/>
+          <!-- Axes -->
+          <line x1="0" y1="0" x2="0" y2="-150" stroke="rgba(46,196,182,.1)"/>
+          <line x1="0" y1="0" x2="142" y2="-46" stroke="rgba(46,196,182,.1)"/>
+          <line x1="0" y1="0" x2="88" y2="121" stroke="rgba(46,196,182,.1)"/>
+          <line x1="0" y1="0" x2="-88" y2="121" stroke="rgba(46,196,182,.1)"/>
+          <line x1="0" y1="0" x2="-142" y2="-46" stroke="rgba(46,196,182,.1)"/>
+          <!-- Data -->
+          <polygon id="radar-data" points="0,0" fill="url(#rg)" stroke="var(--teal)" stroke-width="2" opacity="0"/>
+          <circle id="rd0" cx="0" cy="0" r="4" fill="var(--teal)" opacity="0"/>
+          <circle id="rd1" cx="0" cy="0" r="4" fill="var(--teal)" opacity="0"/>
+          <circle id="rd2" cx="0" cy="0" r="4" fill="var(--teal)" opacity="0"/>
+          <circle id="rd3" cx="0" cy="0" r="4" fill="var(--teal)" opacity="0"/>
+          <circle id="rd4" cx="0" cy="0" r="4" fill="var(--teal)" opacity="0"/>
+        </g>
+        <!-- Labels -->
+        <text x="200" y="30" text-anchor="middle" fill="#e8e8e8" font-size="12" font-weight="700">제품 비전 & 전략</text>
+        <text x="200" y="44" text-anchor="middle" fill="#8899aa" font-size="9">Product Vision</text>
+        <text x="365" y="162" text-anchor="middle" fill="#e8e8e8" font-size="12" font-weight="700">데이터 분석</text>
+        <text x="365" y="176" text-anchor="middle" fill="#8899aa" font-size="9">Data Analytics</text>
+        <text x="310" y="345" text-anchor="middle" fill="#e8e8e8" font-size="12" font-weight="700">UX 설계</text>
+        <text x="310" y="359" text-anchor="middle" fill="#8899aa" font-size="9">UX Design</text>
+        <text x="90" y="345" text-anchor="middle" fill="#e8e8e8" font-size="12" font-weight="700">이해관계자 관리</text>
+        <text x="90" y="359" text-anchor="middle" fill="#8899aa" font-size="9">Stakeholder Mgmt</text>
+        <text x="35" y="162" text-anchor="middle" fill="#e8e8e8" font-size="12" font-weight="700">글로벌 협업</text>
+        <text x="35" y="176" text-anchor="middle" fill="#8899aa" font-size="9">Global Ops</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- TAB 5: ACHIEVEMENTS -->
+<section class="section" id="sec-achievements">
+  <div class="section-header">
+    <div class="section-tag">Unlocked Badges</div>
+    <h2>업적</h2>
+  </div>
+  <div class="achieve-grid">
+    <div class="achieve-card shimmer"><div class="achieve-icon">📈</div><div class="achieve-name">제품성장견인</div><div class="achieve-desc">데이터 기반 제품 전략으로 YoY +17% 매출 성장 달성</div></div>
+    <div class="achieve-card shimmer"><div class="achieve-icon">🤝</div><div class="achieve-name">파트너십마스터</div><div class="achieve-desc">IP 콜라보레이션 매출 +135% 성과</div></div>
+    <div class="achieve-card shimmer"><div class="achieve-icon">⚡</div><div class="achieve-name">프로세스설계자</div><div class="achieve-desc">제품 운영 프로세스 20% 효율화 및 알림 누락 0건</div></div>
+    <div class="achieve-card shimmer"><div class="achieve-icon">💰</div><div class="achieve-name">비용최적화챔피언</div><div class="achieve-desc">플랫폼 파트너십 전략으로 89% 비용 절감</div></div>
+    <div class="achieve-card shimmer"><div class="achieve-icon">🎯</div><div class="achieve-name">KPI마스터</div><div class="achieve-desc">제품 품질 KPI 체계 구축 및 버그 대폭 감소</div></div>
+    <div class="achieve-card shimmer"><div class="achieve-icon">🤖</div><div class="achieve-name">AI이노베이터</div><div class="achieve-desc">6+ AI 도구를 활용한 제품 개발 파이프라인 혁신</div></div>
+    <div class="achieve-card shimmer"><div class="achieve-icon">🌍</div><div class="achieve-name">글로벌네고시에이터</div><div class="achieve-desc">3사 대기업 및 8+ 글로벌 벤더 이해관계자 관리</div></div>
+    <div class="achieve-card shimmer"><div class="achieve-icon">🚀</div><div class="achieve-name">IP콜라보드라이버</div><div class="achieve-desc">IP 콜라보레이션 전반을 주도하여 신규 매출원 확보</div></div>
+    <div class="achieve-card shimmer"><div class="achieve-icon">📊</div><div class="achieve-name">데이터드리븐</div><div class="achieve-desc">사용자 데이터 기반 제품 비전 수립 및 의사결정 체계 구축</div></div>
+    <div class="achieve-card shimmer"><div class="achieve-icon">🔗</div><div class="achieve-name">플랫폼빌더</div><div class="achieve-desc">15종 외부 에셋 도입 플랫폼 파이프라인 구축</div></div>
+    <div class="achieve-card shimmer"><div class="achieve-icon">📝</div><div class="achieve-name">TC표준설계자</div><div class="achieve-desc">테스트케이스 표준 프레임워크 설계 및 전사 채택</div></div>
+    <div class="achieve-card shimmer"><div class="achieve-icon">🗺️</div><div class="achieve-name">커리어레벨7</div><div class="achieve-desc">게임 업계 7년차 — 제품의 전 생애주기를 리드</div></div>
+  </div>
+</section>
+
+<!-- TAB 6: CONTACT -->
+<section class="section" id="sec-contact">
+  <div class="section-header">
+    <div class="section-tag">Save Point</div>
+    <h2>연락처</h2>
+  </div>
+  <div class="contact-wrap">
+    <div class="portal">
+      <div class="portal-inner"><div class="portal-icon">💾</div></div>
+    </div>
+    <div class="contact-msg">
+      <em>새로운 전투</em>를 함께 시작할 준비가 되어 있습니다.<br>
+      아래 연락처로 편하게 연락주세요!
+    </div>
+    <div class="contact-list">
+      <div class="contact-item" onclick="copyText('quanduyan@naver.com',this)">
+        <div class="contact-icon">📧</div>
+        <div class="contact-info"><div class="contact-label">Email</div><div class="contact-value">quanduyan@naver.com</div></div>
+        <button class="contact-copy">복사</button>
+      </div>
+      <div class="contact-item" onclick="copyText('010-5285-8059',this)">
+        <div class="contact-icon">📱</div>
+        <div class="contact-info"><div class="contact-label">Phone</div><div class="contact-value">010-5285-8059</div></div>
+        <button class="contact-copy">복사</button>
+      </div>
+      <div class="contact-item" onclick="window.open('https://www.notion.so/','_blank')">
+        <div class="contact-icon">📓</div>
+        <div class="contact-info"><div class="contact-label">Notion</div><div class="contact-value">포트폴리오 Notion 페이지</div></div>
+        <button class="contact-copy">열기</button>
+      </div>
+    </div>
+    <div class="contact-footer">"좋은 제품은 시장을 이해하고, 사용자를 존중하는 것에서 시작됩니다."</div>
+  </div>
+</section>
+
+</main>
+
+<!-- QUEST MODAL -->
+<div class="modal-overlay" id="quest-modal" onclick="if(event.target===this)closeQuest()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeQuest()">✕</button>
+    <div class="modal-header">
+      <div class="modal-quest-num" id="mq-num"></div>
+      <div class="modal-quest-title" id="mq-title"></div>
+      <div class="modal-quest-meta" id="mq-meta"></div>
+    </div>
+    <div class="modal-body" id="mq-body"></div>
+  </div>
+</div>
+
+<!-- IMAGE VIEWER -->
+<div class="img-viewer-overlay" id="img-viewer" onclick="this.classList.remove('open')">
+  <img id="img-viewer-src" src="" alt="확대 보기">
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===== DATA ===== */
+const QUESTS = [
+  {
+    num:'BATTLE 01', title:'데이터 기반 프로덕트 전략',
+    meta:'<span>위메이드 커넥트 | 민트 스튜디오</span> · 2020.08 — 2022.03',
+    summary:'데이터 기반 의사결정 체계가 전무했던 팀에서 매출 트래킹 시스템을 직접 구축하여 YoY 17% 성장을 견인하고, IP 콜라보 전략으로 135% 매출 상승을 달성',
+    before:['정리된 업데이트 히스토리 문서 전무, 당일 지표가 메일로만 공유되어 후임자 히스토리 확인 어려움','업데이트 간 매출 비교 불가능','구조화된 유저 리서치 및 FGT 피드백 프로세스 부재'],
+    after:['업데이트별 당일 매출 분석 문서 구축 (전년 동기 대비 비교 가능) → YoY 17% 매출 상승','IP 콜라보 제안서 ROI 분석 포함 (에스더버니: 평시 대비 135% 매출 증가)','FGT 설문 설계로 개발자-유저 관점 차이 분석'],
+    metrics:[{v:17,suffix:'%',label:'전년 동기 대비 3개월 평균 매출 상승',gold:true},{v:135,suffix:'%',label:'IP 콜라보 통한 평시 대비 매출 증가',gold:true},{text:'User Data',label:'FGT 설문 설계를 통해 유저 데이터 취합, 유저 관점 설계 시작'}],
+    images:['images/Battle 01.png'],
+    insight:'PM의 가치는 업무를 실행하는 것뿐 아니라, 더 나은 의사결정을 가능하게 하는 시스템을 만드는 데 있음. 데이터화는 단순한 과거의 결과 성과 확인이 아닌, 미래의 지표 개선을 위한 방향성의 척도가 됨.'
+  },
+  {
+    num:'BATTLE 02', title:'운영 툴링 & 프로세스 자동화',
+    meta:'<span>엔픽셀 | UI실 (공용조직)</span> · 2022.03 — 2024.01',
+    summary:'공용 조직에서 4개 이상의 게임 프로젝트에서 수작업 병목을 발견하고, 팀 표준이 된 자동화 도구를 직접 구축',
+    before:['매번 수동 Jira 티켓 생성 필요','마감일 누락, 선제적 알림 부재','반복 캘린더 일정 수동 생성'],
+    after:['Jira Automation — 리소스 요청 트리거 충족 시 자동으로 티켓 생성 → 리더 업무 20% 효율화','Zapier (Jira → Slack) — 관련 채널에 마감 전 자동 리마인더 → 알림 누락 0건','ChatGPT + AppScript — 사전 정의 규칙에 따른 반복 일정 자동 생성 → PM 시간 확보'],
+    metrics:[{v:20,suffix:'%',label:'리더 업무 효율화',gold:true},{v:0,suffix:'건',label:'알림 누락 건수',gold:true},{text:'∞',label:'PM 시간 확보'}],
+    insight:'내부 툴링 = 프로덕트 업무. 전통적 의미의 제품은 아니었지만, 동일한 PM 로직을 따랐음: 유저(팀원) 페인포인트 파악 → 솔루션 설계 → 구축 & 배포 → 결과 측정'
+  },
+  {
+    num:'BATTLE 03', title:'전략적 파트너십을 통한 비용 효율적 리소스 확보',
+    meta:'<span>크래프톤 / 인조이 스튜디오</span> · 2024.02 — 현재',
+    summary:'마케팅 이벤트를 리소스 확보 전략으로 전환하여, 89% 비용 절감과 커뮤니티 마케팅 효과를 동시에 달성',
+    before:['게임스컴 데뷔를 위한 15종+ 의상 에셋 필요','풀 외주 시 7,500만 원 이상, 예산상 비현실적','기존 에셋 확보 채널의 한계'],
+    after:['CLO(마블러스 디자이너)와 공모전 파트너십으로 게임스컴 타임라인에 맞춰 실행','inZOI: 외주 비용의 일부만으로 고퀄리티 에셋 확보','CLO: 대형 신작 게임 파트너십으로 툴 역량 쇼케이스 / 참가자: 포트폴리오 기회 + 주목받는 타이틀 노출'],
+    metrics:[{v:89,suffix:'%',label:'비용 절감',gold:true},{v:15,suffix:'종',label:'에셋 확보',gold:true},{v:800,suffix:'만원',label:'투자 (외주 = 7,500만원+)',gold:true}],
+    insight:'Win-Win-Win 전략: 모든 이해관계자에게 가치를 제공하는 파트너십 구조를 설계하여, 비용 효율성과 마케팅 효과를 동시에 달성한 케이스.'
+  },
+  {
+    num:'BATTLE 04', title:'글로벌 이해관계자 관리 & 컴플라이언스',
+    meta:'<span>크래프톤/인조이 스튜디오 + 위메이드 커넥트</span> · 2020 — 현재',
+    summary:'글로벌 대기업, 8개 이상 해외 벤더, 개발 파이프라인을 아우르는 4개 타임존의 멀티 파티 콜라보를 관리',
+    before:['대기업 브랜드 콜라보 (인조이 스튜디오) — LG전자, 삼성 디스플레이, 현대자동차와 파트너-내부 팀 간 브릿지, 업무 범위 정의, 승인 워크플로우 표준화','멀티 타임존 벤더 파이프라인 (인조이 스튜디오) — 해외 벤더 8개사 이상 (KR, CN, SEA, EU) 영한 SoW/계약서 직접 작성','IP 콜라보 풀 사이클 (위메이드 커넥트) — 리서치 & 타겟팅 → 아웃리치 & 협상 → 법무 → 에셋 관리 → 정산 → 매출 135%↑'],
+    after:['파트너와 내부 팀 간 브릿지, 업무 범위 정의, 승인 워크플로우 표준화','KR, CN, SEA, EU 4개 타임존 벤더 동시 관리 체계 구축','IP 콜라보 E2E 풀 사이클 실행 및 매출 성과 달성'],
+    metrics:[{v:3,suffix:'사',label:'한국 대기업 콜라보 관리',gold:true},{v:8,suffix:'+',label:'해외 벤더 동시 관리'},{text:'E2E',label:'IP 콜라보 풀 사이클 실행'}],
+    insight:'이 규모의 이해관계자 관리는 각 당사자의 인센티브, 제약, 타임라인을 이해한 후 이를 정렬하는 시스템 사고를 요구함. 4개 타임존, 8개 이상 벤더를 조율하는 역량은 스튜디오와 부서를 아우르는 플랫폼 기능을 조율하는 데 직접 전이됨.'
+  },
+  {
+    num:'BATTLE 05', title:'QA 프로세스 도입',
+    meta:'<span>AN게임즈 | 아스트로네스트, 아스트로무스메</span> · 2019.04 — 2020.07',
+    summary:'팀 내 유일한 PM으로서, 반복적 서비스 장애의 근본 원인을 발견하고 조직 표준이 된 QA 프레임워크를 직접 구축',
+    before:['격주 점검마다 클라이언트 버그 발생, 잦은 긴급 점검, 유저 부정 동향 증가','QA 체크리스트나 테스트 케이스 문서 전무','구조화된 검증 없이 릴리즈'],
+    after:['레드마인 일감과 기획서 기반 종합 TC 문서 작성','TC 기반 QA 프로세스를 개발팀에 제안','버그 및 긴급 점검 대폭 감소, TC 양식이 이후 모든 대규모 업데이트 표준 템플릿으로 채택'],
+    metrics:[{v:100,suffix:'%',label:'TC 표준 채택',gold:true},{text:'대폭↓',label:'버그 및 긴급 점검 감소',gold:true},{text:'표준화',label:'모든 업데이트에 TC 템플릿 적용'}],
+    insight:'이 초기 경험에서 확립한 패턴을 커리어 전반에 걸쳐 적용: 반복되는 실패 관찰 → 근본 원인 진단 → 체계적 솔루션 구축'
+  },
+  {
+    num:'BATTLE 06', title:'AI 기반 워크플로우 혁신',
+    meta:'<span>현재 진행형</span> · 2024 — 현재',
+    summary:'커뮤니티 피드백 분석부터 프로젝트 문서화까지, PM 워크플로우를 자동화하는 AI 기반 도구를 적극 연구 및 적용 중',
+    before:['수동 커뮤니티 피드백 수집 및 분석','반복적 문서 작성 및 일정 관리','다국어 벤더 커뮤니케이션 수작업'],
+    after:['Reddit 자동화 [개발중] — claude code로 아트 피드백 자동 수집 → 감성 분류 → Confluence 리포트 생성','Claude Code / Gemini / ChatGPT [사용중] — 포트폴리오, 업무 자동화 스크립트, 다국어 초안, 워크플로우 로직 설계','Midjourney [사용중] — 컨셉 시안 제작 도구로 아트팀에 추천 → 엔픽셀 실무 도입 / Whisper·Ollama [테스트중] — 미팅 녹취록 자동화, 로컬 LLM 환경 테스트'],
+    metrics:[{v:6,suffix:'+',label:'AI 도구 활용',gold:true},{v:40,suffix:'%+',label:'워크플로우 효율화'},{v:3,suffix:'개+',label:'신규 파이프라인'}],
+    insight:'AI를 단순 도구가 아닌 PM 워크플로우 전반에 통합하여 생산성을 혁신하고, 새로운 파이프라인을 구축하는 것이 핵심. 기술 자체보다 "어떤 문제를 해결하는가"에 집중.'
+  }
+];
+
+const TYPING_PHRASES = [
+  '제품의 비전을 정의하고 시장에서 증명하는 PM',
+  '데이터와 사용자 인사이트로 제품을 성장시킵니다',
+  'AI와 자동화로 제품 개발의 새로운 가능성을 열어갑니다',
+  '이해관계자와 함께 새로운 가치를 창출합니다'
+];
+
+/* ===== LOADING ===== */
+let loadDone = false;
+function finishLoad(){
+  if(loadDone) return; loadDone=true;
+  var ls=document.getElementById('loading-screen');
+  ls.classList.add('hidden');
+  setTimeout(function(){ls.style.display='none'},600);
+  initAnimations();
+}
+(function(){
+  var bar=document.getElementById('loading-bar');
+  var w=0;
+  var iv=setInterval(function(){
+    w+=Math.random()*15+5;
+    if(w>=100){w=100;clearInterval(iv);setTimeout(finishLoad,300)}
+    bar.style.width=w+'%';
+  },80);
+  function skipLoad(){bar.style.width='100%';clearInterval(iv);finishLoad()}
+  document.addEventListener('keydown',skipLoad,{once:true});
+  document.addEventListener('click',skipLoad,{once:true});
+  document.addEventListener('touchstart',skipLoad,{once:true,passive:true});
+})();
+
+/* ===== PARTICLES ===== */
+(function(){
+  const c=document.getElementById('particles');
+  for(let i=0;i<40;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    const s=Math.random()*3+1;
+    p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${Math.random()*8+6}s;animation-delay:${Math.random()*6}s;opacity:${Math.random()*.15+.05}`;
+    c.appendChild(p);
+  }
+})();
+
+/* ===== TAB NAVIGATION ===== */
+var SECTIONS=['profile','quests','skills','achievements','contact'];
+function switchTab(tab){
+  document.querySelectorAll('.nav-tab').forEach(function(t){t.classList.remove('active')});
+  document.querySelectorAll('.nav-tab[data-tab="'+tab+'"]').forEach(function(t){t.classList.add('active')});
+  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active')});
+  var sec=document.getElementById('sec-'+tab);
+  if(sec){sec.classList.add('active');sec.style.animation='none';sec.offsetHeight;sec.style.animation='';}
+  closeMobile();
+  if(tab==='skills') animateRadar();
+  if(tab==='profile'){animateBars();animateTimeline();}
+}
+document.querySelectorAll('.nav-tab').forEach(function(t){
+  t.addEventListener('click',function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    switchTab(t.dataset.tab);
+  });
+});
+
+/* Hamburger */
+var hamburger=document.getElementById('hamburger');
+var mobileMenu=document.getElementById('mobile-menu');
+function toggleMobile(){
+  var isOpen=mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('open',isOpen);
+  document.body.style.overflow=isOpen?'hidden':'';
+}
+function closeMobile(){
+  mobileMenu.classList.remove('open');
+  hamburger.classList.remove('open');
+  document.body.style.overflow='';
+}
+hamburger.addEventListener('click',function(e){
+  e.preventDefault();
+  e.stopPropagation();
+  toggleMobile();
+});
+
+/* ===== ANIMATIONS ===== */
+function initAnimations(){
+  animateBars();
+  animateTimeline();
+  startTyping();
+}
+
+function animateBars(){
+  setTimeout(()=>{
+    document.querySelectorAll('#sec-profile .xp-bar, #sec-profile .stat-bar').forEach(b=>{
+      b.style.width=b.dataset.target+'%';
+    });
+  },300);
+}
+
+/* Typing */
+let typingIdx=0;
+function startTyping(){
+  const el=document.getElementById('typing-target');
+  if(!el)return;
+  function typePhrase(phrase,cb){
+    el.innerHTML='';let i=0;
+    const iv=setInterval(()=>{
+      el.innerHTML=phrase.slice(0,i+1)+'<span class="typing-cursor">|</span>';
+      i++;if(i>=phrase.length){clearInterval(iv);setTimeout(()=>erasePhrase(phrase,cb),2000)}
+    },60);
+  }
+  function erasePhrase(phrase,cb){
+    let i=phrase.length;
+    const iv=setInterval(()=>{
+      i--;el.innerHTML=phrase.slice(0,i)+'<span class="typing-cursor">|</span>';
+      if(i<=0){clearInterval(iv);setTimeout(cb,400)}
+    },30);
+  }
+  function loop(){
+    typePhrase(TYPING_PHRASES[typingIdx%TYPING_PHRASES.length],()=>{typingIdx++;loop()});
+  }
+  loop();
+}
+
+/* Timeline */
+function animateTimeline(){
+  const items=document.querySelectorAll('.timeline-item');
+  items.forEach((it,i)=>setTimeout(()=>it.classList.add('visible'),i*200+100));
+  setTimeout(()=>{
+    document.querySelectorAll('.journey-xp .xp-bar').forEach(b=>{b.style.width=b.dataset.target+'%'});
+  },600);
+}
+
+/* Radar */
+let radarAnimated=false;
+function animateRadar(){
+  if(radarAnimated)return;radarAnimated=true;
+  const vals=[.92,.90,.82,.88,.90]; // Product Vision, Data Analytics, UX Design, Stakeholder Mgmt, Global Ops
+  const angles=[-(Math.PI/2), -(Math.PI/2)+(2*Math.PI/5), -(Math.PI/2)+(4*Math.PI/5), -(Math.PI/2)+(6*Math.PI/5), -(Math.PI/2)+(8*Math.PI/5)];
+  const R=150;
+  let pts=vals.map((v,i)=>{
+    const x=Math.cos(angles[i])*R*v;
+    const y=Math.sin(angles[i])*R*v;
+    return{x,y};
+  });
+  const poly=document.getElementById('radar-data');
+  const pointsStr=pts.map(p=>p.x+','+p.y).join(' ');
+  setTimeout(()=>{
+    poly.setAttribute('points',pointsStr);
+    poly.style.transition='opacity .8s';poly.style.opacity='1';
+    pts.forEach((p,i)=>{
+      const c=document.getElementById('rd'+i);
+      c.setAttribute('cx',p.x);c.setAttribute('cy',p.y);
+      c.style.transition='opacity .5s '+(i*.15)+'s';c.style.opacity='1';
+    });
+  },300);
+}
+
+/* ===== QUEST MODAL ===== */
+function openQuest(idx){
+  const q=QUESTS[idx];
+  document.getElementById('mq-num').textContent=q.num;
+  document.getElementById('mq-title').textContent=q.title;
+  document.getElementById('mq-meta').innerHTML=q.meta;
+  let html='';
+  if(q.summary) html+='<div class="modal-summary">'+q.summary+'</div>';
+  html+='<div class="ba-grid"><div class="ba-card before"><div class="ba-label">⚠ BEFORE</div><ul>'+
+    q.before.map(b=>'<li>'+b+'</li>').join('')+'</ul></div><div class="ba-card after"><div class="ba-label">✔ AFTER</div><ul>'+
+    q.after.map(a=>'<li>'+a+'</li>').join('')+'</ul></div></div>';
+  html+='<div class="metric-row">'+q.metrics.map(m=>{
+    if(m.text) return '<div class="metric-item"><div class="metric-value'+(m.gold?' gold':'')+'">'+m.text+'</div><div class="metric-label">'+m.label+'</div></div>';
+    return '<div class="metric-item"><div class="metric-value'+(m.gold?' gold':'')+'" data-count="'+m.v+'" data-suffix="'+(m.suffix||'')+'">0'+(m.suffix||'')+'</div><div class="metric-label">'+m.label+'</div></div>';
+  }).join('')+'</div>';
+  if(q.images&&q.images.length){
+    html+='<div class="modal-gallery"><div class="modal-gallery-title">📎 작업 산출물</div><div class="modal-gallery-grid">';
+    q.images.forEach(function(src){html+='<div class="modal-gallery-item" onclick="viewImg(\''+src+'\')"><img src="'+src+'" alt="작업 산출물" loading="lazy"></div>'});
+    html+='</div></div>';
+  }
+  html+='<div class="modal-insight"><div class="modal-insight-title">💡 핵심 인사이트</div><p>'+q.insight+'</p></div>';
+  document.getElementById('mq-body').innerHTML=html;
+  const overlay=document.getElementById('quest-modal');
+  overlay.style.display='flex';
+  requestAnimationFrame(()=>overlay.classList.add('open'));
+  document.body.style.overflow='hidden';
+  // countup
+  setTimeout(()=>{
+    document.querySelectorAll('#mq-body .metric-value[data-count]').forEach(el=>{
+      const target=parseInt(el.dataset.count);
+      const suffix=el.dataset.suffix||'';
+      let cur=0;
+      const step=Math.max(1,Math.floor(target/40));
+      const iv=setInterval(()=>{
+        cur+=step;if(cur>=target){cur=target;clearInterval(iv)}
+        el.textContent=cur+suffix;
+      },30);
+    });
+  },200);
+}
+function closeQuest(){
+  var overlay=document.getElementById('quest-modal');
+  overlay.classList.remove('open');
+  setTimeout(function(){overlay.style.display='none'},300);
+  document.body.style.overflow='';
+}
+function viewImg(src){document.getElementById('img-viewer-src').src=src;document.getElementById('img-viewer').classList.add('open')}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeQuest();document.getElementById('img-viewer').classList.remove('open')}});
+/* Close modal on back swipe / overlay tap for mobile */
+document.getElementById('quest-modal').addEventListener('touchstart',function(e){
+  if(e.target===this)closeQuest();
+},{passive:true});
+
+/* ===== COPY & TOAST ===== */
+function fallbackCopy(text){
+  var ta=document.createElement('textarea');
+  ta.value=text;
+  ta.style.cssText='position:fixed;top:-9999px;left:-9999px;opacity:0';
+  document.body.appendChild(ta);
+  ta.focus();ta.select();
+  var ok=false;
+  try{ok=document.execCommand('copy')}catch(e){}
+  document.body.removeChild(ta);
+  return ok;
+}
+function copyText(text,el){
+  function onSuccess(){
+    var btn=el.querySelector('.contact-copy');
+    if(btn){btn.textContent='완료!';btn.classList.add('copied');setTimeout(function(){btn.textContent='복사';btn.classList.remove('copied')},2000)}
+    showToast('클립보드에 복사되었습니다!');
+  }
+  if(navigator.clipboard&&navigator.clipboard.writeText&&window.isSecureContext){
+    navigator.clipboard.writeText(text).then(onSuccess).catch(function(){
+      if(fallbackCopy(text))onSuccess();
+      else showToast('복사에 실패했습니다. 직접 복사해주세요.');
+    });
+  }else{
+    if(fallbackCopy(text))onSuccess();
+    else showToast(text);
+  }
+}
+function showToast(msg){
+  var t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show')},2500);
+}
+</script>
+</body>
+</html>
