@@ -879,8 +879,8 @@ function openQuest(idx){
     return '<div class="metric-item"><div class="metric-value'+(m.gold?' gold':'')+'" data-count="'+m.v+'" data-suffix="'+(m.suffix||'')+'">0'+(m.suffix||'')+'</div><div class="metric-label">'+m.label+'</div></div>';
   }).join('')+'</div>';
   if(q.images&&q.images.length){
-    html+='<div class="modal-gallery"><div class="modal-gallery-title">작업 산출물</div><div class="modal-gallery-grid">';
-    q.images.forEach(function(src){html+='<div class="modal-gallery-item" onclick="viewImg(\''+src+'\')"><img src="'+src+'" alt="작업 산출물" loading="lazy"></div>'});
+    html+='<div class="modal-gallery"><div class="modal-gallery-title">참고자료</div><div class="modal-gallery-grid">';
+    q.images.forEach(function(src){html+='<div class="modal-gallery-item" onclick="viewImg(\''+src+'\')"><img src="'+src+'" alt="참고자료" loading="lazy"></div>'});
     html+='</div></div>';
   }
   html+='<div class="modal-insight"><div class="modal-insight-title">핵심 인사이트</div><p>'+q.insight+'</p></div>';
