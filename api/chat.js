@@ -155,21 +155,27 @@ module.exports = async function handler(req, res) {
   let messages;
   try {
     let body = req.body;
-    if (!body || (typeof body === 'object' && Object.keys(body).length === 0)) {
+    if (typeof body === 'string') {
+      body = JSON.parse(body);
+    }
+    if (!body || !body.messages) {
+      // Fallback: read raw body stream
       const chunks = [];
       for await (const chunk of req) chunks.push(chunk);
-      body = JSON.parse(Buffer.concat(chunks).toString());
-    } else if (typeof body === 'string') {
-      body = JSON.parse(body);
+      const raw = Buffer.concat(chunks).toString();
+      if (raw) {
+        body = JSON.parse(raw);
+      } else {
+        return res.status(400).json({ error: '요청 본문이 비어있습니다.' });
+      }
     }
     messages = body.messages;
     if (!Array.isArray(messages) || messages.length === 0) {
       return res.status(400).json({ error: '메시지가 필요합니다.' });
     }
-    // Limit history to last 20 messages
     messages = messages.slice(-20);
   } catch (e) {
-    return res.status(400).json({ error: '잘못된 요청 형식입니다. (' + e.message + ')' });
+    return res.status(400).json({ error: '요청 파싱 오류: ' + e.message });
   }
 
   /* SSE headers */
