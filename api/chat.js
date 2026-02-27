@@ -159,9 +159,14 @@ module.exports = async function handler(req, res) {
     res.end();
   } catch (err) {
     console.error('Anthropic API error:', err);
-    const errMsg = err.status === 429
-      ? 'API 요청 한도를 초과했습니다. 잠시 후 다시 시도해주세요.'
-      : 'AI 응답 생성 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.';
+    let errMsg;
+    if (err.status === 401) {
+      errMsg = 'API 키가 유효하지 않습니다. 환경변수를 확인해주세요.';
+    } else if (err.status === 429) {
+      errMsg = 'API 요청 한도를 초과했습니다. 잠시 후 다시 시도해주세요.';
+    } else {
+      errMsg = 'AI 응답 생성 중 오류가 발생했습니다. (' + (err.message || err.status || 'unknown') + ')';
+    }
     res.write(`data: ${JSON.stringify({ error: errMsg })}\n\n`);
     res.end();
   }
