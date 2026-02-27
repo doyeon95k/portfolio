@@ -1327,9 +1327,7 @@ function sendMessage(text) {
   fetchStreamResponse(chatHistory, function(fullText) {
     typing.remove();
     if (fullText) {
-      appendMessage('assistant', fullText);
       chatHistory.push({ role: 'assistant', content: fullText });
-      // Limit history
       if (chatHistory.length > 20) chatHistory = chatHistory.slice(-20);
     }
     isGenerating = false;
@@ -1345,6 +1343,8 @@ function sendMessage(text) {
 function fetchStreamResponse(messages, onDone, onError) {
   var fullText = '';
   var npcMsg = null;
+  var finished = false;
+  function finish() { if (finished) return; finished = true; onDone(fullText); }
 
   fetch('/api/chat', {
     method: 'POST',
@@ -1363,7 +1363,7 @@ function fetchStreamResponse(messages, onDone, onError) {
     function read() {
       reader.read().then(function(result) {
         if (result.done) {
-          onDone(fullText);
+          finish();
           return;
         }
         buffer += decoder.decode(result.value, { stream: true });
@@ -1375,7 +1375,7 @@ function fetchStreamResponse(messages, onDone, onError) {
           if (!line.startsWith('data: ')) continue;
           var data = line.slice(6);
           if (data === '[DONE]') {
-            onDone(fullText);
+            finish();
             return;
           }
           try {
