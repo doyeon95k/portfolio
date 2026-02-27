@@ -8,8 +8,8 @@ When portfolio visitors ask about you, respond in first person, strictly followi
 - Never speculate or fabricate information not in the data
 - Out-of-scope questions → "That's not covered in my portfolio... Feel free to reach out directly and I'd be happy to tell you more! 😊"
 - Cite numbers, project names, and dates exactly as stated in the data
-- Always respond in English
-- Never use markdown formatting (**, *, #, ```, etc.) — use plain text only
+- Response language: follow the "Language Instruction" section at the end of this prompt
+- Never use markdown formatting (bold, italic, headers, code blocks, etc.) — use plain text only
 
 ---
 
@@ -197,8 +197,6 @@ A PM's value lies not just in executing tasks, but in building systems that enab
 - Core content → gratitude or closing
 - 2-4 sentences, brief and clear
 - Even when delivering negative news, close warmly and positively
-- Always respond in English
-
 ### Tone Examples
 - [Making a request] "Hi [Name]! By any chance, would you be able to check this when you get a moment? No rush at all — I'd really appreciate it!"
 - [Expressing gratitude] "Thank you so much for handling this! I know it was a lot of work. Really appreciate your effort! 🙏"
@@ -209,7 +207,23 @@ A PM's value lies not just in executing tasks, but in building systems that enab
 - Use stiff, formal language (official document style)
 - End with short one-word replies only (always add gratitude or a closing)
 - Use imperative/commanding tone
-- Use Slack emoji shortcode (:emoji: format)`;
+- Use Slack emoji shortcode (:emoji: format)
+- Use markdown formatting (bold, italic, headers, code blocks, etc.)`;
+
+const LANG_INSTRUCTIONS = {
+  ko: `
+
+## Language Instruction
+- MUST respond in Korean (한국어) only.
+- Use warm, polite Korean tone with 존댓말 (e.g. ~입니다, ~해요, ~드릴게요).
+- Translate career data naturally into Korean when answering.
+- Out-of-scope questions → "제 포트폴리오에는 없는 내용이에요... 궁금하시면 직접 연락 주시면 자세히 말씀드릴게요! 😊"`,
+  en: `
+
+## Language Instruction
+- MUST respond in English only.
+- Out-of-scope questions → "That's not covered in my portfolio... Feel free to reach out directly and I'd be happy to tell you more! 😊"`
+};
 
 /* ===== Rate Limiter (in-memory) ===== */
 const rateMap = new Map();
@@ -252,6 +266,7 @@ module.exports = async function handler(req, res) {
 
   /* Parse body */
   let messages;
+  let lang = 'en';
   try {
     let body = req.body;
     if (typeof body === 'string') {
@@ -269,6 +284,7 @@ module.exports = async function handler(req, res) {
       }
     }
     messages = body.messages;
+    lang = (body.lang === 'ko') ? 'ko' : 'en';
     if (!Array.isArray(messages) || messages.length === 0) {
       return res.status(400).json({ error: 'Messages are required.' });
     }
@@ -284,10 +300,11 @@ module.exports = async function handler(req, res) {
 
   try {
     const client = new Anthropic();
+    const systemPrompt = SYSTEM_PROMPT + (LANG_INSTRUCTIONS[lang] || LANG_INSTRUCTIONS.en);
     const stream = await client.messages.stream({
       model: 'claude-haiku-4-5-20251001',
       max_tokens: 1024,
-      system: SYSTEM_PROMPT,
+      system: systemPrompt,
       messages: messages,
     });
 

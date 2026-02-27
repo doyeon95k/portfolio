@@ -1353,7 +1353,7 @@ function fetchStreamResponse(messages, onDone, onError) {
   fetch('/api/chat', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ messages: messages })
+    body: JSON.stringify({ messages: messages, lang: 'en' })
   }).then(function(res) {
     if (!res.ok) {
       return res.json().then(function(data) {
