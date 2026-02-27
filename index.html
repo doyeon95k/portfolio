@@ -1259,17 +1259,18 @@ function showToast(msg){
 var chatHistory = [];
 var isGenerating = false;
 
-function escapeHtml(str) {
-  var div = document.createElement('div');
-  div.appendChild(document.createTextNode(str));
-  return div.innerHTML;
+function renderChat(text) {
+  var s = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  s = s.replace(/\n/g, '<br>');
+  return s;
 }
 
 function appendMessage(role, text) {
   var el = document.getElementById('chat-messages');
   var msg = document.createElement('div');
   msg.className = 'chat-msg ' + (role === 'user' ? 'user' : 'npc');
-  msg.innerHTML = escapeHtml(text);
+  msg.innerHTML = role === 'user' ? text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') : renderChat(text);
   el.appendChild(msg);
   el.scrollTop = el.scrollHeight;
   return msg;
@@ -1327,9 +1328,7 @@ function sendMessage(text) {
   fetchStreamResponse(chatHistory, function(fullText) {
     typing.remove();
     if (fullText) {
-      appendMessage('assistant', fullText);
       chatHistory.push({ role: 'assistant', content: fullText });
-      // Limit history
       if (chatHistory.length > 20) chatHistory = chatHistory.slice(-20);
     }
     isGenerating = false;
@@ -1392,7 +1391,7 @@ function fetchStreamResponse(messages, onDone, onError) {
                 if (typingEl) typingEl.remove();
                 npcMsg = appendMessage('assistant', '');
               }
-              npcMsg.textContent = fullText;
+              npcMsg.innerHTML = renderChat(fullText);
               var el = document.getElementById('chat-messages');
               el.scrollTop = el.scrollHeight;
             }
