@@ -154,15 +154,22 @@ module.exports = async function handler(req, res) {
   /* Parse body */
   let messages;
   try {
-    const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+    let body = req.body;
+    if (!body || (typeof body === 'object' && Object.keys(body).length === 0)) {
+      const chunks = [];
+      for await (const chunk of req) chunks.push(chunk);
+      body = JSON.parse(Buffer.concat(chunks).toString());
+    } else if (typeof body === 'string') {
+      body = JSON.parse(body);
+    }
     messages = body.messages;
     if (!Array.isArray(messages) || messages.length === 0) {
       return res.status(400).json({ error: '메시지가 필요합니다.' });
     }
     // Limit history to last 20 messages
     messages = messages.slice(-20);
-  } catch {
-    return res.status(400).json({ error: '잘못된 요청 형식입니다.' });
+  } catch (e) {
+    return res.status(400).json({ error: '잘못된 요청 형식입니다. (' + e.message + ')' });
   }
 
   /* SSE headers */
