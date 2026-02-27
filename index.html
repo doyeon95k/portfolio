@@ -280,11 +280,10 @@ main{padding-top:70px;position:relative;z-index:1}
   .modal-close{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
   .skill-tooltip{display:none!important}
   .profile-photo{width:120px;height:120px}
-  .radar-wrap{max-width:260px;margin:0 auto;padding:3.5rem 2rem 1rem}
+  .radar-wrap{max-width:260px;margin:0 auto}
   .radar-label{transform:scale(.85)}
-  .radar-label[style*="top:1%"]{top:-8%!important}
-  .radar-label[style*="right:-8%"]{right:-2%!important}
-  .radar-label[style*="left:-8%"]{left:-2%!important}
+  .radar-label[style*="right:-8%"]{right:0%!important}
+  .radar-label[style*="left:-8%"]{left:0%!important}
   .radar-tip{width:180px;font-size:.65rem}
   .contact-copy{min-width:50px;min-height:44px;display:flex;align-items:center;justify-content:center}
 }
@@ -671,7 +670,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;b
         </g>
       </svg>
       <!-- Labels with tooltips -->
-      <div class="radar-label" style="top:1%;left:50%;transform:translateX(-50%)">
+      <div class="radar-label" style="top:-2%;left:50%;transform:translateX(-50%)">
         <div class="radar-label-title">제품 비전 & 전략</div>
         <div class="radar-label-sub">Product Vision</div>
         <div class="radar-tip above">
@@ -683,7 +682,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;b
           </ul>
         </div>
       </div>
-      <div class="radar-label" style="top:33%;right:-8%">
+      <div class="radar-label" style="top:33%;right:-10%">
         <div class="radar-label-title">데이터 분석</div>
         <div class="radar-label-sub">Data Analytics</div>
         <div class="radar-tip below">
@@ -719,7 +718,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;b
           </ul>
         </div>
       </div>
-      <div class="radar-label" style="top:33%;left:-8%">
+      <div class="radar-label" style="top:33%;left:-10%">
         <div class="radar-label-title">글로벌 협업</div>
         <div class="radar-label-sub">Global Ops</div>
         <div class="radar-tip below">
