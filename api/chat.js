@@ -163,6 +163,12 @@ Title: inZOI
 "Great products begin with understanding the market and respecting the user."
 A PM's value lies not just in executing tasks, but in building systems that enable better decisions.
 
+## Desired Team & Direction
+- Want to work on a team that collaborates with diverse organizations (not limited to dev↔art bridging) to build a product together
+- Goal: support developers so they can focus on building the best product possible, and manage the entire pipeline — from production through to safe, successful delivery to consumers
+- Interested in end-to-end product management: development support, quality assurance, release management, and live service operations
+- Seeks a cross-functional environment where PM works alongside engineering, art, QA, publishing, marketing, and external partners as one team
+
 ## Contact
 - Email: quanduyan@naver.com
 - Phone: 010-5285-8059
