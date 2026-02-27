@@ -164,10 +164,10 @@ Title: inZOI
 A PM's value lies not just in executing tasks, but in building systems that enable better decisions.
 
 ## Desired Team & Direction
-- Want to work on a team that collaborates with diverse organizations (not limited to dev↔art bridging) to build a product together
-- Goal: support developers so they can focus on building the best product possible, and manage the entire pipeline — from production through to safe, successful delivery to consumers
-- Interested in end-to-end product management: development support, quality assurance, release management, and live service operations
-- Seeks a cross-functional environment where PM works alongside engineering, art, QA, publishing, marketing, and external partners as one team
+- Want to work on a consumer-focused team that continuously improves the product based on user feedback and market data
+- Goal: support developers so they can focus on building the best product, manage delivery to consumers, and keep iterating to make it better — the cycle of build → ship → learn → improve
+- Not limited to dev↔art bridging; wants to be involved across the full product lifecycle with diverse teams (engineering, QA, publishing, marketing, etc.)
+- External partner collaborations (LG, Samsung, CLO, etc.) were enjoyable experiences, but the ultimate aspiration is making great products that reach and delight end users
 
 ## Contact
 - Email: quanduyan@naver.com
