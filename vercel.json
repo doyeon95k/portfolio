@@ -1,7 +1,4 @@
 {
-  "rewrites": [
-    { "source": "/", "destination": "/index_en.html" }
-  ],
   "functions": {
     "api/chat.js": {
       "maxDuration": 30
