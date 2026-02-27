@@ -1340,11 +1340,15 @@ function sendMessage(text) {
   });
 }
 
+function stripMarkdown(str) {
+  return str.replace(/\*\*([^*]*)\*\*/g, '$1').replace(/\*([^*]*)\*/g, '$1').replace(/^#+\s*/gm, '').replace(/`([^`]*)`/g, '$1');
+}
+
 function fetchStreamResponse(messages, onDone, onError) {
   var fullText = '';
   var npcMsg = null;
   var finished = false;
-  function finish() { if (finished) return; finished = true; onDone(fullText); }
+  function finish() { if (finished) return; finished = true; fullText = stripMarkdown(fullText); onDone(fullText); }
 
   fetch('/api/chat', {
     method: 'POST',
@@ -1392,7 +1396,7 @@ function fetchStreamResponse(messages, onDone, onError) {
                 if (typingEl) typingEl.remove();
                 npcMsg = appendMessage('assistant', '');
               }
-              npcMsg.textContent = fullText;
+              npcMsg.textContent = stripMarkdown(fullText);
               var el = document.getElementById('chat-messages');
               el.scrollTop = el.scrollHeight;
             }
