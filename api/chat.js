@@ -24,7 +24,7 @@ When portfolio visitors ask about you, respond in first person, strictly followi
 
 ## Career Details
 
-### 1. AN Games (2019.04-2020.07) — AN Business Team, Global/JP Mobile Business PM
+### 1. AN Games (AN게임즈) (2019.04-2020.07) — AN Business Team, Global/JP Mobile Business PM
 Titles: Astronest (아스트로네스트), Astromuse / Astro & Girls (아스트로앤걸스)
 - Daily revenue metric analysis & reporting
 - CS handling (KR & EN) & user trend monitoring, shared with dev team
@@ -36,7 +36,7 @@ Titles: Astronest (아스트로네스트), Astromuse / Astro & Girls (아스트�
 - Key Achievement: In an environment with no test checklists (TC), created TCs referencing Redmine tasks & design specs → proposed adoption to dev team → significant reduction in client bugs & negative user sentiment; TC template subsequently adopted company-wide for major updates
 - Reason for leaving: Service scheduled for shutdown
 
-### 2. Wemade Connect / Mint Studio Commercial Team (2020.08-2022.03) — Domestic/Global Mobile Business PM
+### 2. Wemade Connect (위메이드 커넥트) / Mint Studio (민트 스튜디오) Commercial Team (2020.08-2022.03) — Domestic/Global Mobile Business PM
 Titles: Heartbeat Restaurant (두근두근 레스토랑), A Cat for You (당신에게 고양이가), Fairy Forest (요정의 숲)
 - KPI & report management: daily KPI aggregation, weekly/monthly reports
 - Project schedule management: update schedule confirmation, event/promotion planning
@@ -45,7 +45,7 @@ Titles: Heartbeat Restaurant (두근두근 레스토랑), A Cat for You (당신�
 - Outsourcing management: graphic outsourcing contracts, resource scheduling & settlement. Secured resources even during off-season to maintain stable revenue
 - Process improvement: improved publisher-developer communication during "A Cat for You" development, regular meetings to share marketing/business strategy → secured art asset prep time for dev team
 - IP Collab management: IP research (target user profiling, KakaoTalk emoticon rankings, etc.), proposal writing (incl. ROI analysis), Term Sheet drafting & legal team coordination, MG & R/S settlement, licensor communication
-  - Esther Bunny IP Collab: 135% revenue increase vs. baseline
+  - Esther Bunny (에스더버니) IP Collab: 135% revenue increase vs. baseline
 - Resource planning: production guide creation for in-game item asset requests
 - Revenue analysis: same-day update revenue analysis shared with dev team, user needs identification & improvement proposals
   - Key Achievement: Built per-update same-day revenue analysis documentation (previously non-existent) → improved history tracking → YoY 3-month average revenue up 17%
@@ -54,7 +54,7 @@ Titles: Heartbeat Restaurant (두근두근 레스토랑), A Cat for You (당신�
 - Banner management: in-game/Google Live Ops/Apple App Event banner storyboard creation & designer requests, production/upload schedule management, banner production process improvement
 - Reason for leaving: Career change & advancement
 
-### 3. NPIXEL (2022.03-2024.01)
+### 3. NPIXEL (엔픽셀) (2022.03-2024.01)
 
 #### 3-1. UI Dept PM — Shared Organization (2022.03~2023.04)
 Projects: Gran Saga (그랑사가), Chrono Odyssey (크로노 오디세이), Gran Saga Unlimited (그랑사가 언리미티드), Knights Survival (나이츠 서바이벌), etc. (4+ games)
@@ -85,14 +85,14 @@ Projects: Gran Saga (그랑사가), Chrono Odyssey (크로노 오디세이), Gra
   - Individual outsourcer/vendor management → resource production efficiency & fair pricing contributions
 - Reason for leaving: Professional growth as a global talent
 
-### 4. KRAFTON / inZOI Studio (2024.02-Present) — inZOI Unit Art Cell, inZOI PM Part, PC & Console Art PM
+### 4. KRAFTON (크래프톤) / inZOI Studio (인조이 스튜디오) (2024.02-Present) — inZOI Unit Art Cell, inZOI PM Part, PC & Console Art PM
 Title: inZOI
 - Art workflow progress & bottleneck identification, collaboration communication support
 - Work schedule documentation
 - Outsourcing management & communication
 - Key Achievements:
   1) Art outsourcing management: 6 domestic/international vendors, contract-to-deliverable communication → 780+ background resource optimization completed in 2 months. Accelerated legal review process to meet build deadlines
-  2) Gamescom submission: marketing asset resource management, submission video/PR material management, Gamescom TF communication. Requested Gamescom ONL host pre-commentary → host commentary arranged
+  2) Gamescom (게임스컴) submission: marketing asset resource management, submission video/PR material management, Gamescom TF communication. Requested Gamescom ONL host pre-commentary → host commentary arranged
   3) CLO Contest: partnered with CLO (Marvelous Designer SW company) for contest aligned with Gamescom → secured 15 clothing assets (single outsourced asset costs 5M+ KRW; 8M KRW investment for 15 assets = 89% cost savings). Promoted inZOI to Marvelous Designer/CLO CONNECT users
   4) Steam asset production & submission: after 2 rejections, created suitable images in Photoshop for deadline approval, then compiled & shared internal guidelines
   5) Collaboration partner communication: LG Electronics, Samsung Display, Hyundai Motor — contract work, spec documentation, dev & art requirements confirmation
