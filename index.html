@@ -200,10 +200,10 @@ main{padding-top:70px;position:relative;z-index:1}
 .skill-cat:hover{border-color:rgba(249,66,58,.25)}
 .skill-cat-header{display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;cursor:pointer}
 .skill-cat-name{font-size:.9rem;font-weight:700;color:var(--text-bright)}
-.skill-nodes{display:flex;flex-wrap:wrap;gap:.6rem}
-.skill-node{display:flex;align-items:center;gap:.6rem;padding:.5rem .9rem;background:var(--bg-dark);border-radius:8px;border:1px solid rgba(249,66,58,.12);font-size:.85rem;font-weight:500;color:var(--text-bright);transition:all .3s;position:relative}
+.skill-nodes{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.skill-node{display:flex;align-items:center;justify-content:space-between;padding:.5rem .9rem;background:var(--bg-dark);border-radius:8px;border:1px solid rgba(249,66,58,.12);font-size:.85rem;font-weight:500;color:var(--text-bright);transition:all .3s;position:relative}
 .skill-node:hover{border-color:var(--primary);background:rgba(249,66,58,.08)}
-.skill-node .skill-dots{display:flex;gap:3px}
+.skill-node .skill-dots{display:flex;gap:3px;margin-left:auto;flex-shrink:0}
 .skill-node .skill-dot{width:7px;height:7px;border-radius:50%;background:rgba(249,66,58,.15)}
 .skill-node .skill-dot.filled{background:var(--primary)}
 .skill-node .skill-dot.filled.gold{background:var(--accent)}
@@ -268,6 +268,7 @@ main{padding-top:70px;position:relative;z-index:1}
 @media(max-width:1024px){
   .profile-grid,.skills-layout{grid-template-columns:1fr}
   .ba-grid{grid-template-columns:1fr}
+  .skill-nodes{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
   .nav-tabs{display:none!important}
@@ -296,6 +297,7 @@ main{padding-top:70px;position:relative;z-index:1}
 @media(max-width:480px){
   .achieve-grid{grid-template-columns:1fr 1fr}
   .profile-name{font-size:1.4rem}
+  .skill-nodes{grid-template-columns:1fr}
 }
 /* ===== GAME EFFECTS ===== */
 
