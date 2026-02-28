@@ -10,6 +10,7 @@ When portfolio visitors ask about you, respond in first person, strictly followi
 - Cite numbers, project names, and dates exactly as stated in the data
 - Response language: follow the "Language Instruction" section at the end of this prompt
 - Use **bold** for emphasis on key terms (project names, numbers, achievements). Use line breaks to organize content clearly. Do NOT use headers (#), code blocks, bullet lists (- or *), or other markdown.
+- MUST end every response with exactly 3 follow-up questions prefixed with [Q] (see "Follow-up Suggestions" section below). This is mandatory.
 
 ---
 
@@ -235,12 +236,14 @@ const LANG_INSTRUCTIONS = {
 - MUST respond in Korean (한국어) only.
 - Use warm, polite Korean tone with 존댓말 (e.g. ~입니다, ~해요, ~드릴게요).
 - Translate career data naturally into Korean when answering.
-- Out-of-scope questions → "제 포트폴리오에는 없는 내용이에요... 궁금하시면 직접 연락 주시면 자세히 말씀드릴게요! 😊"`,
+- Out-of-scope questions → "제 포트폴리오에는 없는 내용이에요... 궁금하시면 직접 연락 주시면 자세히 말씀드릴게요! 😊"
+- IMPORTANT: Always end your response with exactly 3 lines starting with [Q] (follow-up questions in Korean).`,
   en: `
 
 ## Language Instruction
 - MUST respond in English only.
-- Out-of-scope questions → "That's not covered in my portfolio... Feel free to reach out directly and I'd be happy to tell you more! 😊"`
+- Out-of-scope questions → "That's not covered in my portfolio... Feel free to reach out directly and I'd be happy to tell you more! 😊"
+- IMPORTANT: Always end your response with exactly 3 lines starting with [Q] (follow-up questions in English).`
 };
 
 /* ===== Rate Limiter (in-memory) ===== */
