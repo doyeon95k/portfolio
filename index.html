@@ -186,9 +186,9 @@ main{padding-top:70px;position:relative;z-index:1}
 .modal-gallery-grid{display:flex;gap:.8rem;overflow-x:auto;padding-bottom:.5rem;-webkit-overflow-scrolling:touch}
 .modal-gallery-grid::-webkit-scrollbar{height:4px}
 .modal-gallery-grid::-webkit-scrollbar-thumb{background:var(--primary);border-radius:2px}
-.modal-gallery-item{flex:0 0 auto;width:280px;border-radius:8px;overflow:hidden;border:1px solid rgba(249,66,58,.15);cursor:pointer;transition:all .3s}
+.modal-gallery-item{flex:0 0 auto;max-width:320px;border-radius:8px;overflow:hidden;border:1px solid rgba(249,66,58,.15);cursor:pointer;transition:all .3s}
 .modal-gallery-item:hover{border-color:rgba(249,66,58,.4);transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.3)}
-.modal-gallery-item img{width:100%;height:auto;display:block}
+.modal-gallery-item img{max-width:100%;height:auto;display:block}
 .img-viewer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:10000;display:none;align-items:center;justify-content:center;cursor:zoom-out}
 .img-viewer-overlay.open{display:flex}
 .img-viewer-overlay img{max-width:92vw;max-height:92vh;border-radius:8px;object-fit:contain}
