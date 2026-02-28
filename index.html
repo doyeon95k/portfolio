@@ -209,7 +209,7 @@ main{padding-top:70px;position:relative;z-index:1}
 .skill-node .skill-dot.filled{background:var(--primary)}
 .skill-node .skill-dot.filled.gold{background:var(--accent)}
 .skill-node{min-width:0}
-.skill-node>span:first-child{flex:1;min-width:0}
+.skill-node>span:first-child{flex:1;min-width:0;white-space:nowrap}
 .skill-node.wide{grid-column:span 2}
 .skill-tooltip{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--bg-dark);border:1px solid var(--primary);padding:.4rem .7rem;border-radius:6px;font-size:.7rem;color:var(--text);white-space:nowrap;z-index:10;pointer-events:none}
 .skill-node:hover .skill-tooltip{display:block}
@@ -748,7 +748,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;b
         <div class="skill-nodes">
           <div class="skill-node wide"><span>로드맵 & KPI 설계</span><div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled gold"></span></div><div class="skill-tooltip">Lv.5 — Expert</div></div>
           <div class="skill-node wide"><span>상점 UI/UX 설계</span><div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
-          <div class="skill-node wide"><span>사업 시뮬레이션 & A/B Test</span><div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
+          <div class="skill-node wide"><span style="white-space:normal">사업 시뮬레이션<br>& A/B Test</span><div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
         </div>
       </div>
       <div class="skill-cat">
