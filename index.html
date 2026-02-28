@@ -200,10 +200,12 @@ main{padding-top:70px;position:relative;z-index:1}
 .skill-nodes{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
 .skill-node{display:flex;align-items:center;justify-content:space-between;padding:.5rem .9rem;background:var(--bg-dark);border-radius:8px;border:1px solid rgba(249,66,58,.12);font-size:.85rem;font-weight:500;color:var(--text-bright);transition:all .3s;position:relative}
 .skill-node:hover{border-color:var(--primary);background:rgba(249,66,58,.08)}
-.skill-node .skill-dots{display:flex;gap:3px;margin-left:auto;flex-shrink:0}
+.skill-node .skill-dots{display:flex;gap:3px;margin-left:.7rem;flex-shrink:0}
 .skill-node .skill-dot{width:7px;height:7px;border-radius:50%;background:rgba(249,66,58,.15)}
 .skill-node .skill-dot.filled{background:var(--primary)}
 .skill-node .skill-dot.filled.gold{background:var(--accent)}
+.skill-node{white-space:nowrap}
+.skill-node.wide{grid-column:span 2}
 .skill-tooltip{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--bg-dark);border:1px solid var(--primary);padding:.4rem .7rem;border-radius:6px;font-size:.7rem;color:var(--text);white-space:nowrap;z-index:10;pointer-events:none}
 .skill-node:hover .skill-tooltip{display:block}
 
@@ -295,6 +297,7 @@ main{padding-top:70px;position:relative;z-index:1}
   .achieve-grid{grid-template-columns:1fr 1fr}
   .profile-name{font-size:1.4rem}
   .skill-nodes{grid-template-columns:1fr}
+  .skill-node.wide{grid-column:span 1}
 }
 /* ===== GAME EFFECTS ===== */
 
@@ -730,23 +733,23 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;b
           <div class="skill-node">Confluence<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
           <div class="skill-node">Notion<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled gold"></span></div><div class="skill-tooltip">Lv.5 — Expert</div></div>
           <div class="skill-node">Slack<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
-          <div class="skill-node">Google Workspace<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+          <div class="skill-node wide">Google Workspace<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
         </div>
       </div>
       <div class="skill-cat">
         <div class="skill-cat-header"><span class="skill-cat-name">Product Planning & Strategy</span></div>
         <div class="skill-nodes">
-          <div class="skill-node">Roadmap & KPI Design<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled gold"></span></div><div class="skill-tooltip">Lv.5 — Expert</div></div>
-          <div class="skill-node">Store UI/UX Design<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
-          <div class="skill-node">Business Simulation & A/B Testing<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
+          <div class="skill-node wide">Roadmap & KPI Design<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled gold"></span></div><div class="skill-tooltip">Lv.5 — Expert</div></div>
+          <div class="skill-node wide">Store UI/UX Design<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+          <div class="skill-node wide">Business Simulation & A/B Testing<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
         </div>
       </div>
       <div class="skill-cat">
         <div class="skill-cat-header"><span class="skill-cat-name">Data & Analytics</span></div>
         <div class="skill-nodes">
-          <div class="skill-node">Data-Driven Decisions<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
-          <div class="skill-node">User Feedback Analysis<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
-          <div class="skill-node">Performance Metrics<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+          <div class="skill-node wide">Data-Driven Decisions<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+          <div class="skill-node wide">User Feedback Analysis<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+          <div class="skill-node wide">Performance Metrics<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
         </div>
       </div>
       <div class="skill-cat">
@@ -761,8 +764,8 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;b
       <div class="skill-cat">
         <div class="skill-cat-header"><span class="skill-cat-name">Game Industry</span></div>
         <div class="skill-nodes">
-          <div class="skill-node">Publishing & Marketing<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
-          <div class="skill-node">Commerce & Monetization<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
+          <div class="skill-node wide">Publishing & Marketing<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
+          <div class="skill-node wide">Commerce & Monetization<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
           <div class="skill-node">Unreal Engine<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
         </div>
       </div>
