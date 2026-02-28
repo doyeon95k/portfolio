@@ -1276,20 +1276,22 @@ function renderChat(text) {
 }
 
 function parseSuggestions(text) {
-  var questions = [];
+  var marker = '<<SUGGESTIONS>>';
   var lines = text.split('\n');
-  for (var i = 0; i < lines.length; i++) {
+  for (var i = lines.length - 1; i >= 0; i--) {
     var line = lines[i].trim();
-    if (line.indexOf('[Q]') === 0) {
-      questions.push(line.slice(3).trim());
+    var idx = line.indexOf(marker);
+    if (idx !== -1) {
+      var raw = line.slice(idx + marker.length).trim();
+      if (raw) return raw.split('|').map(function(q) { return q.trim(); }).filter(function(q) { return q.length > 0; });
     }
   }
-  return questions;
+  return [];
 }
 
 function stripSuggestions(text) {
   return text.split('\n').filter(function(line) {
-    return line.trim().indexOf('[Q]') !== 0;
+    return line.trim().indexOf('<<SUGGESTIONS>>') === -1;
   }).join('\n').replace(/\n+$/, '');
 }
 
