@@ -205,7 +205,7 @@ main{padding-top:70px;position:relative;z-index:1}
 .skill-node .skill-dot.filled{background:var(--primary)}
 .skill-node .skill-dot.filled.gold{background:var(--accent)}
 .skill-node{min-width:0}
-.skill-node>span:first-child{flex:1;min-width:0;white-space:nowrap}
+.skill-node>span:first-child{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .skill-node.wide{grid-column:span 2}
 .skill-tooltip{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--bg-dark);border:1px solid var(--primary);padding:.4rem .7rem;border-radius:6px;font-size:.7rem;color:var(--text);white-space:nowrap;z-index:10;pointer-events:none}
 .skill-node:hover .skill-tooltip{display:block}
@@ -731,7 +731,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;b
         <div class="skill-cat-header"><span class="skill-cat-name">Collaboration & Documentation</span></div>
         <div class="skill-nodes">
           <div class="skill-node"><span>Jira</span><div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled gold"></span></div><div class="skill-tooltip">Lv.5 — Expert</div></div>
-          <div class="skill-node"><span>Confluence</span><div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+          <div class="skill-node wide"><span>Confluence</span><div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
           <div class="skill-node"><span>Notion</span><div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled gold"></span></div><div class="skill-tooltip">Lv.5 — Expert</div></div>
           <div class="skill-node"><span>Slack</span><div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
           <div class="skill-node wide"><span>Google Workspace</span><div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
@@ -758,7 +758,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;b
         <div class="skill-nodes">
           <div class="skill-node"><span>Claude Code</span><div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
           <div class="skill-node"><span>ChatGPT</span><div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
-          <div class="skill-node"><span>Midjourney</span><div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+          <div class="skill-node wide"><span>Midjourney</span><div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
           <div class="skill-node"><span>Cursor</span><div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
         </div>
       </div>
@@ -767,7 +767,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;b
         <div class="skill-nodes">
           <div class="skill-node wide"><span>Publishing & Marketing</span><div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
           <div class="skill-node wide"><span>Commerce & Monetization</span><div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
-          <div class="skill-node"><span>Unreal Engine</span><div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
+          <div class="skill-node wide"><span>Unreal Engine</span><div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
         </div>
       </div>
       <div class="skill-cat">
