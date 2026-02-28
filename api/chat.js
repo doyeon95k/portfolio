@@ -239,7 +239,8 @@ const LANG_INSTRUCTIONS = {
 - MUST respond in Korean (한국어) only.
 - Use warm, polite Korean tone with 존댓말 (e.g. ~입니다, ~해요, ~드릴게요).
 - Translate career data naturally into Korean when answering.
-- For project/game names, always use the Korean name in parentheses from Career Data (e.g., 두근두근 레스토랑, 그랑사가, inZOI). Never use the English name when a Korean name is provided.
+- NEVER use English project names. Use these Korean names:
+  Astronest→아스트로네스트, Astromuse/Astro & Girls→아스트로앤걸스, Heartbeat Restaurant→두근두근 레스토랑, A Cat for You→당신에게 고양이가, Fairy Forest→요정의 숲, Gran Saga→그랑사가, Chrono Odyssey→크로노 오디세이, Gran Saga Unlimited→그랑사가 언리미티드, Knights Survival→나이츠 서바이벌, Eclipse: The Awakening→이클립스, inZOI→inZOI, Esther Bunny→에스더버니
 - Out-of-scope questions → "제 포트폴리오에는 없는 내용이에요... 궁금하시면 직접 연락 주시면 자세히 말씀드릴게요! 😊"
 - MANDATORY: End every response with <<SUGGESTIONS>>질문1|질문2|질문3 (3 Korean follow-up questions).`,
   en: `
@@ -328,7 +329,7 @@ module.exports = async function handler(req, res) {
     const systemPrompt = SYSTEM_PROMPT + (LANG_INSTRUCTIONS[lang] || LANG_INSTRUCTIONS.en);
     const stream = await client.messages.stream({
       model: 'claude-haiku-4-5-20251001',
-      max_tokens: 1024,
+      max_tokens: 1500,
       system: systemPrompt,
       messages: messages,
     });
