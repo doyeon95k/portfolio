@@ -194,8 +194,8 @@ main{padding-top:70px;position:relative;z-index:1}
 .img-viewer-overlay img{max-width:92vw;max-height:92vh;border-radius:8px;object-fit:contain}
 
 /* ===== TAB 4: SKILLS ===== */
-.skills-layout{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
-.skill-categories{display:flex;flex-direction:column;gap:1rem}
+.skills-layout{display:flex;flex-direction:column;align-items:center;gap:2rem}
+.skill-categories{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;width:100%}
 .skill-cat{background:var(--bg-mid);border-radius:12px;padding:1.2rem 1.5rem;border:1px solid rgba(249,66,58,.1);border-left:2px solid var(--primary);transition:all .3s}
 .skill-cat:hover{border-color:rgba(249,66,58,.25)}
 .skill-cat-header{display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;cursor:pointer}
@@ -266,8 +266,9 @@ main{padding-top:70px;position:relative;z-index:1}
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:1024px){
-  .profile-grid,.skills-layout{grid-template-columns:1fr}
+  .profile-grid{grid-template-columns:1fr}
   .ba-grid{grid-template-columns:1fr}
+  .skill-categories{grid-template-columns:1fr 1fr}
   .skill-nodes{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
@@ -285,6 +286,7 @@ main{padding-top:70px;position:relative;z-index:1}
   .modal-close{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
   .modal-back{font-size:.9rem;padding:.55rem 1rem;gap:.5rem}
   .modal-back svg{width:18px;height:18px}
+  .skill-categories{grid-template-columns:1fr}
   .skill-tooltip{display:none!important}
   .profile-photo{width:120px;height:120px}
   .radar-wrap{max-width:260px;margin:0 auto}
@@ -637,58 +639,6 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;b
     <h2>스킬</h2>
   </div>
   <div class="skills-layout">
-    <div class="skill-categories">
-      <div class="skill-cat">
-        <div class="skill-cat-header"><span class="skill-cat-name">협업 & 문서화 도구 — Collaboration & Documentation</span></div>
-        <div class="skill-nodes">
-          <div class="skill-node">Jira<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled gold"></span></div><div class="skill-tooltip">Lv.5 — Expert</div></div>
-          <div class="skill-node">Confluence<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
-          <div class="skill-node">Notion<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled gold"></span></div><div class="skill-tooltip">Lv.5 — Expert</div></div>
-          <div class="skill-node">Slack<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
-          <div class="skill-node">Google Workspace<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
-        </div>
-      </div>
-      <div class="skill-cat">
-        <div class="skill-cat-header"><span class="skill-cat-name">제품 기획 & 전략 — Product Planning & Strategy</span></div>
-        <div class="skill-nodes">
-          <div class="skill-node">로드맵 & KPI 설계<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled gold"></span></div><div class="skill-tooltip">Lv.5 — Expert</div></div>
-          <div class="skill-node">상점 UI/UX 설계<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
-          <div class="skill-node">사업 시뮬레이션 & A/B Test<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
-        </div>
-      </div>
-      <div class="skill-cat">
-        <div class="skill-cat-header"><span class="skill-cat-name">데이터 분석 — Data & Analytics</span></div>
-        <div class="skill-nodes">
-          <div class="skill-node">데이터 기반 의사결정<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
-          <div class="skill-node">사용자 피드백 분석<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
-          <div class="skill-node">성과 지표 측정<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
-        </div>
-      </div>
-      <div class="skill-cat">
-        <div class="skill-cat-header"><span class="skill-cat-name">AI 도구 — AI Tools</span></div>
-        <div class="skill-nodes">
-          <div class="skill-node">Claude Code<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
-          <div class="skill-node">ChatGPT<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
-          <div class="skill-node">Midjourney<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
-          <div class="skill-node">Cursor<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
-        </div>
-      </div>
-      <div class="skill-cat">
-        <div class="skill-cat-header"><span class="skill-cat-name">게임 산업 이해 — Game Industry</span></div>
-        <div class="skill-nodes">
-          <div class="skill-node">퍼블리싱 & 마케팅 이해<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
-          <div class="skill-node">커머스 & 수익화 이해<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
-          <div class="skill-node">Unreal Engine<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
-        </div>
-      </div>
-      <div class="skill-cat">
-        <div class="skill-cat-header"><span class="skill-cat-name">언어 — Languages</span></div>
-        <div class="skill-nodes">
-          <div class="skill-node">한국어<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled gold"></span></div><div class="skill-tooltip">Lv.5 — Native</div></div>
-          <div class="skill-node">English<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Business</div></div>
-        </div>
-      </div>
-    </div>
     <div class="radar-wrap">
       <svg class="radar-svg" viewBox="0 0 400 400">
         <defs>
@@ -774,6 +724,58 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;b
             <li>영한 SoW/계약서 직접 작성</li>
             <li>영어 비즈니스 커뮤니케이션 (Lv.4)</li>
           </ul>
+        </div>
+      </div>
+    </div>
+    <div class="skill-categories">
+      <div class="skill-cat">
+        <div class="skill-cat-header"><span class="skill-cat-name">협업 & 문서화 도구 — Collaboration & Documentation</span></div>
+        <div class="skill-nodes">
+          <div class="skill-node">Jira<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled gold"></span></div><div class="skill-tooltip">Lv.5 — Expert</div></div>
+          <div class="skill-node">Confluence<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+          <div class="skill-node">Notion<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled gold"></span></div><div class="skill-tooltip">Lv.5 — Expert</div></div>
+          <div class="skill-node">Slack<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+          <div class="skill-node">Google Workspace<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-header"><span class="skill-cat-name">제품 기획 & 전략 — Product Planning & Strategy</span></div>
+        <div class="skill-nodes">
+          <div class="skill-node">로드맵 & KPI 설계<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled gold"></span></div><div class="skill-tooltip">Lv.5 — Expert</div></div>
+          <div class="skill-node">상점 UI/UX 설계<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+          <div class="skill-node">사업 시뮬레이션 & A/B Test<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-header"><span class="skill-cat-name">데이터 분석 — Data & Analytics</span></div>
+        <div class="skill-nodes">
+          <div class="skill-node">데이터 기반 의사결정<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+          <div class="skill-node">사용자 피드백 분석<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+          <div class="skill-node">성과 지표 측정<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-header"><span class="skill-cat-name">AI 도구 — AI Tools</span></div>
+        <div class="skill-nodes">
+          <div class="skill-node">Claude Code<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+          <div class="skill-node">ChatGPT<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+          <div class="skill-node">Midjourney<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Advanced</div></div>
+          <div class="skill-node">Cursor<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-header"><span class="skill-cat-name">게임 산업 이해 — Game Industry</span></div>
+        <div class="skill-nodes">
+          <div class="skill-node">퍼블리싱 & 마케팅 이해<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
+          <div class="skill-node">커머스 & 수익화 이해<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
+          <div class="skill-node">Unreal Engine<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.3 — Intermediate</div></div>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-header"><span class="skill-cat-name">언어 — Languages</span></div>
+        <div class="skill-nodes">
+          <div class="skill-node">한국어<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled gold"></span></div><div class="skill-tooltip">Lv.5 — Native</div></div>
+          <div class="skill-node">English<div class="skill-dots"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div><div class="skill-tooltip">Lv.4 — Business</div></div>
         </div>
       </div>
     </div>
