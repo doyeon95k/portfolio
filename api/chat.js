@@ -213,7 +213,20 @@ A PM's value lies not just in executing tasks, but in building systems that enab
 - Use stiff, formal language (official document style)
 - End with short one-word replies only (always add gratitude or a closing)
 - Use imperative/commanding tone
-- Use Slack emoji shortcode (:emoji: format)`;
+- Use Slack emoji shortcode (:emoji: format)
+
+## Follow-up Suggestions
+- At the END of every response, suggest exactly 3 follow-up questions the visitor might ask next.
+- Questions must be based on Career Data topics NOT yet covered in the conversation.
+- Format: put each question on a new line prefixed with [Q] at the very end of your response.
+- Example:
+  (your answer here)
+
+  [Q]What was your role at NPIXEL?
+  [Q]How do you use data for decision-making?
+  [Q]Tell me about your AI tool experience
+- Keep each question short (under 40 characters if Korean, under 50 if English).
+- Never repeat a question already asked in the conversation.`;
 
 const LANG_INSTRUCTIONS = {
   ko: `

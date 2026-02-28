@@ -1274,6 +1274,38 @@ function renderChat(text) {
   return s;
 }
 
+function parseSuggestions(text) {
+  var questions = [];
+  var lines = text.split('\n');
+  for (var i = 0; i < lines.length; i++) {
+    var line = lines[i].trim();
+    if (line.indexOf('[Q]') === 0) {
+      questions.push(line.slice(3).trim());
+    }
+  }
+  return questions;
+}
+
+function stripSuggestions(text) {
+  return text.split('\n').filter(function(line) {
+    return line.trim().indexOf('[Q]') !== 0;
+  }).join('\n').replace(/\n+$/, '');
+}
+
+function updateSuggestions(fullText) {
+  var sugEl = document.getElementById('chat-suggestions');
+  var questions = parseSuggestions(fullText);
+  if (questions.length === 0) return;
+  sugEl.innerHTML = '';
+  questions.forEach(function(q) {
+    var btn = document.createElement('button');
+    btn.textContent = q;
+    btn.onclick = function() { sendSuggestion(q); };
+    sugEl.appendChild(btn);
+  });
+  sugEl.style.display = 'flex';
+}
+
 function appendMessage(role, text) {
   var el = document.getElementById('chat-messages');
   var msg = document.createElement('div');
@@ -1338,6 +1370,7 @@ function sendMessage(text) {
     if (fullText) {
       chatHistory.push({ role: 'assistant', content: fullText });
       if (chatHistory.length > 20) chatHistory = chatHistory.slice(-20);
+      updateSuggestions(fullText);
     }
     isGenerating = false;
     document.getElementById('chat-send').disabled = false;
@@ -1353,7 +1386,7 @@ function fetchStreamResponse(messages, onDone, onError) {
   var fullText = '';
   var npcMsg = null;
   var finished = false;
-  function finish() { if (finished) return; finished = true; onDone(fullText); }
+  function finish() { if (finished) return; finished = true; if (npcMsg) npcMsg.innerHTML = renderChat(stripSuggestions(fullText)); onDone(fullText); }
 
   fetch('/api/chat', {
     method: 'POST',
