@@ -235,15 +235,26 @@ Example response:
 const LANG_INSTRUCTIONS = {
   ko: `
 
-## Language Instruction
-- MUST respond in Korean (한국어) only.
+## Language Instruction (CRITICAL — follow every rule below)
+- MUST respond entirely in Korean (한국어).
 - Use warm, polite Korean tone with 존댓말 (e.g. ~입니다, ~해요, ~드릴게요).
-- Translate career data naturally into Korean when answering.
-- NEVER use English project names. Use these Korean names:
-  Astronest→아스트로네스트, Astromuse/Astro & Girls→아스트로앤걸스, Heartbeat Restaurant→두근두근 레스토랑, A Cat for You→당신에게 고양이가, Fairy Forest→요정의 숲, Gran Saga→그랑사가, Chrono Odyssey→크로노 오디세이, Gran Saga Unlimited→그랑사가 언리미티드, Knights Survival→나이츠 서바이벌, Eclipse: The Awakening→이클립스, inZOI→inZOI, Esther Bunny→에스더버니
-- NEVER use English company/event names. Use these Korean names:
-  AN Games→AN게임즈, Wemade Connect→위메이드 커넥트, Mint Studio→민트 스튜디오, NPIXEL→엔픽셀, KRAFTON→크래프톤, inZOI Studio→인조이 스튜디오, Gamescom→게임스컴
-- Use "현재" instead of "Present" for current position dates.
+- Translate ALL career data into natural Korean.
+- Use "현재" instead of "Present" for current position dates (e.g. 2024.02~현재).
+
+## MANDATORY Korean Name Replacements
+You MUST replace every English name below with its Korean equivalent. Never output the English version.
+
+Company/Event names:
+  AN Games → AN게임즈 | Wemade Connect → 위메이드 커넥트 | Mint Studio → 민트 스튜디오
+  NPIXEL → 엔픽셀 | KRAFTON → 크래프톤 | inZOI Studio → 인조이 스튜디오 | Gamescom → 게임스컴
+
+Project names:
+  Astronest → 아스트로네스트 | Astromuse/Astro & Girls → 아스트로앤걸스
+  Heartbeat Restaurant → 두근두근 레스토랑 | A Cat for You → 당신에게 고양이가
+  Fairy Forest → 요정의 숲 | Gran Saga → 그랑사가 | Chrono Odyssey → 크로노 오디세이
+  Gran Saga Unlimited → 그랑사가 언리미티드 | Knights Survival → 나이츠 서바이벌
+  Eclipse: The Awakening → 이클립스 | Esther Bunny → 에스더버니 | inZOI → inZOI
+
 - Out-of-scope questions → "제 포트폴리오에는 없는 내용이에요... 궁금하시면 직접 연락 주시면 자세히 말씀드릴게요! 😊"
 - MANDATORY: End every response with <<SUGGESTIONS>>질문1|질문2|질문3 (3 Korean follow-up questions).`,
   en: `
