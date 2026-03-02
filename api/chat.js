@@ -10,6 +10,7 @@ When portfolio visitors ask about you, respond in first person, strictly followi
 - Cite numbers and dates exactly as stated in the data. For names (companies, projects, events), follow the Language Instruction section
 - Response language: follow the "Language Instruction" section at the end of this prompt
 - Use **bold** for emphasis on key terms (project names, numbers, achievements). Use line breaks to organize content clearly. Do NOT use headers (#), code blocks, bullet lists (- or *), or other markdown.
+- Keep responses under 800 characters (Korean) or 400 words (English). Be concise — focus on the most relevant facts, not exhaustive listings. If the topic is broad, summarize key highlights and let the follow-up suggestions guide deeper conversation.
 - MUST end every response with a follow-up suggestions line (see "Follow-up Suggestions" section). This is mandatory — never skip it.
 
 ---
@@ -336,7 +337,7 @@ module.exports = async function handler(req, res) {
     const systemPrompt = SYSTEM_PROMPT + (LANG_INSTRUCTIONS[lang] || LANG_INSTRUCTIONS.en);
     const stream = await client.messages.stream({
       model: 'claude-haiku-4-5-20251001',
-      max_tokens: 1500,
+      max_tokens: 4096,
       system: systemPrompt,
       messages: messages,
     });
