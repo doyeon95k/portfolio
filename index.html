@@ -115,9 +115,8 @@ main{padding-top:70px;position:relative;z-index:1}
 .xp-bar-wrap{background:var(--bg-light);border-radius:8px;height:10px;margin:.5rem 0;overflow:hidden;border:1px solid var(--border)}
 .xp-bar{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:8px;transition:width 1.5s ease-out}
 .xp-label{display:flex;justify-content:space-between;font-size:.75rem;color:var(--text-dim)}
-.typing-wrap{text-align:center;min-height:2.5rem;margin:1rem 0;font-size:.95rem;color:var(--accent);font-weight:500}
-.typing-cursor{animation:blink .7s step-end infinite;color:var(--primary)}
-@keyframes blink{50%{opacity:0}}
+.typing-wrap{text-align:center;min-height:2.5rem;margin:1rem 0;font-size:.95rem;color:var(--accent);font-weight:500;opacity:0;transform:translateY(6px);transition:opacity .6s ease,transform .6s ease}
+.typing-wrap.visible{opacity:1;transform:translateY(0)}
 .profile-org{text-align:center;padding:.8rem;background:rgba(43,95,90,.06);border-radius:10px;margin-top:1rem;border:1px solid rgba(43,95,90,.1)}
 .profile-org .org-label{font-size:.72rem;color:var(--text-meta);text-transform:uppercase;letter-spacing:2px;font-weight:600}
 .profile-org .org-name{font-size:1rem;font-weight:700;color:var(--text-bright);margin-top:.2rem}
@@ -1327,23 +1326,19 @@ let typingIdx=0;
 function startTyping(){
   const el=document.getElementById('typing-target');
   if(!el)return;
-  function typePhrase(phrase,cb){
-    el.innerHTML='';let i=0;
-    const iv=setInterval(()=>{
-      el.innerHTML=phrase.slice(0,i+1)+'<span class="typing-cursor">|</span>';
-      i++;if(i>=phrase.length){clearInterval(iv);setTimeout(()=>erasePhrase(phrase,cb),2000)}
-    },60);
-  }
-  function erasePhrase(phrase,cb){
-    let i=phrase.length;
-    const iv=setInterval(()=>{
-      i--;el.innerHTML=phrase.slice(0,i)+'<span class="typing-cursor">|</span>';
-      if(i<=0){clearInterval(iv);setTimeout(cb,400)}
-    },30);
+  let typingIdx=0;
+  const HOLD_MS=2800, FADE_MS=600, GAP_MS=200;
+  function showPhrase(phrase,cb){
+    el.textContent=phrase;
+    requestAnimationFrame(()=>{el.classList.add('visible')});
+    setTimeout(()=>{
+      el.classList.remove('visible');
+      setTimeout(cb,FADE_MS+GAP_MS);
+    },FADE_MS+HOLD_MS);
   }
   function loop(){
     var phrases=TYPING_BY_LANG[currentLang()]||TYPING_BY_LANG.ko;
-    typePhrase(phrases[typingIdx%phrases.length],()=>{typingIdx++;loop()});
+    showPhrase(phrases[typingIdx%phrases.length],()=>{typingIdx++;loop()});
   }
   loop();
 }
