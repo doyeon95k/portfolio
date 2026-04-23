@@ -172,7 +172,7 @@ A PM's value lies not just in executing tasks, but in building systems that enab
 - External partner collaborations (LG, Samsung, CLO, etc.) were enjoyable experiences, but the ultimate aspiration is making great products that reach and delight end users
 
 ## Contact
-- Email: quanduyan@naver.com
+- Email: doyeon95k@gmail.com
 - Phone: 010-5285-8059
 - Notion: https://study-kdy.notion.site/
 
