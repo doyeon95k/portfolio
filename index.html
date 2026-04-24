@@ -222,6 +222,21 @@ main{padding-top:70px;position:relative;z-index:1}
 .img-viewer-overlay.open{display:flex}
 .img-viewer-overlay img{max-width:92vw;max-height:92vh;border-radius:8px;object-fit:contain}
 
+/* PDF viewer modal */
+.pdf-modal-overlay{position:fixed;inset:0;background:rgba(30,25,15,.6);backdrop-filter:blur(6px);z-index:300;display:none;align-items:center;justify-content:center;padding:1.5rem;opacity:0;transition:opacity .3s}
+.pdf-modal-overlay.open{display:flex;opacity:1}
+.pdf-modal-wrap{position:relative;width:100%;max-width:960px;height:90vh;background:var(--bg-mid);border-radius:16px;border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow-lg)}
+.pdf-modal-toolbar{position:absolute;top:.7rem;right:.7rem;z-index:3;display:flex;gap:.4rem}
+.pdf-modal-btn{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.92);backdrop-filter:blur(4px);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text);cursor:pointer;transition:all .2s;font-size:1rem;text-decoration:none}
+.pdf-modal-btn:hover{background:#fff;border-color:var(--primary);color:var(--primary);transform:translateY(-1px)}
+.pdf-modal-btn svg{width:18px;height:18px}
+.pdf-modal-iframe{width:100%;height:100%;border:0;background:var(--bg-light);display:block}
+@media(max-width:768px){
+  .pdf-modal-overlay{padding:.5rem}
+  .pdf-modal-wrap{height:95vh;border-radius:10px}
+  .pdf-modal-btn{width:34px;height:34px}
+}
+
 /* ===== TAB 4: SKILLS ===== */
 .skills-layout{display:flex;flex-direction:column;align-items:center;gap:2rem}
 .skill-categories{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;width:100%}
@@ -918,10 +933,10 @@ input:focus-visible{outline:2px solid var(--info);outline-offset:1px}
         <div class="contact-info"><div class="contact-label"><span lang="ko">전화</span><span lang="en">Phone</span></div><div class="contact-value">010-5285-8059</div></div>
         <button class="contact-copy"><span lang="ko">복사</span><span lang="en">Copy</span></button>
       </div>
-      <div class="contact-item" data-ko-href="https://study-kdy.notion.site/_ver-2026-339ea2130fda4fb08034f7eb99e43be8" data-en-href="https://study-kdy.notion.site/_ver-2026-339ea2130fda4fb08034f7eb99e43be8" onclick="openLangLink(this)">
-        <div class="contact-icon">N</div>
-        <div class="contact-info"><div class="contact-label">Notion</div><div class="contact-value"><span lang="ko">경력 기술서</span><span lang="en">Full Resume</span></div></div>
-        <button class="contact-copy"><span lang="ko">열기</span><span lang="en">Open</span></button>
+      <div class="contact-item" data-ko-href="https://study-kdy.notion.site/_ver-2026-339ea2130fda4fb08034f7eb99e43be8" data-en-pdf="resume/Doyeon_Kwon_Resume_EN.pdf" onclick="openResume(this)">
+        <div class="contact-icon"><span lang="ko">N</span><span lang="en">📄</span></div>
+        <div class="contact-info"><div class="contact-label"><span lang="ko">Notion</span><span lang="en">PDF</span></div><div class="contact-value"><span lang="ko">경력 기술서</span><span lang="en">Full Resume</span></div></div>
+        <button class="contact-copy"><span lang="ko">열기</span><span lang="en">View</span></button>
       </div>
     </div>
   </div>
@@ -953,6 +968,17 @@ input:focus-visible{outline:2px solid var(--info);outline-offset:1px}
 <!-- IMAGE VIEWER -->
 <div class="img-viewer-overlay" id="img-viewer" onclick="this.classList.remove('open')">
   <img id="img-viewer-src" src="" alt="Enlarged view">
+</div>
+
+<!-- PDF VIEWER -->
+<div class="pdf-modal-overlay" id="pdf-modal" onclick="if(event.target===this)closePdf()">
+  <div class="pdf-modal-wrap">
+    <div class="pdf-modal-toolbar">
+      <a class="pdf-modal-btn" id="pdf-modal-download" href="#" download title="Download" aria-label="Download PDF"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+      <button class="pdf-modal-btn" onclick="closePdf()" title="Close" aria-label="Close">✕</button>
+    </div>
+    <iframe class="pdf-modal-iframe" id="pdf-modal-iframe" src="" title="Resume"></iframe>
+  </div>
 </div>
 
 <!-- TOAST -->
@@ -1436,7 +1462,7 @@ document.addEventListener('langchange',function(){
   }
 });
 function viewImg(src){document.getElementById('img-viewer-src').src=src;document.getElementById('img-viewer').classList.add('open')}
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeQuest();document.getElementById('img-viewer').classList.remove('open')}});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeQuest();closePdf();document.getElementById('img-viewer').classList.remove('open')}});
 /* Close modal on back swipe / overlay tap for mobile */
 document.getElementById('quest-modal').addEventListener('touchstart',function(e){
   if(e.target===this)closeQuest();
@@ -1458,6 +1484,36 @@ function openLangLink(el){
   var lang=currentLang();
   var href=el.getAttribute('data-'+lang+'-href')||el.getAttribute('data-ko-href');
   if(href)window.open(href,'_blank','noopener');
+}
+function openResume(el){
+  var lang=currentLang();
+  if(lang==='en'){
+    var pdf=el.getAttribute('data-en-pdf');
+    if(pdf){openPdfViewer(pdf);return}
+  }
+  var href=el.getAttribute('data-'+lang+'-href')||el.getAttribute('data-ko-href');
+  if(href)window.open(href,'_blank','noopener');
+}
+function openPdfViewer(pdfPath){
+  var isMobile=/iPhone|iPad|Android|Mobile/i.test(navigator.userAgent)||window.innerWidth<768;
+  if(isMobile){window.open(pdfPath,'_blank','noopener');return}
+  var overlay=document.getElementById('pdf-modal');
+  if(!overlay){window.open(pdfPath,'_blank','noopener');return}
+  document.getElementById('pdf-modal-iframe').src=pdfPath;
+  document.getElementById('pdf-modal-download').setAttribute('href',pdfPath);
+  overlay.style.display='flex';
+  requestAnimationFrame(function(){overlay.classList.add('open')});
+  document.body.style.overflow='hidden';
+}
+function closePdf(){
+  var overlay=document.getElementById('pdf-modal');
+  if(!overlay)return;
+  overlay.classList.remove('open');
+  setTimeout(function(){
+    overlay.style.display='none';
+    document.getElementById('pdf-modal-iframe').src='';
+  },300);
+  document.body.style.overflow='';
 }
 function copyText(text,el){
   var lang=currentLang();
