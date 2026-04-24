@@ -101,8 +101,8 @@ main{padding-top:70px;position:relative;z-index:1}
 .section-tag{display:none}
 
 /* ===== TAB 1: PROFILE ===== */
-.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
-.profile-card{background:var(--bg-mid);border-radius:16px;padding:2rem;border:1px solid rgba(43,95,90,.1);border-left:3px solid var(--primary);position:relative;overflow:hidden}
+.profile-grid{display:flex;justify-content:center}
+.profile-card{background:var(--bg-mid);border-radius:16px;padding:2rem;border:1px solid rgba(43,95,90,.1);border-left:3px solid var(--primary);position:relative;overflow:hidden;width:100%;max-width:480px}
 .profile-card::before{display:none}
 .profile-photo-wrap{display:flex;justify-content:center;margin-bottom:1.5rem}
 .profile-photo{width:140px;height:140px;border-radius:50%;object-fit:cover;border:3px solid var(--primary);filter:drop-shadow(var(--shadow-sm))}
@@ -165,11 +165,17 @@ main{padding-top:70px;position:relative;z-index:1}
 .journey-xp{margin-top:2rem;max-width:600px;margin-left:auto;margin-right:auto}
 
 /* ===== TAB 3: QUESTS ===== */
-.quest-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
-.quest-card{background:var(--bg-mid);border-radius:14px;padding:1.6rem 1.5rem 1.4rem;border:1px solid var(--border);cursor:pointer;transition:all .3s;position:relative;overflow:hidden;touch-action:manipulation;-webkit-tap-highlight-color:transparent;display:flex;flex-direction:column;min-height:180px}
+.quest-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
+.quest-card{background:var(--bg-mid);border-radius:14px;padding:0;border:1px solid var(--border);cursor:pointer;transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;overflow:hidden;touch-action:manipulation;-webkit-tap-highlight-color:transparent;display:flex;flex-direction:column}
 @media(hover:hover){.quest-card:hover{border-color:rgba(43,95,90,.35);transform:translateY(-4px);box-shadow:var(--shadow-lg)}}
-.quest-card:active{border-color:rgba(43,95,90,.3);background:rgba(43,95,90,.05)}
-.quest-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(180deg,var(--primary),var(--accent));opacity:.55;display:block}
+.quest-card:active{border-color:rgba(43,95,90,.3)}
+.quest-card::before{display:none}
+.quest-thumb{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--bg-light)}
+.quest-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+@media(hover:hover){.quest-card:hover .quest-thumb img{transform:scale(1.04)}}
+.quest-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(20,20,26,.12));pointer-events:none}
+.quest-num-badge{position:absolute;top:.8rem;left:.9rem;padding:.25rem .6rem;border-radius:4px;font-size:.7rem;font-weight:700;letter-spacing:2px;color:#fff;background:rgba(20,20,26,.7);backdrop-filter:blur(4px);z-index:2}
+.quest-body{padding:1.2rem 1.4rem 1.4rem;display:flex;flex-direction:column;flex:1}
 .quest-num{font-size:.75rem;color:var(--accent);font-weight:700;letter-spacing:2px;margin-bottom:.5rem}
 .quest-title{font-size:1.1rem;font-weight:700;color:var(--text-bright);margin-bottom:.5rem;line-height:1.4;letter-spacing:-.005em}
 .quest-company{font-size:.82rem;color:var(--primary);margin-bottom:.25rem;font-weight:500}
@@ -309,7 +315,6 @@ main{padding-top:70px;position:relative;z-index:1}
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:1024px){
-  .profile-grid{grid-template-columns:1fr}
   .ba-grid{grid-template-columns:1fr}
   .skill-categories{grid-template-columns:1fr 1fr}
   .skill-nodes{grid-template-columns:1fr 1fr}
@@ -536,32 +541,6 @@ input:focus-visible{outline:2px solid var(--info);outline-offset:1px}
         <div class="org-sub"><span lang="ko">인조이 스튜디오 — Art PM</span><span lang="en">inZOI Studio — Art PM</span></div>
       </div>
     </div>
-    <div class="stats-card">
-      <div class="section-header" style="margin-bottom:1.5rem;text-align:left">
-        <div class="section-tag">Core Stats</div>
-        <h2 style="font-size:1.2rem"><span lang="ko">핵심 스탯</span><span lang="en">Core Stats</span></h2>
-      </div>
-      <div class="stat-item">
-        <div class="stat-header"><span class="stat-name"><span lang="ko">제품 비전 & 전략</span><span lang="en">Product Vision & Strategy</span></span><span class="stat-value">92</span></div>
-        <div class="stat-bar-wrap"><div class="stat-bar" style="width:0;background:linear-gradient(90deg,#3a7872,var(--primary))" data-target="92"></div></div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-header"><span class="stat-name"><span lang="ko">데이터 기반 의사결정</span><span lang="en">Data-Driven Decision</span></span><span class="stat-value">90</span></div>
-        <div class="stat-bar-wrap"><div class="stat-bar" style="width:0;background:linear-gradient(90deg,#6686b8,var(--info))" data-target="90"></div></div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-header"><span class="stat-name"><span lang="ko">글로벌 협업</span><span lang="en">Global Collaboration</span></span><span class="stat-value">90</span></div>
-        <div class="stat-bar-wrap"><div class="stat-bar" style="width:0;background:linear-gradient(90deg,#e0a980,var(--accent))" data-target="90"></div></div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-header"><span class="stat-name"><span lang="ko">이해관계자 관리</span><span lang="en">Stakeholder Management</span></span><span class="stat-value">88</span></div>
-        <div class="stat-bar-wrap"><div class="stat-bar" style="width:0;background:linear-gradient(90deg,var(--info),#6a8fb8)" data-target="88"></div></div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-header"><span class="stat-name"><span lang="ko">퀄리티 & 납기</span><span lang="en">Quality & Delivery</span></span><span class="stat-value">87</span></div>
-        <div class="stat-bar-wrap"><div class="stat-bar" style="width:0;background:linear-gradient(90deg,var(--accent),#f0ae8a)" data-target="87"></div></div>
-      </div>
-    </div>
   </div>
   <div class="career-timeline-header">
     <div class="section-tag">Career Timeline</div>
@@ -643,46 +622,58 @@ input:focus-visible{outline:2px solid var(--info);outline-offset:1px}
   </div>
   <div class="quest-grid">
     <div class="quest-card" onclick="openQuest(0)">
-      <div class="quest-num">BATTLE 01</div>
-      <div class="quest-title"><span lang="ko">데이터 기반 프로덕트 전략</span><span lang="en">Data-Driven Product Strategy</span></div>
-      <div class="quest-company"><span lang="ko">위메이드 커넥트 | 민트 스튜디오</span><span lang="en">Wemade Connect | Mint Studio</span></div>
-      <div class="quest-period">2020.08 — 2022.03</div>
-      <div class="quest-tags"><span class="quest-tag gold">YoY +17%</span><span class="quest-tag gold"><span lang="ko">IP 콜라보 +135%</span><span lang="en">IP Collab +135%</span></span></div>
+      <div class="quest-thumb"><div class="quest-num-badge">BATTLE 01</div><img src="images/Battle 01.png" alt="" loading="lazy"></div>
+      <div class="quest-body">
+        <div class="quest-title"><span lang="ko">데이터 기반 프로덕트 전략</span><span lang="en">Data-Driven Product Strategy</span></div>
+        <div class="quest-company"><span lang="ko">위메이드 커넥트 | 민트 스튜디오</span><span lang="en">Wemade Connect | Mint Studio</span></div>
+        <div class="quest-period">2020.08 — 2022.03</div>
+        <div class="quest-tags"><span class="quest-tag gold">YoY +17%</span><span class="quest-tag gold"><span lang="ko">IP 콜라보 +135%</span><span lang="en">IP Collab +135%</span></span></div>
+      </div>
     </div>
     <div class="quest-card" onclick="openQuest(1)">
-      <div class="quest-num">BATTLE 02</div>
-      <div class="quest-title"><span lang="ko">운영 툴링 & 프로세스 자동화</span><span lang="en">Operational Tooling & Process Automation</span></div>
-      <div class="quest-company"><span lang="ko">엔픽셀 | UI실 (공용조직)</span><span lang="en">NPIXEL | UI Dept (Shared Org)</span></div>
-      <div class="quest-period">2022.03 — 2024.01</div>
-      <div class="quest-tags"><span class="quest-tag gold"><span lang="ko">20% 효율화</span><span lang="en">20% Efficiency</span></span><span class="quest-tag"><span lang="ko">알림 누락 0건</span><span lang="en">0 Missed Alerts</span></span></div>
+      <div class="quest-thumb"><div class="quest-num-badge">BATTLE 02</div><img src="images/Battle 02_1.png" alt="" loading="lazy"></div>
+      <div class="quest-body">
+        <div class="quest-title"><span lang="ko">운영 툴링 & 프로세스 자동화</span><span lang="en">Operational Tooling & Process Automation</span></div>
+        <div class="quest-company"><span lang="ko">엔픽셀 | UI실 (공용조직)</span><span lang="en">NPIXEL | UI Dept (Shared Org)</span></div>
+        <div class="quest-period">2022.03 — 2024.01</div>
+        <div class="quest-tags"><span class="quest-tag gold"><span lang="ko">20% 효율화</span><span lang="en">20% Efficiency</span></span><span class="quest-tag"><span lang="ko">알림 누락 0건</span><span lang="en">0 Missed Alerts</span></span></div>
+      </div>
     </div>
     <div class="quest-card" onclick="openQuest(2)">
-      <div class="quest-num">BATTLE 03</div>
-      <div class="quest-title"><span lang="ko">전략적 파트너십을 통한 비용 효율적 리소스 확보</span><span lang="en">Cost-Efficient Asset Acquisition via Strategic Partnership</span></div>
-      <div class="quest-company"><span lang="ko">크래프톤 / 인조이 스튜디오</span><span lang="en">KRAFTON / inZOI Studio</span></div>
-      <div class="quest-period"><span lang="ko">2024.02 — 현재</span><span lang="en">2024.02 — Present</span></div>
-      <div class="quest-tags"><span class="quest-tag gold"><span lang="ko">89% 비용절감</span><span lang="en">89% Cost Saved</span></span><span class="quest-tag gold"><span lang="ko">15종 에셋</span><span lang="en">15 Assets</span></span></div>
+      <div class="quest-thumb"><div class="quest-num-badge">BATTLE 03</div><img src="images/Battle 03_1.png" alt="" loading="lazy"></div>
+      <div class="quest-body">
+        <div class="quest-title"><span lang="ko">전략적 파트너십을 통한 비용 효율적 리소스 확보</span><span lang="en">Cost-Efficient Asset Acquisition via Strategic Partnership</span></div>
+        <div class="quest-company"><span lang="ko">크래프톤 / 인조이 스튜디오</span><span lang="en">KRAFTON / inZOI Studio</span></div>
+        <div class="quest-period"><span lang="ko">2024.02 — 현재</span><span lang="en">2024.02 — Present</span></div>
+        <div class="quest-tags"><span class="quest-tag gold"><span lang="ko">89% 비용절감</span><span lang="en">89% Cost Saved</span></span><span class="quest-tag gold"><span lang="ko">15종 에셋</span><span lang="en">15 Assets</span></span></div>
+      </div>
     </div>
     <div class="quest-card" onclick="openQuest(3)">
-      <div class="quest-num">BATTLE 04</div>
-      <div class="quest-title"><span lang="ko">전략적 파트너십 & 이해관계자 관리</span><span lang="en">Strategic Partnerships & Stakeholder Management</span></div>
-      <div class="quest-company"><span lang="ko">크래프톤 + 위메이드 커넥트</span><span lang="en">KRAFTON + Wemade Connect</span></div>
-      <div class="quest-period"><span lang="ko">2020 — 현재</span><span lang="en">2020 — Present</span></div>
-      <div class="quest-tags"><span class="quest-tag gold"><span lang="ko">3사 대기업</span><span lang="en">3 Major Corps</span></span><span class="quest-tag"><span lang="ko">8+ 해외 벤더</span><span lang="en">8+ Global Vendors</span></span><span class="quest-tag">E2E</span></div>
+      <div class="quest-thumb"><div class="quest-num-badge">BATTLE 04</div><img src="images/Battle 04.png" alt="" loading="lazy"></div>
+      <div class="quest-body">
+        <div class="quest-title"><span lang="ko">전략적 파트너십 & 이해관계자 관리</span><span lang="en">Strategic Partnerships & Stakeholder Management</span></div>
+        <div class="quest-company"><span lang="ko">크래프톤 + 위메이드 커넥트</span><span lang="en">KRAFTON + Wemade Connect</span></div>
+        <div class="quest-period"><span lang="ko">2020 — 현재</span><span lang="en">2020 — Present</span></div>
+        <div class="quest-tags"><span class="quest-tag gold"><span lang="ko">3사 대기업</span><span lang="en">3 Major Corps</span></span><span class="quest-tag"><span lang="ko">8+ 해외 벤더</span><span lang="en">8+ Global Vendors</span></span><span class="quest-tag">E2E</span></div>
+      </div>
     </div>
     <div class="quest-card" onclick="openQuest(4)">
-      <div class="quest-num">BATTLE 05</div>
-      <div class="quest-title"><span lang="ko">QA 프로세스 도입</span><span lang="en">QA Process Implementation</span></div>
-      <div class="quest-company"><span lang="ko">AN게임즈 | 아스트로네스트, 아스트로무스메</span><span lang="en">AN Games | Astronest, Astromuse</span></div>
-      <div class="quest-period">2019.04 — 2020.07</div>
-      <div class="quest-tags"><span class="quest-tag gold"><span lang="ko">TC 표준 채택</span><span lang="en">TC Standard Adopted</span></span><span class="quest-tag gold"><span lang="ko">버그 대폭 감소</span><span lang="en">Major Bug Reduction</span></span></div>
+      <div class="quest-thumb"><div class="quest-num-badge">BATTLE 05</div><img src="images/Battle 05.png" alt="" loading="lazy"></div>
+      <div class="quest-body">
+        <div class="quest-title"><span lang="ko">QA 프로세스 도입</span><span lang="en">QA Process Implementation</span></div>
+        <div class="quest-company"><span lang="ko">AN게임즈 | 아스트로네스트, 아스트로무스메</span><span lang="en">AN Games | Astronest, Astromuse</span></div>
+        <div class="quest-period">2019.04 — 2020.07</div>
+        <div class="quest-tags"><span class="quest-tag gold"><span lang="ko">TC 표준 채택</span><span lang="en">TC Standard Adopted</span></span><span class="quest-tag gold"><span lang="ko">버그 대폭 감소</span><span lang="en">Major Bug Reduction</span></span></div>
+      </div>
     </div>
     <div class="quest-card" onclick="openQuest(5)">
-      <div class="quest-num">BATTLE 06</div>
-      <div class="quest-title"><span lang="ko">AI 기반 워크플로우 혁신</span><span lang="en">AI-Driven Workflow Innovation</span></div>
-      <div class="quest-company"><span lang="ko">현재 진행형</span><span lang="en">Ongoing</span></div>
-      <div class="quest-period"><span lang="ko">2024 — 현재</span><span lang="en">2024 — Present</span></div>
-      <div class="quest-tags"><span class="quest-tag gold"><span lang="ko">6+ AI 도구</span><span lang="en">6+ AI Tools</span></span><span class="quest-tag"><span lang="ko">워크플로우 자동화</span><span lang="en">Workflow Automation</span></span></div>
+      <div class="quest-thumb"><div class="quest-num-badge">BATTLE 06</div><img src="images/Battle 06_1.png" alt="" loading="lazy"></div>
+      <div class="quest-body">
+        <div class="quest-title"><span lang="ko">AI 기반 워크플로우 혁신</span><span lang="en">AI-Driven Workflow Innovation</span></div>
+        <div class="quest-company"><span lang="ko">현재 진행형</span><span lang="en">Ongoing</span></div>
+        <div class="quest-period"><span lang="ko">2024 — 현재</span><span lang="en">2024 — Present</span></div>
+        <div class="quest-tags"><span class="quest-tag gold"><span lang="ko">6+ AI 도구</span><span lang="en">6+ AI Tools</span></span><span class="quest-tag"><span lang="ko">워크플로우 자동화</span><span lang="en">Workflow Automation</span></span></div>
+      </div>
     </div>
   </div>
 </section>
