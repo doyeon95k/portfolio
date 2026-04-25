@@ -65,7 +65,7 @@ button{font-family:var(--font);cursor:pointer;border:none;background:none;color:
 
 /* ===== NAV ===== */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,247,242,.88);backdrop-filter:blur(12px);border-bottom:1px solid rgba(31,82,71,.15)}
-.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;padding:.6rem 1.5rem;gap:1rem;position:relative}
+.nav-inner{max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:center;padding:.6rem 1.5rem;gap:1rem;position:relative}
 /* Language toggle — top right */
 .lang-toggle{position:absolute;right:1.5rem;top:50%;transform:translateY(-50%);display:inline-flex;align-items:center;gap:0;background:var(--bg-light);border:1px solid var(--border);border-radius:999px;padding:2px;font-family:var(--font-en);font-size:.72rem;font-weight:600;letter-spacing:.5px;z-index:5}
 .lang-toggle button{padding:.35rem .7rem;border-radius:999px;color:var(--text-meta);cursor:pointer;background:transparent;transition:all .2s;line-height:1}
@@ -96,7 +96,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,247,242,
 
 /* ===== MAIN CONTENT ===== */
 main{padding-top:70px;position:relative;z-index:1}
-.section{max-width:1200px;margin:0 auto;padding:3rem 1.5rem 5rem}
+.section{max-width:1320px;margin:0 auto;padding:3rem 1.5rem 5rem}
 .section-header{text-align:center;margin-bottom:2.5rem}
 .section-header h2{font-size:2.4rem;font-weight:900;color:var(--text-bright);margin-bottom:.3rem;letter-spacing:-.02em;line-height:1.15}
 .section-tag{display:none}
@@ -494,9 +494,9 @@ input:focus-visible{outline:2px solid var(--info);outline-offset:1px}
     </button>
     <div class="nav-tabs" id="nav-tabs">
       <a class="nav-tab active" href="#sec-profile"><span lang="ko">프로필</span><span lang="en">Profile</span></a>
+      <a class="nav-tab" href="#sec-journey"><span lang="ko">여정</span><span lang="en">Journey</span></a>
       <a class="nav-tab" href="#sec-quests"><span lang="ko">전투 기록</span><span lang="en">Battle Log</span></a>
       <a class="nav-tab" href="#sec-skills"><span lang="ko">스킬</span><span lang="en">Skills</span></a>
-      <a class="nav-tab" href="#sec-achievements"><span lang="ko">업적</span><span lang="en">Achievements</span></a>
       <a class="nav-tab" href="#sec-chat"><span lang="ko">대화</span><span lang="en">Chat</span></a>
       <a class="nav-tab" href="#sec-contact"><span lang="ko">연락처</span><span lang="en">Contact</span></a>
     </div>
@@ -508,9 +508,9 @@ input:focus-visible{outline:2px solid var(--info);outline-offset:1px}
 </nav>
 <div class="mobile-menu" id="mobile-menu">
   <a class="nav-tab active" href="#sec-profile"><span lang="ko">프로필</span><span lang="en">Profile</span></a>
+  <a class="nav-tab" href="#sec-journey"><span lang="ko">여정</span><span lang="en">Journey</span></a>
   <a class="nav-tab" href="#sec-quests"><span lang="ko">전투 기록</span><span lang="en">Battle Log</span></a>
   <a class="nav-tab" href="#sec-skills"><span lang="ko">스킬</span><span lang="en">Skills</span></a>
-  <a class="nav-tab" href="#sec-achievements"><span lang="ko">업적</span><span lang="en">Achievements</span></a>
   <a class="nav-tab" href="#sec-chat"><span lang="ko">대화</span><span lang="en">Chat</span></a>
   <a class="nav-tab" href="#sec-contact"><span lang="ko">연락처</span><span lang="en">Contact</span></a>
 </div>
@@ -542,60 +542,16 @@ input:focus-visible{outline:2px solid var(--info);outline-offset:1px}
       </div>
     </div>
   </div>
-  <div class="career-timeline-header">
+</section>
+
+<!-- TAB 2: JOURNEY -->
+<section class="section" id="sec-journey">
+  <div class="section-header">
     <div class="section-tag">Career Timeline</div>
-    <h3><span lang="ko">여정</span><span lang="en">Journey</span></h3>
+    <h2><span lang="ko">여정</span><span lang="en">Journey</span></h2>
   </div>
   <div class="timeline">
     <div class="timeline-item left">
-      <div class="timeline-node"></div>
-      <div class="timeline-card">
-        <div class="timeline-company"><span lang="ko">AN게임즈</span><span lang="en">AN Games</span></div>
-        <div class="timeline-role"><span lang="ko">사업PM</span><span lang="en">Business PM</span></div>
-        <div class="timeline-period">2019.04 — 2020.07</div>
-        <div class="timeline-status completed">COMPLETED</div>
-        <div class="timeline-tasks"><ul lang="ko">
-          <li>TC 표준 프레임워크 설계 → 전사 채택</li>
-          <li>매출 분석 리포팅 & KPI 데이터 공유</li>
-        </ul><ul lang="en">
-          <li>TC standard framework design → company-wide adoption</li>
-          <li>Revenue analysis reporting & KPI data sharing</li>
-        </ul></div>
-      </div>
-    </div>
-    <div class="timeline-item right">
-      <div class="timeline-node"></div>
-      <div class="timeline-card">
-        <div class="timeline-company"><span lang="ko">위메이드 커넥트</span><span lang="en">Wemade Connect</span></div>
-        <div class="timeline-role"><span lang="ko">사업PM</span><span lang="en">Business PM</span></div>
-        <div class="timeline-period">2020.08 — 2022.03</div>
-        <div class="timeline-status completed">COMPLETED</div>
-        <div class="timeline-tasks"><ul lang="ko">
-          <li>IP 콜라보 제안서 작성 → 매출 135%↑</li>
-          <li>인게임 판매 데이터 분석 → YoY 17% 성장</li>
-        </ul><ul lang="en">
-          <li>IP collab proposal → revenue +135%</li>
-          <li>In-game sales data analysis → YoY 17% growth</li>
-        </ul></div>
-      </div>
-    </div>
-    <div class="timeline-item left">
-      <div class="timeline-node"></div>
-      <div class="timeline-card">
-        <div class="timeline-company"><span lang="ko">엔픽셀</span><span lang="en">NPIXEL</span></div>
-        <div class="timeline-role"><span lang="ko">UI실 PM, 개발PM</span><span lang="en">UI Dept PM, Dev PM</span></div>
-        <div class="timeline-period">2022.03 — 2024.01</div>
-        <div class="timeline-status completed">COMPLETED</div>
-        <div class="timeline-tasks"><ul lang="ko">
-          <li>Jira 자동화 → 리더 업무 20% 효율화</li>
-          <li>Zapier·ChatGPT 반복 작업 자동화 → 알림 누락 0건</li>
-        </ul><ul lang="en">
-          <li>Jira automation → 20% leadership efficiency gain</li>
-          <li>Zapier · ChatGPT repetitive task automation → 0 missed alerts</li>
-        </ul></div>
-      </div>
-    </div>
-    <div class="timeline-item right">
       <div class="timeline-node current"></div>
       <div class="timeline-card current">
         <div class="timeline-company"><span lang="ko">크래프톤 / 인조이 스튜디오</span><span lang="en">KRAFTON / inZOI Studio</span></div>
@@ -611,6 +567,54 @@ input:focus-visible{outline:2px solid var(--info);outline-offset:1px}
         </ul></div>
       </div>
     </div>
+    <div class="timeline-item right">
+      <div class="timeline-node"></div>
+      <div class="timeline-card">
+        <div class="timeline-company"><span lang="ko">엔픽셀</span><span lang="en">NPIXEL</span></div>
+        <div class="timeline-role"><span lang="ko">UI실 PM, 개발PM</span><span lang="en">UI Dept PM, Dev PM</span></div>
+        <div class="timeline-period">2022.03 — 2024.01</div>
+        <div class="timeline-status completed">COMPLETED</div>
+        <div class="timeline-tasks"><ul lang="ko">
+          <li>Jira 자동화 → 리더 업무 20% 효율화</li>
+          <li>Zapier·ChatGPT 반복 작업 자동화 → 알림 누락 0건</li>
+        </ul><ul lang="en">
+          <li>Jira automation → 20% leadership efficiency gain</li>
+          <li>Zapier · ChatGPT repetitive task automation → 0 missed alerts</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="timeline-item left">
+      <div class="timeline-node"></div>
+      <div class="timeline-card">
+        <div class="timeline-company"><span lang="ko">위메이드 커넥트</span><span lang="en">Wemade Connect</span></div>
+        <div class="timeline-role"><span lang="ko">사업PM</span><span lang="en">Business PM</span></div>
+        <div class="timeline-period">2020.08 — 2022.03</div>
+        <div class="timeline-status completed">COMPLETED</div>
+        <div class="timeline-tasks"><ul lang="ko">
+          <li>IP 콜라보 제안서 작성 → 매출 135%↑</li>
+          <li>인게임 판매 데이터 분석 → YoY 17% 성장</li>
+        </ul><ul lang="en">
+          <li>IP collab proposal → revenue +135%</li>
+          <li>In-game sales data analysis → YoY 17% growth</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="timeline-item right">
+      <div class="timeline-node"></div>
+      <div class="timeline-card">
+        <div class="timeline-company"><span lang="ko">AN게임즈</span><span lang="en">AN Games</span></div>
+        <div class="timeline-role"><span lang="ko">사업PM</span><span lang="en">Business PM</span></div>
+        <div class="timeline-period">2019.04 — 2020.07</div>
+        <div class="timeline-status completed">COMPLETED</div>
+        <div class="timeline-tasks"><ul lang="ko">
+          <li>TC 표준 프레임워크 설계 → 전사 채택</li>
+          <li>매출 분석 리포팅 & KPI 데이터 공유</li>
+        </ul><ul lang="en">
+          <li>TC standard framework design → company-wide adoption</li>
+          <li>Revenue analysis reporting & KPI data sharing</li>
+        </ul></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -622,25 +626,7 @@ input:focus-visible{outline:2px solid var(--info);outline-offset:1px}
   </div>
   <div class="quest-grid">
     <div class="quest-card" onclick="openQuest(0)">
-      <div class="quest-thumb"><div class="quest-num-badge">BATTLE 01</div><img src="images/Battle 01.png" alt="" loading="lazy"></div>
-      <div class="quest-body">
-        <div class="quest-title"><span lang="ko">데이터 기반 프로덕트 전략</span><span lang="en">Data-Driven Product Strategy</span></div>
-        <div class="quest-company"><span lang="ko">위메이드 커넥트 | 민트 스튜디오</span><span lang="en">Wemade Connect | Mint Studio</span></div>
-        <div class="quest-period">2020.08 — 2022.03</div>
-        <div class="quest-tags"><span class="quest-tag gold">YoY +17%</span><span class="quest-tag gold"><span lang="ko">IP 콜라보 +135%</span><span lang="en">IP Collab +135%</span></span></div>
-      </div>
-    </div>
-    <div class="quest-card" onclick="openQuest(1)">
-      <div class="quest-thumb"><div class="quest-num-badge">BATTLE 02</div><img src="images/Battle 02_1.png" alt="" loading="lazy"></div>
-      <div class="quest-body">
-        <div class="quest-title"><span lang="ko">운영 툴링 & 프로세스 자동화</span><span lang="en">Operational Tooling & Process Automation</span></div>
-        <div class="quest-company"><span lang="ko">엔픽셀 | UI실 (공용조직)</span><span lang="en">NPIXEL | UI Dept (Shared Org)</span></div>
-        <div class="quest-period">2022.03 — 2024.01</div>
-        <div class="quest-tags"><span class="quest-tag gold"><span lang="ko">20% 효율화</span><span lang="en">20% Efficiency</span></span><span class="quest-tag"><span lang="ko">알림 누락 0건</span><span lang="en">0 Missed Alerts</span></span></div>
-      </div>
-    </div>
-    <div class="quest-card" onclick="openQuest(2)">
-      <div class="quest-thumb"><div class="quest-num-badge">BATTLE 03</div><img src="images/Battle 03_1.png" alt="" loading="lazy"></div>
+      <div class="quest-thumb"><div class="quest-num-badge">BATTLE 01</div><img src="images/Battle 03_1.png" alt="" loading="lazy"></div>
       <div class="quest-body">
         <div class="quest-title"><span lang="ko">전략적 파트너십을 통한 비용 효율적 리소스 확보</span><span lang="en">Cost-Efficient Asset Acquisition via Strategic Partnership</span></div>
         <div class="quest-company"><span lang="ko">크래프톤 / 인조이 스튜디오</span><span lang="en">KRAFTON / inZOI Studio</span></div>
@@ -648,8 +634,8 @@ input:focus-visible{outline:2px solid var(--info);outline-offset:1px}
         <div class="quest-tags"><span class="quest-tag gold"><span lang="ko">89% 비용절감</span><span lang="en">89% Cost Saved</span></span><span class="quest-tag gold"><span lang="ko">15종 에셋</span><span lang="en">15 Assets</span></span></div>
       </div>
     </div>
-    <div class="quest-card" onclick="openQuest(3)">
-      <div class="quest-thumb"><div class="quest-num-badge">BATTLE 04</div><img src="images/Battle 04.png" alt="" loading="lazy"></div>
+    <div class="quest-card" onclick="openQuest(1)">
+      <div class="quest-thumb"><div class="quest-num-badge">BATTLE 02</div><img src="images/Battle 04.png" alt="" loading="lazy"></div>
       <div class="quest-body">
         <div class="quest-title"><span lang="ko">전략적 파트너십 & 이해관계자 관리</span><span lang="en">Strategic Partnerships & Stakeholder Management</span></div>
         <div class="quest-company"><span lang="ko">크래프톤 + 위메이드 커넥트</span><span lang="en">KRAFTON + Wemade Connect</span></div>
@@ -657,22 +643,40 @@ input:focus-visible{outline:2px solid var(--info);outline-offset:1px}
         <div class="quest-tags"><span class="quest-tag gold"><span lang="ko">3사 대기업</span><span lang="en">3 Major Corps</span></span><span class="quest-tag"><span lang="ko">8+ 해외 벤더</span><span lang="en">8+ Global Vendors</span></span><span class="quest-tag">E2E</span></div>
       </div>
     </div>
-    <div class="quest-card" onclick="openQuest(4)">
-      <div class="quest-thumb"><div class="quest-num-badge">BATTLE 05</div><img src="images/Battle 05.png" alt="" loading="lazy"></div>
+    <div class="quest-card" onclick="openQuest(2)">
+      <div class="quest-thumb"><div class="quest-num-badge">BATTLE 03</div><img src="images/Battle 01.png" alt="" loading="lazy"></div>
       <div class="quest-body">
-        <div class="quest-title"><span lang="ko">QA 프로세스 도입</span><span lang="en">QA Process Implementation</span></div>
-        <div class="quest-company"><span lang="ko">AN게임즈 | 아스트로네스트, 아스트로무스메</span><span lang="en">AN Games | Astronest, Astromuse</span></div>
-        <div class="quest-period">2019.04 — 2020.07</div>
-        <div class="quest-tags"><span class="quest-tag gold"><span lang="ko">TC 표준 채택</span><span lang="en">TC Standard Adopted</span></span><span class="quest-tag gold"><span lang="ko">버그 대폭 감소</span><span lang="en">Major Bug Reduction</span></span></div>
+        <div class="quest-title"><span lang="ko">데이터 기반 프로덕트 전략</span><span lang="en">Data-Driven Product Strategy</span></div>
+        <div class="quest-company"><span lang="ko">위메이드 커넥트 | 민트 스튜디오</span><span lang="en">Wemade Connect | Mint Studio</span></div>
+        <div class="quest-period">2020.08 — 2022.03</div>
+        <div class="quest-tags"><span class="quest-tag gold">YoY +17%</span><span class="quest-tag gold"><span lang="ko">IP 콜라보 +135%</span><span lang="en">IP Collab +135%</span></span></div>
       </div>
     </div>
-    <div class="quest-card" onclick="openQuest(5)">
-      <div class="quest-thumb"><div class="quest-num-badge">BATTLE 06</div><img src="images/Battle 06_1.png" alt="" loading="lazy"></div>
+    <div class="quest-card" onclick="openQuest(3)">
+      <div class="quest-thumb"><div class="quest-num-badge">BATTLE 04</div><img src="images/Battle 02_1.png" alt="" loading="lazy"></div>
+      <div class="quest-body">
+        <div class="quest-title"><span lang="ko">운영 툴링 & 프로세스 자동화</span><span lang="en">Operational Tooling & Process Automation</span></div>
+        <div class="quest-company"><span lang="ko">엔픽셀 | UI실 (공용조직)</span><span lang="en">NPIXEL | UI Dept (Shared Org)</span></div>
+        <div class="quest-period">2022.03 — 2024.01</div>
+        <div class="quest-tags"><span class="quest-tag gold"><span lang="ko">20% 효율화</span><span lang="en">20% Efficiency</span></span><span class="quest-tag"><span lang="ko">알림 누락 0건</span><span lang="en">0 Missed Alerts</span></span></div>
+      </div>
+    </div>
+    <div class="quest-card" onclick="openQuest(4)">
+      <div class="quest-thumb"><div class="quest-num-badge">BATTLE 05</div><img src="images/Battle 06_1.png" alt="" loading="lazy"></div>
       <div class="quest-body">
         <div class="quest-title"><span lang="ko">AI를 활용한 워크플로우 개선</span><span lang="en">AI-Driven Workflow Innovation</span></div>
         <div class="quest-company"><span lang="ko">현재 진행형</span><span lang="en">Ongoing</span></div>
         <div class="quest-period"><span lang="ko">2024 — 현재</span><span lang="en">2024 — Present</span></div>
         <div class="quest-tags"><span class="quest-tag gold"><span lang="ko">6+ AI 도구</span><span lang="en">6+ AI Tools</span></span><span class="quest-tag"><span lang="ko">워크플로우 자동화</span><span lang="en">Workflow Automation</span></span></div>
+      </div>
+    </div>
+    <div class="quest-card" onclick="openQuest(5)">
+      <div class="quest-thumb"><div class="quest-num-badge">BATTLE 06</div><img src="images/Battle 05.png" alt="" loading="lazy"></div>
+      <div class="quest-body">
+        <div class="quest-title"><span lang="ko">QA 프로세스 도입</span><span lang="en">QA Process Implementation</span></div>
+        <div class="quest-company"><span lang="ko">AN게임즈 | 아스트로네스트, 아스트로무스메</span><span lang="en">AN Games | Astronest, Astromuse</span></div>
+        <div class="quest-period">2019.04 — 2020.07</div>
+        <div class="quest-tags"><span class="quest-tag gold"><span lang="ko">TC 표준 채택</span><span lang="en">TC Standard Adopted</span></span><span class="quest-tag gold"><span lang="ko">버그 대폭 감소</span><span lang="en">Major Bug Reduction</span></span></div>
       </div>
     </div>
   </div>
@@ -853,21 +857,7 @@ input:focus-visible{outline:2px solid var(--info);outline-offset:1px}
   </div>
 </section>
 
-<!-- TAB 5: ACHIEVEMENTS -->
-<section class="section" id="sec-achievements">
-  <div class="section-header">
-    <div class="section-tag">Unlocked Badges</div>
-    <h2><span lang="ko">업적</span><span lang="en">Achievements</span></h2>
-  </div>
-  <div class="achieve-grid">
-    <div class="achieve-card shimmer"><div class="achieve-icon">📈</div><div class="achieve-name"><span lang="ko">제품 성장 견인</span><span lang="en">Product Growth Driver</span></div><div class="achieve-desc"><span lang="ko">YoY 매출 17% 성장 견인, IP 콜라보 +135% 달성</span><span lang="en">Led YoY 17% revenue growth, IP collab +135%</span></div></div>
-    <div class="achieve-card shimmer"><div class="achieve-icon">⚡</div><div class="achieve-name"><span lang="ko">프로세스 설계자</span><span lang="en">Process Architect</span></div><div class="achieve-desc"><span lang="ko">운영 20% 효율화, 개인 업무 60% 효율화, 알림 누락 0건</span><span lang="en">20% ops efficiency, 60% personal efficiency, 0 missed alerts</span></div></div>
-    <div class="achieve-card shimmer"><div class="achieve-icon">💰</div><div class="achieve-name"><span lang="ko">비용 최적화 챔피언</span><span lang="en">Cost Optimization Champion</span></div><div class="achieve-desc"><span lang="ko">파트너십으로 89% 비용 절감, 15종 에셋 확보</span><span lang="en">89% cost savings via partnership, 15 assets secured</span></div></div>
-    <div class="achieve-card shimmer"><div class="achieve-icon">🌍</div><div class="achieve-name"><span lang="ko">글로벌 네고시에이터</span><span lang="en">Global Negotiator</span></div><div class="achieve-desc"><span lang="ko">3사 대기업, 8+ 해외 벤더 이해관계자 관리</span><span lang="en">3 Major Corps, 8+ Global Vendors Stakeholder Mgmt</span></div></div>
-    <div class="achieve-card shimmer"><div class="achieve-icon">📝</div><div class="achieve-name"><span lang="ko">TC 표준 설계자</span><span lang="en">TC Standard Creator</span></div><div class="achieve-desc"><span lang="ko">TC 표준 프레임워크 설계 및 전사 채택, 버그 대폭 감소</span><span lang="en">TC standard framework adopted company-wide, major bug reduction</span></div></div>
-    <div class="achieve-card shimmer"><div class="achieve-icon">🚀</div><div class="achieve-name"><span lang="ko">워크플로우 혁신가</span><span lang="en">Workflow Innovator</span></div><div class="achieve-desc"><span lang="ko">6+ AI 도구 활용, 리포트 산출 워크플로우 자동화</span><span lang="en">6+ AI tools utilized, report generation workflow automated</span></div></div>
-  </div>
-</section>
+<!-- Achievements section removed (consolidated into Battle Log) -->
 
 <!-- TAB 6: CHAT -->
 <section class="section" id="sec-chat">
@@ -1042,27 +1032,7 @@ const MODAL_LABELS = {
 const QUESTS_DATA = {
   ko:[
     {
-      num:'BATTLE 01', title:'데이터 기반 프로덕트 전략',
-      meta:'<span>위메이드 커넥트 | 민트 스튜디오</span> · 2020.08 — 2022.03',
-      summary:'데이터 기반 의사결정 체계가 전무했던 팀에서 매출 트래킹 시스템을 직접 구축하여 YoY 17% 성장을 견인하고, IP 콜라보 전략으로 135% 매출 상승을 달성',
-      before:['정리된 업데이트 히스토리 문서 전무, 당일 지표가 메일로만 공유되어 후임자 히스토리 확인 어려움','업데이트 간 매출 비교 불가능','구조화된 유저 리서치 및 FGT 피드백 프로세스 부재'],
-      after:['업데이트별 당일 매출 분석 문서 구축 (전년 동기 대비 비교 가능) → YoY 17% 매출 상승','IP 콜라보 제안서 ROI 분석 포함 (에스더버니: 평시 대비 135% 매출 증가)','FGT 설문 설계로 개발자-유저 관점 차이 분석'],
-      metrics:[{v:17,suffix:'%',label:'전년 동기 대비 3개월 평균 매출 상승',gold:true},{v:135,suffix:'%',label:'IP 콜라보 통한 평시 대비 매출 증가',gold:true},{text:'User Data',label:'FGT 설문 설계를 통해 유저 데이터 취합, 유저 관점 설계 시작'}],
-      images:['images/Battle 01.png'],
-      insight:'PM의 가치는 업무를 실행하는 것뿐 아니라, 더 나은 의사결정을 가능하게 하는 시스템을 만드는 데 있음. 데이터화는 단순한 과거의 결과 성과 확인이 아닌, 미래의 지표 개선을 위한 방향성의 척도가 됨.'
-    },
-    {
-      num:'BATTLE 02', title:'운영 툴링 & 프로세스 자동화',
-      meta:'<span>엔픽셀 | UI실 (공용조직)</span> · 2022.03 — 2024.01',
-      summary:'공용 조직에서 4개 이상의 게임 프로젝트에서 수작업 병목을 발견하고, 팀 표준이 된 자동화 도구를 직접 구축',
-      before:['매번 수동 Jira 티켓 생성 필요','마감일 누락, 선제적 알림 부재','반복 캘린더 일정 수동 생성'],
-      after:['Jira Automation — 리소스 요청 트리거 충족 시 자동으로 티켓 생성 → 리더 업무 20% 효율화','Zapier (Jira → Slack) — 관련 채널에 마감 전 자동 리마인더 → 알림 누락 0건','ChatGPT + AppScript — 사전 정의 규칙에 따른 반복 일정 자동 생성 → PM 시간 확보'],
-      metrics:[{v:20,suffix:'%',label:'리더 업무 효율화',gold:true},{v:0,suffix:'건',label:'알림 누락 건수',gold:true},{text:'∞',label:'PM 시간 확보'}],
-      images:['images/Battle 02_1.png','images/Battle 02_2.png','images/Battle 02_3.png','images/Battle 02_4.png','images/Battle 02_5.png'],
-      insight:'내부 툴링 = 프로덕트 업무. 전통적 의미의 제품은 아니었지만, 동일한 PM 로직을 따랐음: 유저(팀원) 페인포인트 파악 → 솔루션 설계 → 구축 & 배포 → 결과 측정'
-    },
-    {
-      num:'BATTLE 03', title:'전략적 파트너십을 통한 비용 효율적 리소스 확보',
+      num:'BATTLE 01', title:'전략적 파트너십을 통한 비용 효율적 리소스 확보',
       meta:'<span>크래프톤 / 인조이 스튜디오</span> · 2024.02 — 현재',
       summary:'마케팅 이벤트를 리소스 확보 전략으로 전환하여, 89% 비용 절감과 커뮤니티 마케팅 효과를 동시에 달성',
       before:['게임스컴 데뷔를 위한 15종+ 의상 에셋 필요','풀 외주 시 7,500만 원 이상, 예산상 비현실적','기존 에셋 확보 채널의 한계'],
@@ -1072,7 +1042,7 @@ const QUESTS_DATA = {
       insight:'Win-Win-Win 전략: 모든 이해관계자에게 가치를 제공하는 파트너십 구조를 설계하여, 비용 효율성과 마케팅 효과를 동시에 달성한 케이스.'
     },
     {
-      num:'BATTLE 04', title:'전략적 파트너십 & 이해관계자 관리',
+      num:'BATTLE 02', title:'전략적 파트너십 & 이해관계자 관리',
       meta:'<span>크래프톤/인조이 스튜디오 + 위메이드 커넥트</span> · 2020 — 현재',
       summary:'글로벌 대기업, 8개 이상 해외 벤더, 개발 파이프라인을 아우르는 4개 타임존의 멀티 파티 콜라보를 관리',
       before:['대기업 브랜드 콜라보 (인조이 스튜디오) — LG전자, 삼성 디스플레이, 현대자동차와 파트너-내부 팀 간 브릿지, 업무 범위 정의, 승인 워크플로우 표준화','멀티 타임존 벤더 파이프라인 (인조이 스튜디오) — 해외 벤더 8개사 이상 (KR, CN, SEA, EU) 영한 SoW/계약서 직접 작성','IP 콜라보 풀 사이클 (위메이드 커넥트) — 리서치 & 타겟팅 → 아웃리치 & 협상 → 법무 → 에셋 관리 → 정산 → 매출 135%↑'],
@@ -1082,17 +1052,27 @@ const QUESTS_DATA = {
       insight:'이 규모의 이해관계자 관리는 각 당사자의 인센티브, 제약, 타임라인을 이해한 후 이를 정렬하는 시스템 사고를 요구함. 4개 타임존, 8개 이상 벤더를 조율하는 역량은 스튜디오와 부서를 아우르는 플랫폼 기능을 조율하는 데 직접 전이됨.'
     },
     {
-      num:'BATTLE 05', title:'QA 프로세스 도입',
-      meta:'<span>AN게임즈 | 아스트로네스트, 아스트로무스메</span> · 2019.04 — 2020.07',
-      summary:'팀 내 유일한 PM으로서, 반복적 서비스 장애의 근본 원인을 발견하고 조직 표준이 된 QA 프레임워크를 직접 구축',
-      before:['격주 점검마다 클라이언트 버그 발생, 잦은 긴급 점검, 유저 부정 동향 증가','QA 체크리스트나 테스트 케이스 문서 전무','구조화된 검증 없이 릴리즈'],
-      after:['레드마인 일감과 기획서 기반 종합 TC 문서 작성','TC 기반 QA 프로세스를 개발팀에 제안','버그 및 긴급 점검 대폭 감소, TC 양식이 이후 모든 대규모 업데이트 표준 템플릿으로 채택'],
-      metrics:[{v:100,suffix:'%',label:'TC 표준 채택',gold:true},{text:'대폭↓',label:'버그 및 긴급 점검 감소',gold:true},{text:'표준화',label:'모든 업데이트에 TC 템플릿 적용'}],
-      images:['images/Battle 05.png'],
-      insight:'이 초기 경험에서 확립한 패턴을 커리어 전반에 걸쳐 적용: 반복되는 실패 관찰 → 근본 원인 진단 → 체계적 솔루션 구축'
+      num:'BATTLE 03', title:'데이터 기반 프로덕트 전략',
+      meta:'<span>위메이드 커넥트 | 민트 스튜디오</span> · 2020.08 — 2022.03',
+      summary:'데이터 기반 의사결정 체계가 전무했던 팀에서 매출 트래킹 시스템을 직접 구축하여 YoY 17% 성장을 견인하고, IP 콜라보 전략으로 135% 매출 상승을 달성',
+      before:['정리된 업데이트 히스토리 문서 전무, 당일 지표가 메일로만 공유되어 후임자 히스토리 확인 어려움','업데이트 간 매출 비교 불가능','구조화된 유저 리서치 및 FGT 피드백 프로세스 부재'],
+      after:['업데이트별 당일 매출 분석 문서 구축 (전년 동기 대비 비교 가능) → YoY 17% 매출 상승','IP 콜라보 제안서 ROI 분석 포함 (에스더버니: 평시 대비 135% 매출 증가)','FGT 설문 설계로 개발자-유저 관점 차이 분석'],
+      metrics:[{v:17,suffix:'%',label:'전년 동기 대비 3개월 평균 매출 상승',gold:true},{v:135,suffix:'%',label:'IP 콜라보 통한 평시 대비 매출 증가',gold:true},{text:'User Data',label:'FGT 설문 설계를 통해 유저 데이터 취합, 유저 관점 설계 시작'}],
+      images:['images/Battle 01.png'],
+      insight:'PM의 가치는 업무를 실행하는 것뿐 아니라, 더 나은 의사결정을 가능하게 하는 시스템을 만드는 데 있음. 데이터화는 단순한 과거의 결과 성과 확인이 아닌, 미래의 지표 개선을 위한 방향성의 척도가 됨.'
     },
     {
-      num:'BATTLE 06', title:'AI를 활용한 워크플로우 개선',
+      num:'BATTLE 04', title:'운영 툴링 & 프로세스 자동화',
+      meta:'<span>엔픽셀 | UI실 (공용조직)</span> · 2022.03 — 2024.01',
+      summary:'공용 조직에서 4개 이상의 게임 프로젝트에서 수작업 병목을 발견하고, 팀 표준이 된 자동화 도구를 직접 구축',
+      before:['매번 수동 Jira 티켓 생성 필요','마감일 누락, 선제적 알림 부재','반복 캘린더 일정 수동 생성'],
+      after:['Jira Automation — 리소스 요청 트리거 충족 시 자동으로 티켓 생성 → 리더 업무 20% 효율화','Zapier (Jira → Slack) — 관련 채널에 마감 전 자동 리마인더 → 알림 누락 0건','ChatGPT + AppScript — 사전 정의 규칙에 따른 반복 일정 자동 생성 → PM 시간 확보'],
+      metrics:[{v:20,suffix:'%',label:'리더 업무 효율화',gold:true},{v:0,suffix:'건',label:'알림 누락 건수',gold:true},{text:'∞',label:'PM 시간 확보'}],
+      images:['images/Battle 02_1.png','images/Battle 02_2.png','images/Battle 02_3.png','images/Battle 02_4.png','images/Battle 02_5.png'],
+      insight:'내부 툴링 = 프로덕트 업무. 전통적 의미의 제품은 아니었지만, 동일한 PM 로직을 따랐음: 유저(팀원) 페인포인트 파악 → 솔루션 설계 → 구축 & 배포 → 결과 측정'
+    },
+    {
+      num:'BATTLE 05', title:'AI를 활용한 워크플로우 개선',
       meta:'<span>현재 진행형</span> · 2024 — 현재',
       summary:'커뮤니티 피드백 분석부터 프로젝트 문서화까지, PM 워크플로우를 자동화하는 AI 기반 도구를 적극 연구 및 적용 중',
       before:['수동 커뮤니티 피드백 수집 및 분석','반복적 문서 작성 및 일정 관리','다국어 벤더 커뮤니케이션 수작업'],
@@ -1100,31 +1080,21 @@ const QUESTS_DATA = {
       metrics:[{v:6,suffix:'+',label:'AI 도구 활용',gold:true},{v:40,suffix:'%+',label:'워크플로우 효율화'},{v:3,suffix:'개+',label:'신규 파이프라인'}],
       images:['images/Battle 06_1.png','images/Battle 06_2.png','images/Battle 06_3.png','images/Battle6_05.png','images/Battle6_06.png','images/Battle6_07.png','images/Battle6_08.png'],
       insight:'AI를 단순 도구가 아닌 PM 워크플로우 전반에 통합하여 생산성을 혁신하고, 새로운 파이프라인을 구축하는 것이 핵심. 기술 자체보다 "어떤 문제를 해결하는가"에 집중.'
+    },
+    {
+      num:'BATTLE 06', title:'QA 프로세스 도입',
+      meta:'<span>AN게임즈 | 아스트로네스트, 아스트로무스메</span> · 2019.04 — 2020.07',
+      summary:'팀 내 유일한 PM으로서, 반복적 서비스 장애의 근본 원인을 발견하고 조직 표준이 된 QA 프레임워크를 직접 구축',
+      before:['격주 점검마다 클라이언트 버그 발생, 잦은 긴급 점검, 유저 부정 동향 증가','QA 체크리스트나 테스트 케이스 문서 전무','구조화된 검증 없이 릴리즈'],
+      after:['레드마인 일감과 기획서 기반 종합 TC 문서 작성','TC 기반 QA 프로세스를 개발팀에 제안','버그 및 긴급 점검 대폭 감소, TC 양식이 이후 모든 대규모 업데이트 표준 템플릿으로 채택'],
+      metrics:[{v:100,suffix:'%',label:'TC 표준 채택',gold:true},{text:'대폭↓',label:'버그 및 긴급 점검 감소',gold:true},{text:'표준화',label:'모든 업데이트에 TC 템플릿 적용'}],
+      images:['images/Battle 05.png'],
+      insight:'이 초기 경험에서 확립한 패턴을 커리어 전반에 걸쳐 적용: 반복되는 실패 관찰 → 근본 원인 진단 → 체계적 솔루션 구축'
     }
   ],
   en:[
     {
-      num:'BATTLE 01', title:'Data-Driven Product Strategy',
-      meta:'<span>Wemade Connect | Mint Studio</span> · 2020.08 — 2022.03',
-      summary:'Built a revenue tracking system from scratch in a team with no data-driven decision framework, driving YoY 17% growth and achieving 135% revenue increase through IP collaboration strategy',
-      before:['No organized update history docs; daily metrics shared only via email, making it hard for successors to trace history','No way to compare revenue across updates','No structured user research or FGT feedback process'],
-      after:['Built per-update daily revenue analysis docs (YoY comparison enabled) → YoY 17% revenue growth','IP collab proposals with ROI analysis (Esther Bunny: 135% revenue increase vs. baseline)','FGT survey design to analyze developer-user perspective gaps'],
-      metrics:[{v:17,suffix:'%',label:'3-month avg revenue YoY growth',gold:true},{v:135,suffix:'%',label:'Revenue increase from IP collab vs. baseline',gold:true},{text:'User Data',label:'User data collection via FGT survey design'}],
-      images:['images/Battle 01.png'],
-      insight:'A PM\'s value lies not just in executing tasks, but in building systems that enable better decisions. Data documentation isn\'t just about reviewing past results—it becomes a compass for future improvement.'
-    },
-    {
-      num:'BATTLE 02', title:'Operational Tooling & Process Automation',
-      meta:'<span>NPIXEL | UI Dept (Shared Org)</span> · 2022.03 — 2024.01',
-      summary:'Identified manual bottlenecks across 4+ game projects in a shared organization and built automation tools that became team standards',
-      before:['Manual Jira ticket creation required every time','Missed deadlines due to lack of proactive alerts','Recurring calendar events created manually'],
-      after:['Jira Automation — auto ticket creation on resource request trigger → 20% leadership efficiency gain','Zapier (Jira → Slack) — auto deadline reminders to relevant channels → 0 missed alerts','ChatGPT + AppScript — auto recurring schedule creation per predefined rules → PM time freed up'],
-      metrics:[{v:20,suffix:'%',label:'Leadership efficiency gain',gold:true},{v:0,suffix:'',label:'Missed alerts',gold:true},{text:'∞',label:'PM time freed up'}],
-      images:['images/Battle 02_1.png','images/Battle 02_2.png','images/Battle 02_3.png','images/Battle 02_4.png','images/Battle 02_5.png'],
-      insight:'Internal tooling = product work. While not a traditional product, it followed the same PM logic: identify user (team) pain points → design solutions → build & deploy → measure results'
-    },
-    {
-      num:'BATTLE 03', title:'Cost-Efficient Asset Acquisition via Strategic Partnership',
+      num:'BATTLE 01', title:'Cost-Efficient Asset Acquisition via Strategic Partnership',
       meta:'<span>KRAFTON / inZOI Studio</span> · 2024.02 — Present',
       summary:'Transformed a marketing event into a resource acquisition strategy, achieving 89% cost savings and community marketing impact simultaneously',
       before:['15+ clothing assets needed for Gamescom debut','Full outsourcing would cost 75M+ KRW, unrealistic for budget','Limited existing asset procurement channels'],
@@ -1134,7 +1104,7 @@ const QUESTS_DATA = {
       insight:'Win-Win-Win strategy: Designed a partnership structure that delivers value to all stakeholders, achieving both cost efficiency and marketing impact simultaneously.'
     },
     {
-      num:'BATTLE 04', title:'Strategic Partnerships & Stakeholder Management',
+      num:'BATTLE 02', title:'Strategic Partnerships & Stakeholder Management',
       meta:'<span>KRAFTON / inZOI Studio + Wemade Connect</span> · 2020 — Present',
       summary:'Managed multi-party collaborations spanning global enterprises, 8+ international vendors, and development pipelines across 4 time zones',
       before:['Enterprise brand collabs (inZOI Studio) — Bridged LG Electronics, Samsung Display, Hyundai Motor with internal teams; defined scope of work and standardized approval workflows','Multi-timezone vendor pipeline (inZOI Studio) — 8+ international vendors (KR, CN, SEA, EU); drafted EN-KR SoW/contracts directly','IP collab full cycle (Wemade Connect) — Research & targeting → outreach & negotiation → legal → asset management → settlement → revenue +135%'],
@@ -1144,17 +1114,27 @@ const QUESTS_DATA = {
       insight:'Stakeholder management at this scale requires systems thinking—understanding each party\'s incentives, constraints, and timelines, then aligning them. The ability to coordinate 4 time zones and 8+ vendors translates directly to orchestrating platform-level features across studios and departments.'
     },
     {
-      num:'BATTLE 05', title:'QA Process Implementation',
-      meta:'<span>AN Games | Astronest, Astromuse</span> · 2019.04 — 2020.07',
-      summary:'As the sole PM on the team, identified the root cause of recurring service incidents and built a QA framework that became the organizational standard',
-      before:['Client bugs with every bi-weekly maintenance, frequent emergency patches, rising negative user sentiment','No QA checklists or test case documentation','Releases shipped without structured verification'],
-      after:['Created comprehensive TC documentation based on Redmine tasks and design specs','Proposed TC-based QA process to the development team','Major reduction in bugs and emergency patches; TC template adopted as standard for all major updates'],
-      metrics:[{v:100,suffix:'%',label:'TC standard adoption',gold:true},{text:'Major↓',label:'Bug and emergency patch reduction',gold:true},{text:'Standardized',label:'TC template applied to all updates'}],
-      images:['images/Battle 05.png'],
-      insight:'The pattern established in this early experience has been applied throughout my career: observe recurring failures → diagnose root causes → build systematic solutions'
+      num:'BATTLE 03', title:'Data-Driven Product Strategy',
+      meta:'<span>Wemade Connect | Mint Studio</span> · 2020.08 — 2022.03',
+      summary:'Built a revenue tracking system from scratch in a team with no data-driven decision framework, driving YoY 17% growth and achieving 135% revenue increase through IP collaboration strategy',
+      before:['No organized update history docs; daily metrics shared only via email, making it hard for successors to trace history','No way to compare revenue across updates','No structured user research or FGT feedback process'],
+      after:['Built per-update daily revenue analysis docs (YoY comparison enabled) → YoY 17% revenue growth','IP collab proposals with ROI analysis (Esther Bunny: 135% revenue increase vs. baseline)','FGT survey design to analyze developer-user perspective gaps'],
+      metrics:[{v:17,suffix:'%',label:'3-month avg revenue YoY growth',gold:true},{v:135,suffix:'%',label:'Revenue increase from IP collab vs. baseline',gold:true},{text:'User Data',label:'User data collection via FGT survey design'}],
+      images:['images/Battle 01.png'],
+      insight:'A PM\'s value lies not just in executing tasks, but in building systems that enable better decisions. Data documentation isn\'t just about reviewing past results—it becomes a compass for future improvement.'
     },
     {
-      num:'BATTLE 06', title:'AI-Driven Workflow Innovation',
+      num:'BATTLE 04', title:'Operational Tooling & Process Automation',
+      meta:'<span>NPIXEL | UI Dept (Shared Org)</span> · 2022.03 — 2024.01',
+      summary:'Identified manual bottlenecks across 4+ game projects in a shared organization and built automation tools that became team standards',
+      before:['Manual Jira ticket creation required every time','Missed deadlines due to lack of proactive alerts','Recurring calendar events created manually'],
+      after:['Jira Automation — auto ticket creation on resource request trigger → 20% leadership efficiency gain','Zapier (Jira → Slack) — auto deadline reminders to relevant channels → 0 missed alerts','ChatGPT + AppScript — auto recurring schedule creation per predefined rules → PM time freed up'],
+      metrics:[{v:20,suffix:'%',label:'Leadership efficiency gain',gold:true},{v:0,suffix:'',label:'Missed alerts',gold:true},{text:'∞',label:'PM time freed up'}],
+      images:['images/Battle 02_1.png','images/Battle 02_2.png','images/Battle 02_3.png','images/Battle 02_4.png','images/Battle 02_5.png'],
+      insight:'Internal tooling = product work. While not a traditional product, it followed the same PM logic: identify user (team) pain points → design solutions → build & deploy → measure results'
+    },
+    {
+      num:'BATTLE 05', title:'AI-Driven Workflow Innovation',
       meta:'<span>Ongoing</span> · 2024 — Present',
       summary:'Actively researching and applying AI-powered tools to automate PM workflows, from community feedback analysis to project documentation',
       before:['Manual community feedback collection and analysis','Repetitive document creation and schedule management','Manual multilingual vendor communication'],
@@ -1162,6 +1142,16 @@ const QUESTS_DATA = {
       metrics:[{v:6,suffix:'+',label:'AI tools utilized',gold:true},{v:40,suffix:'%+',label:'Workflow efficiency gain'},{v:3,suffix:'+',label:'New pipelines built'}],
       images:['images/Battle 06_1.png','images/Battle 06_2.png','images/Battle 06_3.png','images/Battle6_05.png','images/Battle6_06.png','images/Battle6_07.png','images/Battle6_08.png'],
       insight:'The key is integrating AI across the entire PM workflow—not as a mere tool, but as a way to innovate productivity and build new pipelines. Focus on "what problems to solve" rather than the technology itself.'
+    },
+    {
+      num:'BATTLE 06', title:'QA Process Implementation',
+      meta:'<span>AN Games | Astronest, Astromuse</span> · 2019.04 — 2020.07',
+      summary:'As the sole PM on the team, identified the root cause of recurring service incidents and built a QA framework that became the organizational standard',
+      before:['Client bugs with every bi-weekly maintenance, frequent emergency patches, rising negative user sentiment','No QA checklists or test case documentation','Releases shipped without structured verification'],
+      after:['Created comprehensive TC documentation based on Redmine tasks and design specs','Proposed TC-based QA process to the development team','Major reduction in bugs and emergency patches; TC template adopted as standard for all major updates'],
+      metrics:[{v:100,suffix:'%',label:'TC standard adoption',gold:true},{text:'Major↓',label:'Bug and emergency patch reduction',gold:true},{text:'Standardized',label:'TC template applied to all updates'}],
+      images:['images/Battle 05.png'],
+      insight:'The pattern established in this early experience has been applied throughout my career: observe recurring failures → diagnose root causes → build systematic solutions'
     }
   ]
 };
@@ -1343,7 +1333,7 @@ function startTyping(){
   const el=document.getElementById('typing-target');
   if(!el)return;
   let typingIdx=0;
-  const HOLD_MS=2800, FADE_MS=600, GAP_MS=200;
+  const HOLD_MS=4500, FADE_MS=700, GAP_MS=300;
   function showPhrase(phrase,cb){
     el.textContent=phrase;
     requestAnimationFrame(()=>{el.classList.add('visible')});
@@ -1735,9 +1725,9 @@ function fetchStreamResponse(messages, onDone, onError) {
   var particlesEl=widget.querySelector('.char-particles');
   var stages=[
     {section:'sec-profile',lv:1,icon:'🧑‍💼',label:'Lv.1'},
-    {section:'sec-quests',lv:3,icon:'⚔️',label:'Lv.3'},
-    {section:'sec-skills',lv:5,icon:'🔮',label:'Lv.5'},
-    {section:'sec-achievements',lv:7,icon:'👑',label:'Lv.7'},
+    {section:'sec-journey',lv:3,icon:'🗺️',label:'Lv.3'},
+    {section:'sec-quests',lv:5,icon:'⚔️',label:'Lv.5'},
+    {section:'sec-skills',lv:7,icon:'🔮',label:'Lv.7'},
     {section:'sec-chat',lv:9,icon:'💬',label:'Lv.9'},
     {section:'sec-contact',lv:99,icon:'🏆',label:'MAX'}
   ];
