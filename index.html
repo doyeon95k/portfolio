@@ -249,21 +249,26 @@ main{padding-top:70px;position:relative;z-index:1}
 
 /* ===== TAB 4: SKILLS ===== */
 .skills-layout{display:flex;flex-direction:column;align-items:center;gap:2rem}
-/* Editorial: hairline divider list (no cards, no pills) */
-.skill-categories{display:flex;flex-direction:column;gap:0;width:100%;max-width:780px;margin:0 auto}
-.skill-cat{background:none;border:none;border-top:1px solid var(--border);border-radius:0;padding:1.6rem 0;display:block;transition:none}
-.skill-cat:last-child{border-bottom:1px solid var(--border)}
+/* Editorial: 3-column grid + hairline borders (no cards, no pills) */
+.skill-categories{display:grid;grid-template-columns:1fr 1fr 1fr;column-gap:0;width:100%;border-top:1px solid var(--border)}
+.skill-cat{background:none;border:none;border-radius:0;padding:1.6rem 1.6rem;transition:none}
+.skill-cat:nth-child(2),.skill-cat:nth-child(3){border-left:1px solid var(--border)}
+.skill-cat:first-child{padding-left:0}
+.skill-cat:nth-child(3){padding-right:0}
+.skill-cat:nth-child(4){grid-column:1 / -1;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding-left:0;padding-right:0}
 .skill-cat:hover{border-color:var(--border)}
 .skill-cat-header{display:block;margin-bottom:.9rem;cursor:default}
-.skill-cat-name{font-size:1.05rem;font-weight:800;color:var(--text-bright);letter-spacing:-.01em}
-.skill-nodes{display:flex;flex-direction:column;gap:.45rem}
-.skill-node{display:flex;align-items:baseline;justify-content:flex-start;gap:.7rem;padding:0 0 0 .9rem;background:none;border:none;border-radius:0;font-size:.95rem;font-weight:400;color:var(--text);transition:none;position:relative;min-width:0}
+.skill-cat-name{font-size:1.02rem;font-weight:800;color:var(--text-bright);letter-spacing:-.01em}
+.skill-nodes{display:flex;flex-direction:column;gap:.4rem}
+.skill-cat:nth-child(4) .skill-nodes{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem 1.5rem}
+.skill-cat:nth-child(4) .skill-node.wide{grid-column:auto}
+.skill-node{display:flex;align-items:baseline;justify-content:flex-start;gap:.6rem;padding:0 0 0 .8rem;background:none;border:none;border-radius:0;font-size:.92rem;font-weight:400;color:var(--text);transition:none;position:relative;min-width:0}
 .skill-node:hover{background:none;border:none}
 .skill-node::before{content:'';position:absolute;left:0;top:.6em;width:4px;height:1px;background:var(--text-meta);opacity:.6}
 .skill-node .skill-dots{display:none}
 .skill-node>span:first-child{flex:0 1 auto;min-width:0}
-.skill-node.wide{grid-column:auto;width:auto}
-.skill-tooltip{flex-shrink:0;display:inline-flex;align-items:baseline;padding:0;border-radius:0;font-size:.78rem;font-weight:500;letter-spacing:.3px;white-space:nowrap;background:none;border:none;color:var(--text-meta);position:static;transform:none;box-shadow:none;pointer-events:none;font-family:var(--font-en)}
+.skill-node.wide{width:auto}
+.skill-tooltip{flex-shrink:0;display:inline-flex;align-items:baseline;padding:0;border-radius:0;font-size:.76rem;font-weight:500;letter-spacing:.3px;white-space:nowrap;background:none;border:none;color:var(--text-meta);position:static;transform:none;box-shadow:none;pointer-events:none;font-family:var(--font-en)}
 .skill-node[data-level="5"] .skill-tooltip,.skill-node:has(.skill-dot.gold) .skill-tooltip{background:none;border:none;color:var(--accent);font-weight:600}
 
 /* Radar Chart */
@@ -323,8 +328,11 @@ main{padding-top:70px;position:relative;z-index:1}
 /* ===== RESPONSIVE ===== */
 @media(max-width:1024px){
   .ba-grid{grid-template-columns:1fr}
-  .skill-categories{grid-template-columns:1fr 1fr}
-  .skill-nodes{grid-template-columns:1fr 1fr}
+  .skill-categories{display:flex;flex-direction:column}
+  .skill-cat{border:none!important;padding:1.4rem 0}
+  .skill-cat:not(:first-child){border-top:1px solid var(--border)!important}
+  .skill-cat:nth-child(4){border-bottom:1px solid var(--border)!important}
+  .skill-cat:nth-child(4) .skill-nodes{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:768px){
   .nav-tabs{display:none!important}
@@ -339,7 +347,6 @@ main{padding-top:70px;position:relative;z-index:1}
   .metric-row{flex-direction:column}
   .modal{max-height:90vh;border-radius:12px;margin:0.5rem}
   .modal-close{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
-  .skill-categories{grid-template-columns:1fr}
   .skill-tooltip{font-size:.72rem}
   .profile-photo{width:120px;height:120px}
   .radar-wrap{max-width:260px;margin:0 auto}
@@ -352,8 +359,7 @@ main{padding-top:70px;position:relative;z-index:1}
 @media(max-width:480px){
   .achieve-grid{grid-template-columns:1fr 1fr}
   .profile-name{font-size:1.4rem}
-  .skill-nodes{grid-template-columns:1fr}
-  .skill-node.wide{grid-column:span 1}
+  .skill-cat:nth-child(4) .skill-nodes{grid-template-columns:1fr}
 }
 /* ===== GAME EFFECTS ===== */
 
