@@ -582,7 +582,7 @@ input:focus-visible{outline:2px solid var(--info);outline-offset:1px}
           <li>RPA 기반 워크플로우 자동화 체계 구축 — 반복 업무 제거 및 운영 안정화</li>
         </ul><ul lang="en">
           <li>Redesigned shared-org operations process — implemented Jira automation, cut leadership overhead by 20%</li>
-          <li>Built RPA-driven workflow automation system — eliminated repetitive tasks, achieved 0 missed alerts</li>
+          <li>Built RPA-driven workflow automation system — eliminated repetitive tasks, cut last-minute task completions by 27%</li>
         </ul></div>
       </div>
     </div>
@@ -643,8 +643,8 @@ input:focus-visible{outline:2px solid var(--info);outline-offset:1px}
         <div class="quest-title"><span lang="ko">운영 프로세스 재설계 & 자동화</span><span lang="en">Ops Process Redesign & Automation</span></div>
         <div class="quest-company"><span lang="ko">엔픽셀 · UI실 (공용조직)</span><span lang="en">NPIXEL · UI Dept (Shared Org)</span></div>
         <div class="quest-period">2022.03 — 2024.01</div>
-        <div class="quest-tags" lang="ko"><span class="quest-tag"><span lang="ko">프로세스 재설계</span></span><span class="quest-tag gold"><span lang="ko">20% 효율화</span></span><span class="quest-tag"><span lang="ko">워크플로우 자동화</span></span></div>
-        <div class="quest-tags" lang="en"><span class="quest-tag gold"><span lang="en">20% Efficiency Gain</span></span><span class="quest-tag"><span lang="en">Workflow Automation</span></span><span class="quest-tag"><span lang="en">0 Missed Alerts</span></span></div>
+        <div class="quest-tags" lang="ko"><span class="quest-tag gold"><span lang="ko">리더 업무 20% 효율화</span></span><span class="quest-tag gold"><span lang="ko">마감직전 작업 27% 감소</span></span><span class="quest-tag"><span lang="ko">워크플로우 자동화</span></span></div>
+        <div class="quest-tags" lang="en"><span class="quest-tag gold"><span lang="en">20% Efficiency Gain</span></span><span class="quest-tag gold"><span lang="en">27% Less Last-Minute Tasks</span></span><span class="quest-tag"><span lang="en">Workflow Automation</span></span></div>
       </div>
     </div>
     <div class="quest-card" onclick="openQuest(2)">
@@ -1028,8 +1028,8 @@ const QUESTS_DATA = {
       meta:'<span>엔픽셀 · UI실 (공용조직)</span> · 2022.03 — 2024.01',
       summary:'공용 조직에서 4개 이상의 게임 프로젝트의 수작업 병목을 진단하고, 팀 표준이 된 자동화 시스템을 직접 설계·구축',
       before:['매번 수동 Jira 티켓 생성 필요','마감일 누락, 선제적 알림 부재','반복 캘린더 일정 수동 생성'],
-      after:['Jira Automation — 리소스 요청 트리거 충족 시 티켓 자동 생성 → 리더 업무 20% 효율화','Zapier (Jira → Slack) — 채널별 마감 전 자동 리마인더 → 알림 누락 0건','ChatGPT + AppScript — 사전 정의 규칙 기반 반복 일정 자동화 → PM 시간 확보'],
-      metrics:[{v:20,suffix:'%',label:'리더 업무 효율화',gold:true},{v:0,suffix:'건',label:'알림 누락',gold:true},{text:'∞',label:'PM 시간 확보'}],
+      after:['Jira Automation — 리소스 요청 트리거 충족 시 티켓 자동 생성 → 리더 업무 20% 효율화','Zapier (Jira → Slack) — 채널별 마감 전 자동 리마인더 → 마감직전 작업 27% 감소','ChatGPT + AppScript — 사전 정의 규칙 기반 반복 일정 자동화 → PM 시간 확보'],
+      metrics:[{v:20,suffix:'%',label:'리더 업무 효율화',gold:true},{v:27,suffix:'%',label:'마감직전 작업 감소',gold:true},{text:'∞',label:'PM 시간 확보'}],
       images:['images/Battle 02_1.png','images/Battle 02_2.png','images/Battle 02_3.png','images/Battle 02_4.png','images/Battle 02_5.png'],
       insight:'내부 툴링 = 프로덕트 업무. 동일한 PM 로직 적용: 유저(팀원) 페인포인트 파악 → 솔루션 설계 → 구축·배포 → 결과 측정.'
     },
@@ -1080,8 +1080,8 @@ const QUESTS_DATA = {
       meta:'<span>NPIXEL · UI Dept (Shared Org)</span> · 2022.03 — 2024.01',
       summary:'Diagnosed manual bottlenecks across 4+ game projects in a shared organization and engineered an automation system that became the team standard',
       before:['Manual Jira ticket creation required every time','Missed deadlines due to lack of proactive alerts','Recurring calendar events created manually'],
-      after:['Jira Automation — auto ticket creation on resource request trigger → 20% leadership efficiency gain','Zapier (Jira → Slack) — channel-targeted deadline reminders → 0 missed alerts','ChatGPT + AppScript — rule-based recurring schedule automation → PM time freed up'],
-      metrics:[{v:20,suffix:'%',label:'Leadership efficiency gain',gold:true},{v:0,suffix:'',label:'Missed alerts',gold:true},{text:'∞',label:'PM time freed up'}],
+      after:['Jira Automation — auto ticket creation on resource request trigger → 20% leadership efficiency gain','Zapier (Jira → Slack) — channel-targeted deadline reminders → 27% reduction in last-minute task completions','ChatGPT + AppScript — rule-based recurring schedule automation → PM time freed up'],
+      metrics:[{v:20,suffix:'%',label:'Leadership efficiency gain',gold:true},{v:27,suffix:'%',label:'Reduction in last-minute task completions',gold:true},{text:'∞',label:'PM time freed up'}],
       images:['images/Battle 02_1.png','images/Battle 02_2.png','images/Battle 02_3.png','images/Battle 02_4.png','images/Battle 02_5.png'],
       insight:'Internal tooling = product work. Same PM logic applied: identify user (team) pain points → design solutions → build & deploy → measure results.'
     },
