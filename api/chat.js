@@ -75,7 +75,7 @@ Projects: 그랑사가 (Gran Saga), 크로노 오디세이 (Chrono Odyssey), 그
 - UI Branding Division team leader support, organizational administration
 - Key Achievements:
   - Jira Automation → auto ticket creation for 3D modeling resource requests, 20% workflow speed improvement
-  - Zapier (Jira→Slack) & AppScript → automated deadline alert tool, 0 missed alerts, 27% reduction in last-minute task completions
+  - Zapier (Jira→Slack) & AppScript → automated deadline alert tool, 27% reduction in last-minute task completions
   - ChatGPT + AppScript → automated Google Calendar recurring events for productivity improvement
   - 60% personal workflow efficiency gain, enabling more optimization contributions
 - Leader tea time & relationship building: regular tea time & bi-weekly lunches with art team leaders → proactive bottleneck identification & resolution support, progress tracking on key tasks
