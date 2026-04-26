@@ -166,9 +166,8 @@ Title: inZOI
 ## AI Usage (BATTLE 05 — 최신)
 - KissFlow Payment Process Tracking Tool [Shipped]: 사내 결제 승인·처리 흐름을 자동화하는 트래킹 툴 직접 제작 완료
 - Copyright · Trademark · AI-Generated Image Detector [Phase 1 Done]: 에셋 리스크 사전 검증 파이프라인 1차 개발 완료. 현재 언리얼 엔진 자동화 툴 확장 구현 중
-- Claude Code / Gemini / ChatGPT (In Use): 포트폴리오 사이트 구축, 업무 자동화 스크립트, 다국어 벤더 커뮤니케이션 초안, 워크플로우 로직 설계
-- Midjourney (In Use): 컨셉 시안 제작 도구로 아트팀에 추천 → 엔픽셀 실무 도입
-- Whisper · Ollama (Testing): 미팅 녹취록 자동화, 로컬 LLM 환경 테스트
+- Claude Code · Gemini · ChatGPT (In Use): 자동화 스크립트, 다국어 초안, 워크플로우 보조 등 일상 PM 업무 활용
+- Whisper · Ollama (개인 업무 활용중): 미팅 녹취록 자동화, 로컬 LLM 환경 활용
 
 ## Core Philosophy
 "Great products begin with understanding the market and respecting the user."
