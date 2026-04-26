@@ -249,19 +249,22 @@ main{padding-top:70px;position:relative;z-index:1}
 
 /* ===== TAB 4: SKILLS ===== */
 .skills-layout{display:flex;flex-direction:column;align-items:center;gap:2rem}
-.skill-categories{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;width:100%}
-.skill-cat{background:var(--bg-mid);border-radius:12px;padding:1.2rem 1.5rem;border:1px solid rgba(31,82,71,.1);border-left:2px solid var(--primary);transition:all .3s}
-.skill-cat:hover{border-color:rgba(31,82,71,.25)}
-.skill-cat-header{display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;cursor:pointer}
-.skill-cat-name{font-size:.9rem;font-weight:700;color:var(--text-bright)}
-.skill-nodes{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
-.skill-node{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:.55rem .9rem;background:var(--bg-light);border-radius:8px;border:1px solid var(--border);font-size:.88rem;font-weight:500;color:var(--text-bright);transition:all .3s;position:relative;min-width:0}
-.skill-node:hover{border-color:var(--primary);background:rgba(31,82,71,.08)}
+/* Editorial: hairline divider list (no cards, no pills) */
+.skill-categories{display:flex;flex-direction:column;gap:0;width:100%;max-width:780px;margin:0 auto}
+.skill-cat{background:none;border:none;border-top:1px solid var(--border);border-radius:0;padding:1.6rem 0;display:block;transition:none}
+.skill-cat:last-child{border-bottom:1px solid var(--border)}
+.skill-cat:hover{border-color:var(--border)}
+.skill-cat-header{display:block;margin-bottom:.9rem;cursor:default}
+.skill-cat-name{font-size:1.05rem;font-weight:800;color:var(--text-bright);letter-spacing:-.01em}
+.skill-nodes{display:flex;flex-direction:column;gap:.45rem}
+.skill-node{display:flex;align-items:baseline;justify-content:flex-start;gap:.7rem;padding:0 0 0 .9rem;background:none;border:none;border-radius:0;font-size:.95rem;font-weight:400;color:var(--text);transition:none;position:relative;min-width:0}
+.skill-node:hover{background:none;border:none}
+.skill-node::before{content:'';position:absolute;left:0;top:.6em;width:4px;height:1px;background:var(--text-meta);opacity:.6}
 .skill-node .skill-dots{display:none}
-.skill-node>span:first-child{flex:1;min-width:0}
-.skill-node.wide{grid-column:span 2}
-.skill-tooltip{flex-shrink:0;display:inline-flex;align-items:center;padding:.2rem .65rem;border-radius:100px;font-size:.68rem;font-weight:700;letter-spacing:.3px;white-space:nowrap;background:var(--primary-soft);border:1px solid rgba(31,82,71,.3);color:var(--primary);position:static;transform:none;box-shadow:none;pointer-events:none}
-.skill-node[data-level="5"] .skill-tooltip,.skill-node:has(.skill-dot.gold) .skill-tooltip{background:var(--accent-soft);border-color:rgba(201,164,125,.45);color:var(--accent)}
+.skill-node>span:first-child{flex:0 1 auto;min-width:0}
+.skill-node.wide{grid-column:auto;width:auto}
+.skill-tooltip{flex-shrink:0;display:inline-flex;align-items:baseline;padding:0;border-radius:0;font-size:.78rem;font-weight:500;letter-spacing:.3px;white-space:nowrap;background:none;border:none;color:var(--text-meta);position:static;transform:none;box-shadow:none;pointer-events:none;font-family:var(--font-en)}
+.skill-node[data-level="5"] .skill-tooltip,.skill-node:has(.skill-dot.gold) .skill-tooltip{background:none;border:none;color:var(--accent);font-weight:600}
 
 /* Radar Chart */
 .radar-wrap{position:relative;width:100%;max-width:380px;margin:0 auto;aspect-ratio:1}
@@ -337,7 +340,7 @@ main{padding-top:70px;position:relative;z-index:1}
   .modal{max-height:90vh;border-radius:12px;margin:0.5rem}
   .modal-close{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
   .skill-categories{grid-template-columns:1fr}
-  .skill-tooltip{font-size:.68rem;padding:.15rem .45rem}
+  .skill-tooltip{font-size:.72rem}
   .profile-photo{width:120px;height:120px}
   .radar-wrap{max-width:260px;margin:0 auto}
   .radar-label{transform:scale(.85)}
