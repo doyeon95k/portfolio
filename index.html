@@ -169,9 +169,7 @@ main{padding-top:70px;position:relative;z-index:1}
 .journey-xp{margin-top:2rem;max-width:600px;margin-left:auto;margin-right:auto}
 
 /* ===== TAB 3: QUESTS ===== */
-.quest-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
-.quest-card-wide{grid-column:1/-1}
-.quest-card-wide .quest-thumb{aspect-ratio:32/9}
+.quest-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.2rem}
 .quest-card{background:var(--bg-mid);border-radius:12px;padding:0;border:1px solid var(--border);cursor:pointer;transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;overflow:hidden;touch-action:manipulation;-webkit-tap-highlight-color:transparent;display:flex;flex-direction:column}
 @media(hover:hover){.quest-card:hover{border-color:rgba(31,82,71,.35);transform:translateY(-4px);box-shadow:var(--shadow-lg)}}
 .quest-card:active{border-color:rgba(31,82,71,.3)}
@@ -181,9 +179,9 @@ main{padding-top:70px;position:relative;z-index:1}
 @media(hover:hover){.quest-card:hover .quest-thumb img{transform:scale(1.04)}}
 .quest-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(20,20,26,.12));pointer-events:none}
 .quest-num-badge{position:absolute;top:.8rem;left:.9rem;padding:.25rem .6rem;border-radius:4px;font-size:.7rem;font-weight:700;letter-spacing:2px;color:#fff;background:rgba(20,20,26,.7);backdrop-filter:blur(4px);z-index:2}
-.quest-body{padding:1.2rem 1.4rem 1.4rem;display:flex;flex-direction:column;flex:1}
+.quest-body{padding:1rem 1.2rem 1.2rem;display:flex;flex-direction:column;flex:1}
 .quest-num{font-size:.75rem;color:var(--accent);font-weight:700;letter-spacing:2px;margin-bottom:.5rem}
-.quest-title{font-size:1.15rem;font-weight:800;color:var(--text-bright);margin-bottom:.5rem;line-height:1.35;letter-spacing:-.015em}
+.quest-title{font-size:1.02rem;font-weight:800;color:var(--text-bright);margin-bottom:.4rem;line-height:1.35;letter-spacing:-.015em}
 .quest-company{font-size:.82rem;color:var(--primary);margin-bottom:.25rem;font-weight:500}
 .quest-period{font-size:.75rem;color:var(--text-meta);margin-bottom:.9rem}
 .quest-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto}
@@ -667,7 +665,7 @@ input:focus-visible{outline:2px solid var(--info);outline-offset:1px}
         <div class="quest-tags"><span class="quest-tag gold"><span lang="ko">TC 표준 전사 채택</span><span lang="en">TC Standard Adopted Company-wide</span></span><span class="quest-tag gold"><span lang="ko">버그 대폭 감소</span><span lang="en">Major Bug Reduction</span></span></div>
       </div>
     </div>
-    <div class="quest-card quest-card-wide" onclick="openQuest(4)">
+    <div class="quest-card" onclick="openQuest(4)">
       <div class="quest-thumb"><div class="quest-num-badge">BATTLE 05</div><img src="images/Battle 06_1.png" alt="" loading="lazy"></div>
       <div class="quest-body">
         <div class="quest-title"><span lang="ko">AI 기반 워크플로우 혁신</span><span lang="en">AI-Driven Workflow Innovation</span></div>
