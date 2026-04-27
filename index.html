@@ -121,6 +121,10 @@ main{padding-top:70px;position:relative;z-index:1}
 .xp-label{display:flex;justify-content:space-between;font-size:.75rem;color:var(--text-dim)}
 .typing-wrap{text-align:center;min-height:2.5rem;margin:1rem 0;font-size:.95rem;color:var(--accent);font-weight:500;opacity:0;transform:translateY(6px);transition:opacity .6s ease,transform .6s ease}
 .typing-wrap.visible{opacity:1;transform:translateY(0)}
+.profile-cert{text-align:center;margin:1rem 0 .2rem}
+.cert-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem .9rem;background:rgba(201,164,125,.1);border:1px solid rgba(201,164,125,.4);border-radius:999px;font-size:.78rem}
+.cert-mark{font-weight:900;color:var(--accent);letter-spacing:.5px;font-size:.82rem}
+.cert-text{color:var(--text-dim);font-size:.72rem;font-weight:500}
 .profile-org{text-align:center;padding:.8rem;background:rgba(31,82,71,.06);border-radius:10px;margin-top:1rem;border:1px solid rgba(31,82,71,.1)}
 .profile-org .org-label{font-size:.72rem;color:var(--text-meta);text-transform:uppercase;letter-spacing:2px;font-weight:600}
 .profile-org .org-name{font-size:1rem;font-weight:700;color:var(--text-bright);margin-top:.2rem}
@@ -548,6 +552,12 @@ input:focus-visible{outline:2px solid var(--info);outline-offset:1px}
       <div class="profile-class">Class: PM</div>
       <div class="profile-level"><span class="lv">Lv. 7</span></div>
       <div class="typing-wrap" id="typing-target"></div>
+      <div class="profile-cert">
+        <span class="cert-badge">
+          <span class="cert-mark">PMP®</span>
+          <span class="cert-text"><span lang="ko">PMI 인증 · 2025.12</span><span lang="en">Certified by PMI · 2025.12</span></span>
+        </span>
+      </div>
       <div class="profile-org">
         <div class="org-label">Current Party</div>
         <div class="org-name"><span lang="ko">크래프톤 / KRAFTON</span><span lang="en">KRAFTON</span></div>
