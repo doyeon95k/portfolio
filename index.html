@@ -1345,6 +1345,7 @@ function openQuest(idx){
   document.getElementById('mq-meta').innerHTML=q.meta;
   let html='';
   if(q.summary) html+='<div class="modal-summary">'+q.summary+'</div>';
+  html+='<div class="modal-insight"><div class="modal-insight-title">'+L.insight+'</div><p>'+q.insight+'</p></div>';
   html+='<div class="ba-grid"><div class="ba-card before"><div class="ba-label">'+L.before+'</div><ul>'+
     q.before.map(b=>'<li>'+b+'</li>').join('')+'</ul></div><div class="ba-card after"><div class="ba-label">'+L.after+'</div><ul>'+
     q.after.map(a=>'<li>'+a+'</li>').join('')+'</ul></div></div>';
@@ -1357,7 +1358,6 @@ function openQuest(idx){
     q.images.forEach(function(src){html+='<div class="modal-gallery-item" onclick="viewImg(\''+src+'\')"><img src="'+src+'" alt="Reference" loading="lazy"></div>'});
     html+='</div></div>';
   }
-  html+='<div class="modal-insight"><div class="modal-insight-title">'+L.insight+'</div><p>'+q.insight+'</p></div>';
   document.getElementById('mq-body').innerHTML=html;
   const overlay=document.getElementById('quest-modal');
   overlay.style.display='flex';
