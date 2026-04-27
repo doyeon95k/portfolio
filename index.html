@@ -220,6 +220,10 @@ main{padding-top:70px;position:relative;z-index:1}
 .modal-insight{margin-top:1.5rem;padding:1.2rem;background:rgba(201,164,125,.05);border-radius:10px;border:1px solid rgba(201,164,125,.15)}
 .modal-insight-title{font-size:.75rem;font-weight:700;color:var(--accent);letter-spacing:1px;margin-bottom:.5rem}
 .modal-insight p{font-size:.85rem;color:var(--text);line-height:1.7}
+.modal-insight ul{list-style:none;padding:0;margin:0;font-size:.85rem;color:var(--text);line-height:1.7}
+.modal-insight ul li{padding-left:1rem;position:relative;margin-bottom:.4rem}
+.modal-insight ul li:last-child{margin-bottom:0}
+.modal-insight ul li::before{content:'•';color:var(--accent);position:absolute;left:0;font-weight:700}
 .modal-gallery{margin:1.5rem 0}
 .modal-gallery-title{font-size:.75rem;font-weight:700;color:var(--primary);letter-spacing:1px;margin-bottom:.8rem}
 .modal-gallery-grid{display:flex;gap:.8rem;overflow-x:auto;padding-bottom:.5rem;-webkit-overflow-scrolling:touch}
@@ -1009,7 +1013,7 @@ const QUESTS_DATA = {
       after:['CLO(마블러스 디자이너 SW 제작사)와 게임스컴 기간에 맞춘 공모전 운영 — 800만원 투자로 15종 의상 리소스 확보 (외주 1종 500만원 이상 기준 대비 89% 비용 절감)','LG전자·삼성 디스플레이·현대 자동차 콜라보 어셋 관리 — 계약서 작업 범위·규격 정리, 개발/아트 작업 컨펌 커뮤니케이션 수행','국내/해외 외주 업체(총 6곳) 계약~산출물 커뮤니케이션 진행 — 약 780종 이상의 배경 리소스 최적화 작업 2개월만에 진행','위메이드 커넥트 IP 콜라보 제안서 작성 및 판권사 커뮤니케이션 — 에스더버니 콜라보 매출 135% 성장 견인'],
       metrics:[{v:89,suffix:'%',label:'비용 절감',gold:true},{v:15,suffix:'종',label:'에셋 확보',gold:true},{v:3,suffix:'사',label:'한국 대기업 콜라보',gold:true},{v:8,suffix:'+',label:'해외 벤더 동시 관리'},{text:'풀 사이클',label:'IP 콜라보 리서치~정산 직접 운영'}],
       images:['images/Battle 04.png','images/Battle 03_1.png','images/Battle 03_2.png'],
-      insight:'계약 단계부터 산출물 검수까지 전 과정을 직접 다뤄 보면서, 외부 파트너와 내부 팀 사이에서 작업 범위·일정·비용을 정렬하는 역할이 자연스럽게 몸에 익었다.'
+      insight:['계약 단계부터 산출물 검수까지 전 과정을 직접 다뤄 본 경험','외부 파트너와 내부 팀 사이에서 작업 범위·일정·비용을 정렬하는 역할이 자연스럽게 몸에 익음','대기업 콜라보·해외 벤더·IP 콜라보까지 협업 형태가 달라도 공통 흐름은 결국 같다는 걸 체감']
     },
     {
       num:'BATTLE 02', title:'프로젝트 운영 프로세스 재설계 & 자동화',
@@ -1019,7 +1023,7 @@ const QUESTS_DATA = {
       after:['Jira 일감 자동 생성(오토메이션 활용) 요청 — 이전 대비 업무 속도 20% 개선 (Jira의 Start Date - End Date를 통해 성과 책정)','Zapier로 Google → Slack 작업 마감 기한 자동 안내 툴 제작 — 작업자별 일정 효과적 확인 구조 생성','Chat GPT + AppScript 활용해 구글 캘린더 정기 일정 자동 생성 — 수동 업무를 자동화하여 생산성 향상'],
       metrics:[{v:20,suffix:'%',label:'리더 업무 효율화',gold:true},{v:27,suffix:'%',label:'마감직전 작업 감소',gold:true},{text:'∞',label:'PM 시간 확보'}],
       images:['images/Battle 02_1.png','images/Battle 02_2.png','images/Battle 02_3.png','images/Battle 02_4.png','images/Battle 02_5.png'],
-      insight:'내부 업무 병목도 결국 사용자(팀원) 페인포인트와 같은 방식으로 접근. 원인 파악 → 툴 설계 → 결과 측정 순으로 풀어 가니, PM 본업에 쓸 시간이 다시 확보됐다.'
+      insight:['내부 업무 병목도 결국 사용자(팀원) 페인포인트와 같은 방식으로 접근','원인 파악 → 툴 설계 → 결과 측정 순서를 그대로 적용','수동으로 처리하던 업무를 자동화로 옮기니 PM 본업에 쓸 시간이 다시 확보됨']
     },
     {
       num:'BATTLE 03', title:'데이터 기반 프로젝트 운영',
@@ -1029,7 +1033,7 @@ const QUESTS_DATA = {
       after:['업데이트 당일별 매출 분석 문서 작성 — 유관부서에 효율적인 매출 분석 자료 공유 가능, 이전 업데이트 당일 매출 및 항목별 효율 확인 가능','IP 콜라보 제안서 작성 및 판권사와의 커뮤니케이션 — 에스더버니 콜라보 평시 대비 매출 135% 증가','FGT 설문 작성 및 사용자 의견 분석 — 사업 전략 방향 검증'],
       metrics:[{v:135,suffix:'%',label:'IP 콜라보 매출 성장',gold:true},{text:'문서화',label:'후임자 인계 가능한 사업 지표 시스템 구축',gold:true},{text:'User Data',label:'FGT 설문 설계를 통한 유저 데이터 취합'}],
       images:['images/Battle 01.png'],
-      insight:'문서 한 장이 후임자에게 전달되는 사업 지표가 되고, 다음 업데이트 의사결정의 기준이 된다는 걸 직접 체감했다. 데이터 정리는 결국 다음 사람을 위한 일이다.'
+      insight:['문서 한 장이 후임자에게 전달되는 사업 지표가 됨을 직접 체감','매출 데이터가 다음 업데이트 의사결정의 기준이 되는 구조 확인','데이터 정리는 결국 다음 사람을 위한 일이라는 시각으로 접근']
     },
     {
       num:'BATTLE 04', title:'QA 프로세스 표준화',
@@ -1039,7 +1043,7 @@ const QUESTS_DATA = {
       after:['레드마인 일감 및 기획서를 참고하여 TC 작성 — 개발팀에 적용여부 제안','개발팀과 사업팀간 원활한 크로스체크 진행 — 클라이언트 버그 이슈와 유저 부정 동향 대폭 감소','이후 대규모 업데이트 진행 시 본인이 작성한 TC 폼을 활용하여 점검이슈 체크'],
       metrics:[{v:100,suffix:'%',label:'TC 표준 전사 채택',gold:true},{text:'대폭↓',label:'버그·긴급 점검 감소',gold:true},{text:'표준화',label:'모든 업데이트에 TC 템플릿 적용'}],
       images:['images/Battle 05.png'],
-      insight:'사업PM이지만 점검 이슈를 매번 마주하면서 체크리스트 한 장이 점검 안정성을 바꾼다는 걸 실감했다. 첫 회사에서의 이 경험이 이후 모든 프로젝트에서 문제 정의·해결안 제안 흐름의 토대가 됐다.'
+      insight:['사업PM이지만 점검 이슈를 매번 마주하며 체크리스트 한 장이 점검 안정성을 바꾼다는 걸 실감','문제 정의 → 원인 진단 → 해결안 제안 흐름을 첫 회사에서 익힘','이 경험이 이후 모든 프로젝트의 문제 해결 패턴의 토대가 됨']
     },
     {
       num:'BATTLE 05', title:'AI 기반 워크플로우 혁신',
@@ -1049,7 +1053,7 @@ const QUESTS_DATA = {
       after:['저작권·상표권·AI 생성 이미지 탐지기 [1차 개발 완료] — 클로드 코드로 직접 제작, 아트팀·기획팀 커뮤니케이션 비용 절감 및 리스크 방지에 기여','KissFlow 결제 프로세스 트래킹 툴 [완료] — 사내 결제 승인·처리 흐름 자동화','Claude Code · Gemini · ChatGPT [활용중] — 자동화 스크립트·초안 작성·워크플로우 보조','Whisper · Ollama [개인 업무 활용중] — 미팅 녹취록 자동화, 로컬 LLM 환경 활용'],
       metrics:[{v:6,suffix:'+',label:'AI 도구 활용',gold:true},{v:40,suffix:'%+',label:'워크플로우 효율화'},{v:3,suffix:'개+',label:'신규 파이프라인'}],
       images:['images/Battle 06_1.png','images/Battle 06_2.png','images/Battle 06_3.png','images/Battle6_05.png','images/Battle6_06.png','images/Battle6_07.png','images/Battle6_08.png'],
-      insight:'문제를 먼저 정의하고 어떤 도구를 어떻게 쓸지 결정하는 순서가 중요. 저작권 검토 툴도 "법무 비용을 줄이고 리스크를 빠르게 잡자"라는 목적이 먼저였다.'
+      insight:['문제를 먼저 정의하고, 어떤 도구를 어떻게 쓸지는 그다음 결정','저작권 검토 툴도 "법무 비용을 줄이고 리스크를 빠르게 잡자"라는 목적이 먼저였음','AI 도구는 PM 워크플로우 안에서 일상적으로 쓰는 도구로 자리 잡는 중']
     }
   ],
   en:[
@@ -1061,7 +1065,7 @@ const QUESTS_DATA = {
       after:['Designed CLO contest partnership aligned with Gamescom timeline → secured 15 assets, 89% cost reduction (Win-Win-Win: inZOI gets quality assets / CLO gets a flagship-game showcase / participants get portfolio exposure)','Standardized brand-collab approval workflows for LG, Samsung, Hyundai — bridged partner and internal teams, defined scope, and codified sign-off paths','Built a 4-timezone vendor pipeline (KR/CN/SEA/EU) covering 8+ partners; drafted bilingual SoW & contracts directly','Owned full IP collab cycle (Research → Outreach → Legal → Asset → Settlement) → drove 135% revenue growth'],
       metrics:[{v:89,suffix:'%',label:'Cost savings',gold:true},{v:15,suffix:'',label:'Assets secured',gold:true},{v:3,suffix:'',label:'Major Korean enterprise collabs',gold:true},{v:8,suffix:'+',label:'Global vendors managed simultaneously'},{text:'Full Cycle',label:'IP collab — Research → Settlement direct ownership'}],
       images:['images/Battle 04.png','images/Battle 03_1.png','images/Battle 03_2.png'],
-      insight:'Win-Win-Win partnership design + systems thinking: aligned each stakeholder\'s incentives, constraints, and timelines to achieve both cost efficiency and measurable impact. Coordinating 4 time zones and 8+ vendors translates directly to orchestrating platform features across studios and departments.'
+      insight:['Win-Win-Win partnership design + systems thinking — aligned each stakeholder\'s incentives, constraints, and timelines','Achieved both cost efficiency and measurable impact across 3 major Korean enterprises and 8+ global vendors','Coordinating across 4 time zones translates directly to orchestrating platform features across studios and departments']
     },
     {
       num:'BATTLE 02', title:'Project Workflow Redesign & Automation',
@@ -1071,7 +1075,7 @@ const QUESTS_DATA = {
       after:['Jira Automation — auto ticket creation on resource request trigger → 20% leadership efficiency gain','Zapier (Jira → Slack) — channel-targeted deadline reminders → 27% reduction in last-minute task completions, restoring schedule predictability and securing time for review & QA','ChatGPT + AppScript — rule-based recurring schedule automation → PM time freed up'],
       metrics:[{v:20,suffix:'%',label:'Leadership efficiency gain',gold:true},{v:27,suffix:'%',label:'Reduction in last-minute task completions',gold:true},{text:'∞',label:'PM time freed up'}],
       images:['images/Battle 02_1.png','images/Battle 02_2.png','images/Battle 02_3.png','images/Battle 02_4.png','images/Battle 02_5.png'],
-      insight:'Internal tooling = product work. Same PM logic applied: identify user (team) pain points → design solutions → build & deploy → measure results.'
+      insight:['Internal tooling = product work','Same PM logic applied: identify user (team) pain points → design solutions → build & deploy → measure results','Automating manual workflows freed up time for the actual PM work']
     },
     {
       num:'BATTLE 03', title:'Data-Driven Project Operations',
@@ -1081,7 +1085,7 @@ const QUESTS_DATA = {
       after:['Built per-update daily revenue analysis framework (YoY comparison enabled) → YoY 17% revenue growth','IP collab proposals with ROI analysis (Esther Bunny: 135% revenue increase vs. baseline)','Designed FGT surveys to analyze developer-user perspective gaps → started user-centered design'],
       metrics:[{v:17,suffix:'%',label:'3-month avg revenue YoY growth',gold:true},{v:135,suffix:'%',label:'IP collab revenue uplift',gold:true},{text:'User Data',label:'User data collection via FGT survey design'}],
       images:['images/Battle 01.png'],
-      insight:'A PM\'s value lies not just in executing tasks, but in building systems that enable better decisions. Data documentation isn\'t a recap of past results — it becomes the compass for future improvement.'
+      insight:['A PM\'s value lies not just in executing tasks, but in building systems that enable better decisions','Documentation became the bridge for the next person on the team to make informed decisions','Data documentation isn\'t a recap of past results — it becomes the compass for future improvement']
     },
     {
       num:'BATTLE 04', title:'QA Process Standardization',
@@ -1091,7 +1095,7 @@ const QUESTS_DATA = {
       after:['Created comprehensive TC documentation based on Redmine tasks and design specs','Proposed TC-based QA process to the development team — adopted into release pipeline','Major reduction in bugs and emergency patches; TC template adopted as standard for all major updates'],
       metrics:[{v:100,suffix:'%',label:'TC standard adoption',gold:true},{text:'Major↓',label:'Bug and emergency patch reduction',gold:true},{text:'Standardized',label:'TC template applied to all updates'}],
       images:['images/Battle 05.png'],
-      insight:'The pattern established in this early experience has been applied throughout my career: observe recurring failures → diagnose root causes → build systematic solutions.'
+      insight:['As a Business PM facing maintenance issues every cycle, learned how a single checklist can shift release stability','Pattern established here — observe recurring failures → diagnose root causes → build systematic solutions','This early experience became the foundation for problem-solving across every project that followed']
     },
     {
       num:'BATTLE 05', title:'AI-Driven Workflow Innovation',
@@ -1101,7 +1105,7 @@ const QUESTS_DATA = {
       after:['KissFlow Payment Process Tracking Tool [Shipped] — Built internal payment approval & processing workflow','Copyright · Trademark · AI-Generated Image Detector [Phase 1 Done] — Asset risk pre-validation pipeline; Unreal automation tool extension in progress','Claude Code · Gemini · ChatGPT [In Use] — Automation scripts, drafts, workflow assistance for daily PM work','Whisper · Ollama [Personal Use] — Meeting transcript automation, local LLM environment'],
       metrics:[{v:6,suffix:'+',label:'AI tools utilized',gold:true},{v:40,suffix:'%+',label:'Workflow efficiency gain'},{v:3,suffix:'+',label:'New pipelines built'}],
       images:['images/Battle 06_1.png','images/Battle 06_2.png','images/Battle 06_3.png','images/Battle6_05.png','images/Battle6_06.png','images/Battle6_07.png','images/Battle6_08.png'],
-      insight:'The key is integrating AI across the entire PM workflow — not as a tool, but as a way to redesign productivity and build new pipelines. Focus on "what problem to solve" over the technology itself.'
+      insight:['Define the problem first; the choice of tool comes second','Built the copyright detector with one purpose — cut legal review costs and catch risk earlier','AI tools are gradually becoming an everyday part of the PM workflow, not a one-off experiment']
     }
   ]
 };
@@ -1345,7 +1349,7 @@ function openQuest(idx){
   document.getElementById('mq-meta').innerHTML=q.meta;
   let html='';
   if(q.summary) html+='<div class="modal-summary">'+q.summary+'</div>';
-  html+='<div class="modal-insight"><div class="modal-insight-title">'+L.insight+'</div><p>'+q.insight+'</p></div>';
+  html+='<div class="modal-insight"><div class="modal-insight-title">'+L.insight+'</div>'+(Array.isArray(q.insight)?'<ul>'+q.insight.map(i=>'<li>'+i+'</li>').join('')+'</ul>':'<p>'+q.insight+'</p>')+'</div>';
   html+='<div class="ba-grid"><div class="ba-card before"><div class="ba-label">'+L.before+'</div><ul>'+
     q.before.map(b=>'<li>'+b+'</li>').join('')+'</ul></div><div class="ba-card after"><div class="ba-label">'+L.after+'</div><ul>'+
     q.after.map(a=>'<li>'+a+'</li>').join('')+'</ul></div></div>';
