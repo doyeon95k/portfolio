@@ -310,12 +310,6 @@ main{padding-top:70px;position:relative;z-index:1}
 
 /* ===== TAB 6: CONTACT ===== */
 .contact-wrap{display:flex;flex-direction:column;align-items:center;text-align:center}
-.portal{width:160px;height:160px;border-radius:50%;position:relative;margin-bottom:2rem}
-.portal::before{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid var(--primary);animation:portal-spin 6s linear infinite;filter:drop-shadow(0 2px 6px rgba(31,82,71,.15))}
-.portal::after{content:'';position:absolute;inset:15px;border-radius:50%;border:1px dashed rgba(31,82,71,.2);animation:portal-spin 8s linear infinite reverse}
-@keyframes portal-spin{100%{transform:rotate(360deg)}}
-.portal-inner{position:absolute;inset:25px;border-radius:50%;background:radial-gradient(circle,rgba(31,82,71,.1),transparent);display:flex;align-items:center;justify-content:center}
-.portal-icon{font-size:2.5rem}
 .contact-msg{font-size:1.1rem;color:var(--text);margin-bottom:2rem;line-height:1.7;max-width:500px}
 .contact-msg em{color:var(--primary);font-style:normal;font-weight:700}
 .contact-list{display:flex;flex-direction:column;gap:.8rem;width:100%;max-width:400px}
@@ -409,33 +403,9 @@ main{padding-top:70px;position:relative;z-index:1}
 .loading-title{font-family:var(--font);text-transform:uppercase;animation:title-pulse 2s ease-in-out infinite;color:var(--primary);letter-spacing:4px}
 @keyframes title-pulse{0%,100%{opacity:1}50%{opacity:.65}}
 
-/* ===== CHARACTER LEVEL-UP WIDGET ===== */
-#char-widget{position:fixed;bottom:1.5rem;right:1.5rem;z-index:90;display:flex;flex-direction:column;align-items:center;gap:.3rem;pointer-events:none;transition:all .4s;opacity:0}
-#char-widget.visible{opacity:1}
-#char-widget .char-sprite{font-size:2rem;transition:all .5s;filter:drop-shadow(0 1px 2px rgba(31,82,71,.2))}
-#char-widget .char-lv{font-size:.65rem;font-weight:700;color:var(--primary);letter-spacing:1px;font-family:var(--font);background:var(--bg-mid);padding:.2rem .55rem;border-radius:10px;border:1px solid var(--border-strong);transition:all .4s;box-shadow:var(--shadow-sm)}
-#char-widget.lv-up .char-sprite{animation:char-levelup .6s ease-out}
-#char-widget.lv-up .char-lv{animation:lv-flash .6s ease-out}
-@keyframes char-levelup{0%{transform:scale(1)}30%{transform:scale(1.4)}60%{transform:scale(.9)}100%{transform:scale(1)}}
-@keyframes lv-flash{0%{color:var(--accent);transform:scale(1.05)}100%{color:var(--primary);transform:scale(1)}}
-#char-widget .char-particles{position:absolute;inset:0;pointer-events:none}
-#char-widget .char-particles span{position:absolute;width:4px;height:4px;border-radius:50%;animation:char-spark .7s ease-out forwards;opacity:0}
-@keyframes char-spark{0%{transform:translate(0,0) scale(1);opacity:1}100%{opacity:0}}
-
-/* Contact full-level character */
-.contact-char{font-size:4rem;margin-bottom:.5rem;animation:char-float 3s ease-in-out infinite;filter:drop-shadow(0 4px 12px rgba(31,82,71,.2))}
-@keyframes char-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.contact-char-label{font-size:.7rem;color:var(--accent);font-weight:700;letter-spacing:2px;margin-bottom:1.5rem;font-family:monospace}
-
-@media(max-width:768px){
-  #char-widget{bottom:1rem;right:1rem}
-  #char-widget .char-sprite{font-size:1.6rem}
-  .contact-char{font-size:3rem}
-}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:0s!important;transition-duration:0s!important}
   body::after{display:none}
-  #char-widget{display:none}
   #particles{display:none}
 }
 
@@ -495,13 +465,6 @@ input:focus-visible{outline:2px solid var(--info);outline-offset:1px}
 
 <!-- PARTICLES -->
 <div id="particles"></div>
-
-<!-- CHARACTER LEVEL-UP WIDGET -->
-<div id="char-widget">
-  <div class="char-particles"></div>
-  <div class="char-sprite">🧑‍💼</div>
-  <div class="char-lv">Lv.1</div>
-</div>
 
 <!-- NAV -->
 <nav>
@@ -885,10 +848,6 @@ input:focus-visible{outline:2px solid var(--info);outline-offset:1px}
     <h2><span lang="ko">연락처</span><span lang="en">Contact</span></h2>
   </div>
   <div class="contact-wrap">
-    <div class="portal">
-      <div class="portal-inner"><div class="contact-char">⚔️</div></div>
-    </div>
-    <div class="contact-char-label">★ MAX LEVEL — READY FOR NEXT MISSION ★</div>
     <div class="contact-msg">
       <span lang="ko">새로운 여정을 함께할 <em>파티</em>를 찾고 있습니다.<br>아래 연락처로 편하게 연락주세요!</span>
       <span lang="en">Looking for a new <em>party</em> to embark on the next adventure.<br>Feel free to reach out below!</span>
@@ -1689,81 +1648,6 @@ function fetchStreamResponse(messages, onDone, onError) {
   });
 }
 
-/* ===== CHARACTER LEVEL-UP SYSTEM ===== */
-(function(){
-  var widget=document.getElementById('char-widget');
-  if(!widget)return;
-  var sprite=widget.querySelector('.char-sprite');
-  var lvLabel=widget.querySelector('.char-lv');
-  var particlesEl=widget.querySelector('.char-particles');
-  var stages=[
-    {section:'sec-profile',lv:1,icon:'🧑‍💼',label:'Lv.1'},
-    {section:'sec-journey',lv:3,icon:'🗺️',label:'Lv.3'},
-    {section:'sec-quests',lv:5,icon:'⚔️',label:'Lv.5'},
-    {section:'sec-skills',lv:7,icon:'🔮',label:'Lv.7'},
-    {section:'sec-chat',lv:9,icon:'💬',label:'Lv.9'},
-    {section:'sec-contact',lv:99,icon:'🏆',label:'MAX'}
-  ];
-  var currentLv=0;
-
-  function spawnParticles(){
-    var colors=['#1f5247','#c9a47d','#3e7a72','#94a19c'];
-    for(var i=0;i<10;i++){
-      var s=document.createElement('span');
-      var angle=Math.random()*Math.PI*2;
-      var dist=20+Math.random()*25;
-      var dx=Math.cos(angle)*dist;
-      var dy=Math.sin(angle)*dist;
-      s.style.cssText='left:50%;top:40%;background:'+colors[Math.floor(Math.random()*colors.length)]+';animation-name:char-spark;';
-      s.style.setProperty('--dx',dx+'px');
-      s.style.setProperty('--dy',dy+'px');
-      s.animate([
-        {transform:'translate(0,0) scale(1)',opacity:1},
-        {transform:'translate('+dx+'px,'+dy+'px) scale(0)',opacity:0}
-      ],{duration:600+Math.random()*300,easing:'ease-out'});
-      particlesEl.appendChild(s);
-      setTimeout(function(){s.remove()},900);
-    }
-  }
-
-  function setLevel(stage){
-    if(stage.lv===currentLv)return;
-    var isUp=stage.lv>currentLv;
-    currentLv=stage.lv;
-    sprite.textContent=stage.icon;
-    lvLabel.textContent=stage.label;
-    if(isUp){
-      widget.classList.add('lv-up');
-      spawnParticles();
-      setTimeout(function(){widget.classList.remove('lv-up')},700);
-    }
-  }
-
-  /* Hide widget at contact section (full char shown inline) */
-  var charObs=new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        var id=entry.target.id;
-        if(id==='sec-contact'){
-          widget.style.opacity='0';
-        }else{
-          widget.style.opacity='';
-          for(var i=stages.length-1;i>=0;i--){
-            if(stages[i].section===id){setLevel(stages[i]);break;}
-          }
-        }
-      }
-    });
-  },{rootMargin:'-40% 0px -55% 0px',threshold:0});
-
-  stages.forEach(function(s){
-    var el=document.getElementById(s.section);
-    if(el) charObs.observe(el);
-  });
-
-  /* Show widget after loading */
-  setTimeout(function(){widget.classList.add('visible')},2000);
-})();
 </script>
 </body>
 </html>
