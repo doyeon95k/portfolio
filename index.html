@@ -652,7 +652,7 @@ input:focus-visible{outline:2px solid var(--info);outline-offset:1px}
       <div class="quest-thumb"><div class="quest-num-badge">BATTLE 03</div><img src="images/Battle 01.png" alt="" loading="lazy"></div>
       <div class="quest-body">
         <div class="quest-title"><span lang="ko">데이터 기반 프로젝트 운영</span><span lang="en">Data-Driven Project Operations</span></div>
-        <div class="quest-tags"><span class="quest-tag gold"><span lang="ko">업데이트 매출 분석 문서화</span><span lang="en">YoY +17% Revenue</span></span><span class="quest-tag gold"><span lang="ko">IP 콜라보 +135%</span><span lang="en">IP Collab +135%</span></span></div>
+        <div class="quest-tags"><span class="quest-tag gold"><span lang="ko">업데이트 매출 분석 문서화</span><span lang="en">YoY +17% Revenue</span></span><span class="quest-tag gold"><span lang="ko">시장 분석 → 업데이트 반영</span><span lang="en">Market → Next Update</span></span><span class="quest-tag"><span lang="ko">FGT 유저 데이터</span><span lang="en">FGT User Data</span></span></div>
       </div>
     </div>
     <div class="quest-card" onclick="openQuest(3)">
@@ -1028,10 +1028,10 @@ const QUESTS_DATA = {
     {
       num:'BATTLE 03', title:'데이터 기반 프로젝트 운영',
       meta:'<span>위메이드 커넥트 · 민트 스튜디오</span> · 2020.08 — 2022.03',
-      summary:'위메이드 커넥트 입사 후 정리된 업데이트 히스토리 문서가 없는 환경에서 매출 분석 문서를 직접 작성하고, IP 콜라보 제안 업무까지 함께 수행',
-      before:['입사 후 이전 업데이트 히스토리 확인을 위해 문서를 찾았으나 정리된 문서가 없음','메일을 통한 업데이트 당일 사업 지표 간략화 및 공유 → 후임자가 히스토리를 확인하기 어려움','구조화된 사용자 피드백 프로세스 부재'],
-      after:['업데이트 당일별 매출 분석 문서 작성 — 유관부서에 효율적인 매출 분석 자료 공유 가능, 이전 업데이트 당일 매출 및 항목별 효율 확인 가능','IP 콜라보 제안서 작성 및 판권사와의 커뮤니케이션 — 에스더버니 콜라보 평시 대비 매출 135% 증가','FGT 설문 작성 및 사용자 의견 분석 — 사업 전략 방향 검증'],
-      metrics:[{v:135,suffix:'%',label:'IP 콜라보 매출 성장',gold:true},{text:'문서화',label:'후임자 인계 가능한 사업 지표 시스템 구축',gold:true},{text:'User Data',label:'FGT 설문 설계를 통한 유저 데이터 취합'}],
+      summary:'위메이드 커넥트 입사 후 정리된 업데이트 히스토리 문서가 없는 환경에서, 매출 분석·유저 피드백·시장 트렌드를 정리해 다음 업데이트 의사결정의 기준을 만든 경험',
+      before:['입사 후 이전 업데이트 히스토리 확인을 위해 문서를 찾았으나 정리된 문서가 없음','메일을 통한 업데이트 당일 사업 지표 간략화 및 공유 → 후임자가 히스토리를 확인하기 어려움','구조화된 사용자 피드백·시장 분석 프로세스 부재'],
+      after:['업데이트 당일별 매출 분석 문서 작성 — 유관부서에 효율적인 매출 분석 자료 공유 가능, 이전 업데이트 당일 매출 및 항목별 효율 확인 가능','커뮤니티·스토어 리뷰 분석을 다음 업데이트 기획에 반영 — 시장 트렌드 기반 의사결정','FGT 설문 작성 및 사용자 의견 분석 — 사업 전략 방향 검증','인게임 스토어 구매 흐름 UI 개선 제안 — 데이터 기반 매출 성장 기여'],
+      metrics:[{text:'문서화',label:'후임자 인계 가능한 사업 지표 시스템 구축',gold:true},{text:'시장 분석',label:'커뮤니티·스토어 리뷰 → 업데이트 반영',gold:true},{text:'User Data',label:'FGT 설문 설계를 통한 유저 데이터 취합'}],
       images:['images/Battle 01.png'],
       insight:['문서 한 장이 후임자에게 전달되는 사업 지표가 됨을 직접 체감','매출 데이터가 다음 업데이트 의사결정의 기준이 되는 구조 확인','데이터 정리는 결국 다음 사람을 위한 일이라는 시각으로 접근']
     },
@@ -1080,10 +1080,10 @@ const QUESTS_DATA = {
     {
       num:'BATTLE 03', title:'Data-Driven Project Operations',
       meta:'<span>Wemade Connect · Mint Studio</span> · 2020.08 — 2022.03',
-      summary:'Built a revenue tracking system from scratch in a team with no data-driven decision framework — drove YoY 17% growth and 135% IP-collab revenue uplift',
-      before:['No organized update history docs; daily metrics shared only via email, making it hard for successors to trace history','No way to compare revenue across updates','No structured user research or FGT feedback process'],
-      after:['Built per-update daily revenue analysis framework (YoY comparison enabled) → YoY 17% revenue growth','IP collab proposals with ROI analysis (Esther Bunny: 135% revenue increase vs. baseline)','Designed FGT surveys to analyze developer-user perspective gaps → started user-centered design'],
-      metrics:[{v:17,suffix:'%',label:'3-month avg revenue YoY growth',gold:true},{v:135,suffix:'%',label:'IP collab revenue uplift',gold:true},{text:'User Data',label:'User data collection via FGT survey design'}],
+      summary:'Built a revenue tracking system from scratch in a team with no data-driven decision framework — turned revenue data, user feedback, and market signals into the basis for next-update decisions',
+      before:['No organized update history docs; daily metrics shared only via email, making it hard for successors to trace history','No way to compare revenue across updates','No structured user research or market analysis process'],
+      after:['Built per-update daily revenue analysis framework (YoY comparison enabled) → YoY 17% revenue growth','Analyzed community feedback and store reviews to inform next-update planning — market-trend-based decisions','Designed FGT surveys to analyze developer-user perspective gaps → started user-centered design','Proposed in-game store purchase-flow UI improvements — data-driven contribution to revenue growth'],
+      metrics:[{v:17,suffix:'%',label:'3-month avg revenue YoY growth',gold:true},{text:'Market Insight',label:'Community & store review → next update planning',gold:true},{text:'User Data',label:'User data collection via FGT survey design'}],
       images:['images/Battle 01.png'],
       insight:['A PM\'s value lies not just in executing tasks, but in building systems that enable better decisions','Documentation became the bridge for the next person on the team to make informed decisions','Data documentation isn\'t a recap of past results — it becomes the compass for future improvement']
     },
